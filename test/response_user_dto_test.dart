@@ -50,7 +50,7 @@ void main() {
     });
 
     // The email has been verified
-    // String emailVerified
+    // bool emailVerified
     test('to test the property `emailVerified`', () async {
       // TODO
     });

@@ -40,7 +40,7 @@ abstract class ResponseUserDto implements Built<ResponseUserDto, ResponseUserDto
 
     /// The email has been verified
     @BuiltValueField(wireName: r'email_verified')
-    String? get emailVerified;
+    bool? get emailVerified;
 
     /// The authorization has been done by social auth
     @BuiltValueField(wireName: r'is_social_auth')
@@ -105,7 +105,7 @@ class _$ResponseUserDtoSerializer implements StructuredSerializer<ResponseUserDt
             result
                 ..add(r'email_verified')
                 ..add(serializers.serialize(object.emailVerified,
-                    specifiedType: const FullType(String)));
+                    specifiedType: const FullType(bool)));
         }
         result
             ..add(r'is_social_auth')
@@ -155,7 +155,7 @@ class _$ResponseUserDtoSerializer implements StructuredSerializer<ResponseUserDt
                     break;
                 case r'email_verified':
                     result.emailVerified = serializers.deserialize(value,
-                        specifiedType: const FullType(String)) as String;
+                        specifiedType: const FullType(bool)) as bool;
                     break;
                 case r'is_social_auth':
                     result.isSocialAuth = serializers.deserialize(value,

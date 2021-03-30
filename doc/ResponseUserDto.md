@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **lastname** | **String** | The lastname of the user | 
 **username** | **String** | The username of the user | [optional] 
 **email** | **String** | The email address of the user | 
-**emailVerified** | **String** | The email has been verified | [optional] 
+**emailVerified** | **bool** | The email has been verified | [optional] 
 **isSocialAuth** | **bool** | The authorization has been done by social auth | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -76,7 +76,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Authorization
 
 
-## bearer
+## jwt
 
 - **Type**: HTTP basic authentication
 

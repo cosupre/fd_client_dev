@@ -22,7 +22,7 @@ class _$ResponseUserDto extends ResponseUserDto {
   @override
   final String email;
   @override
-  final String? emailVerified;
+  final bool? emailVerified;
   @override
   final bool isSocialAuth;
 
@@ -141,9 +141,9 @@ class ResponseUserDtoBuilder
   String? get email => _$this._email;
   set email(String? email) => _$this._email = email;
 
-  String? _emailVerified;
-  String? get emailVerified => _$this._emailVerified;
-  set emailVerified(String? emailVerified) =>
+  bool? _emailVerified;
+  bool? get emailVerified => _$this._emailVerified;
+  set emailVerified(bool? emailVerified) =>
       _$this._emailVerified = emailVerified;
 
   bool? _isSocialAuth;

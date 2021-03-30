@@ -23,9 +23,9 @@ Create a user on database and patch the auth0 user
 ### Example 
 ```dart
 import 'package:fd_client_dev/api.dart';
-// TODO Configure HTTP basic authorization: bearer
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearer').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearer').password = 'YOUR_PASSWORD';
+// TODO Configure HTTP basic authorization: jwt
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
 
 var api_instance = new UsersApi();
 var createUserDto = new CreateUserDto(); // CreateUserDto | 
@@ -50,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearer](../README.md#bearer)
+[jwt](../README.md#jwt)
 
 ### HTTP request headers
 
@@ -67,9 +67,9 @@ Get user information
 ### Example 
 ```dart
 import 'package:fd_client_dev/api.dart';
-// TODO Configure HTTP basic authorization: bearer
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearer').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearer').password = 'YOUR_PASSWORD';
+// TODO Configure HTTP basic authorization: jwt
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
 
 var api_instance = new UsersApi();
 
@@ -90,7 +90,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[bearer](../README.md#bearer)
+[jwt](../README.md#jwt)
 
 ### HTTP request headers
 
@@ -107,9 +107,9 @@ Patch user information on auth0
 ### Example 
 ```dart
 import 'package:fd_client_dev/api.dart';
-// TODO Configure HTTP basic authorization: bearer
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearer').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearer').password = 'YOUR_PASSWORD';
+// TODO Configure HTTP basic authorization: jwt
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
 
 var api_instance = new UsersApi();
 var id = ; // JsonObject | 
@@ -136,7 +136,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearer](../README.md#bearer)
+[jwt](../README.md#jwt)
 
 ### HTTP request headers
 
@@ -153,9 +153,9 @@ Delete user from database and auth0
 ### Example 
 ```dart
 import 'package:fd_client_dev/api.dart';
-// TODO Configure HTTP basic authorization: bearer
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearer').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearer').password = 'YOUR_PASSWORD';
+// TODO Configure HTTP basic authorization: jwt
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
 
 var api_instance = new UsersApi();
 var id = ; // JsonObject | 
@@ -179,7 +179,7 @@ void (empty response body)
 
 ### Authorization
 
-[bearer](../README.md#bearer)
+[jwt](../README.md#jwt)
 
 ### HTTP request headers
 

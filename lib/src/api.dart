@@ -4,6 +4,7 @@
 
 import 'package:dio/dio.dart';
 import 'package:built_value/serializer.dart';
+import 'package:fd_client_dev/src/auth/bearer_auth.dart';
 import 'package:fd_client_dev/src/serializers.dart';
 import 'package:fd_client_dev/src/auth/api_key_auth.dart';
 import 'package:fd_client_dev/src/auth/basic_auth.dart';
@@ -33,9 +34,16 @@ class FdClientDev {
         OAuthInterceptor(),
         BasicAuthInterceptor(),
         ApiKeyAuthInterceptor(),
+        HttpBearerInterceptor(),
       ]);
     } else {
       this.dio.interceptors.addAll(interceptors);
+    }
+  }
+
+  void setHttpBearerToken(String name, String token) {
+    if (this.dio.interceptors.any((i) => i is HttpBearerInterceptor)) {
+    (this.dio.interceptors.firstWhere((i) => i is HttpBearerInterceptor) as HttpBearerInterceptor).tokens[name] = token;
     }
   }
 

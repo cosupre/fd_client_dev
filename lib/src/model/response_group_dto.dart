@@ -2,8 +2,8 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
-import 'package:fd_dart_client/src/model/response_group_member_dto.dart';
 import 'package:built_collection/built_collection.dart';
+import 'package:fd_dart_client/src/model/response_group_member_dto.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 

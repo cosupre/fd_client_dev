@@ -1,8 +1,8 @@
-# fd_client_dev.model.ResponseGroupDto
+# fd_dart_client.model.ResponseGroupDto
 
 ## Load the model package
 ```dart
-import 'package:fd_client_dev/api.dart';
+import 'package:fd_dart_client/api.dart';
 ```
 
 ## Properties

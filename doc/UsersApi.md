@@ -1,8 +1,8 @@
-# fd_client_dev.api.UsersApi
+# fd_dart_client.api.UsersApi
 
 ## Load the API package
 ```dart
-import 'package:fd_client_dev/api.dart';
+import 'package:fd_dart_client/api.dart';
 ```
 
 All URIs are relative to *http://localhost*
@@ -22,7 +22,7 @@ Create a user on database and patch the auth0 user
 
 ### Example 
 ```dart
-import 'package:fd_client_dev/api.dart';
+import 'package:fd_dart_client/api.dart';
 // TODO Configure HTTP basic authorization: jwt
 //defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
@@ -66,7 +66,7 @@ Get user information
 
 ### Example 
 ```dart
-import 'package:fd_client_dev/api.dart';
+import 'package:fd_dart_client/api.dart';
 // TODO Configure HTTP basic authorization: jwt
 //defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
@@ -106,7 +106,7 @@ Patch user information on auth0
 
 ### Example 
 ```dart
-import 'package:fd_client_dev/api.dart';
+import 'package:fd_dart_client/api.dart';
 // TODO Configure HTTP basic authorization: jwt
 //defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
@@ -152,7 +152,7 @@ Delete user from database and auth0
 
 ### Example 
 ```dart
-import 'package:fd_client_dev/api.dart';
+import 'package:fd_dart_client/api.dart';
 // TODO Configure HTTP basic authorization: jwt
 //defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';

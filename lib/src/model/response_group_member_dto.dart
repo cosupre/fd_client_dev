@@ -2,7 +2,6 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
-import 'package:fd_dart_client/src/model/response_group_role_dto.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -29,7 +28,7 @@ abstract class ResponseGroupMemberDto implements Built<ResponseGroupMemberDto, R
 
     /// The role of this member in the group
     @BuiltValueField(wireName: r'role')
-    ResponseGroupRoleDto get role;
+    String get role;
 
     ResponseGroupMemberDto._();
 
@@ -75,7 +74,7 @@ class _$ResponseGroupMemberDtoSerializer implements StructuredSerializer<Respons
         result
             ..add(r'role')
             ..add(serializers.serialize(object.role,
-                specifiedType: const FullType(ResponseGroupRoleDto)));
+                specifiedType: const FullType(String)));
         return result;
     }
 
@@ -107,8 +106,8 @@ class _$ResponseGroupMemberDtoSerializer implements StructuredSerializer<Respons
                         specifiedType: const FullType(String)) as String;
                     break;
                 case r'role':
-                    result.role.replace(serializers.deserialize(value,
-                        specifiedType: const FullType(ResponseGroupRoleDto)) as ResponseGroupRoleDto);
+                    result.role = serializers.deserialize(value,
+                        specifiedType: const FullType(String)) as String;
                     break;
             }
         }

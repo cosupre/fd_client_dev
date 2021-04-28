@@ -1,8 +1,8 @@
-# fd_client_dev.model.UpdateGroupDto
+# fd_dart_client.model.UpdateGroupDto
 
 ## Load the model package
 ```dart
-import 'package:fd_client_dev/api.dart';
+import 'package:fd_dart_client/api.dart';
 ```
 
 ## Properties

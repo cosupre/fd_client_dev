@@ -11,7 +11,6 @@ import 'package:fd_dart_client/src/model/create_group_dto.dart';
 import 'package:fd_dart_client/src/model/create_user_dto.dart';
 import 'package:fd_dart_client/src/model/response_group_dto.dart';
 import 'package:fd_dart_client/src/model/response_group_member_dto.dart';
-import 'package:fd_dart_client/src/model/response_group_role_dto.dart';
 import 'package:fd_dart_client/src/model/response_user_dto.dart';
 import 'package:fd_dart_client/src/model/update_group_dto.dart';
 import 'package:fd_dart_client/src/model/update_user_dto.dart';
@@ -23,7 +22,6 @@ part 'serializers.g.dart';
   CreateUserDto,
   ResponseGroupDto,
   ResponseGroupMemberDto,
-  ResponseGroupRoleDto,
   ResponseUserDto,
   UpdateGroupDto,
   UpdateUserDto,

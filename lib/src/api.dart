@@ -12,13 +12,13 @@ import 'package:fd_dart_client/src/auth/oauth.dart';
 import 'package:fd_dart_client/src/api/groups_api.dart';
 import 'package:fd_dart_client/src/api/users_api.dart';
 
-class FdClientDev {
+class FdDartClient {
   static const String basePath = r'http://localhost';
 
   final Dio dio;
   final Serializers serializers;
 
-  FdClientDev({
+  FdDartClient({
     Dio? dio,
     Serializers? serializers,
     String? basePathOverride,

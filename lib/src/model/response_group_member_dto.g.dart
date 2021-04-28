@@ -16,7 +16,7 @@ class _$ResponseGroupMemberDto extends ResponseGroupMemberDto {
   @override
   final String nickname;
   @override
-  final ResponseGroupRoleDto role;
+  final String role;
 
   factory _$ResponseGroupMemberDto(
           [void Function(ResponseGroupMemberDtoBuilder)? updates]) =>
@@ -99,10 +99,9 @@ class ResponseGroupMemberDtoBuilder
   String? get nickname => _$this._nickname;
   set nickname(String? nickname) => _$this._nickname = nickname;
 
-  ResponseGroupRoleDtoBuilder? _role;
-  ResponseGroupRoleDtoBuilder get role =>
-      _$this._role ??= new ResponseGroupRoleDtoBuilder();
-  set role(ResponseGroupRoleDtoBuilder? role) => _$this._role = role;
+  String? _role;
+  String? get role => _$this._role;
+  set role(String? role) => _$this._role = role;
 
   ResponseGroupMemberDtoBuilder() {
     ResponseGroupMemberDto._initializeBuilder(this);
@@ -115,7 +114,7 @@ class ResponseGroupMemberDtoBuilder
       _updatedAt = $v.updatedAt;
       _userId = $v.userId;
       _nickname = $v.nickname;
-      _role = $v.role.toBuilder();
+      _role = $v.role;
       _$v = null;
     }
     return this;
@@ -134,28 +133,16 @@ class ResponseGroupMemberDtoBuilder
 
   @override
   _$ResponseGroupMemberDto build() {
-    _$ResponseGroupMemberDto _$result;
-    try {
-      _$result = _$v ??
-          new _$ResponseGroupMemberDto._(
-              createdAt: createdAt,
-              updatedAt: updatedAt,
-              userId: BuiltValueNullFieldError.checkNotNull(
-                  userId, 'ResponseGroupMemberDto', 'userId'),
-              nickname: BuiltValueNullFieldError.checkNotNull(
-                  nickname, 'ResponseGroupMemberDto', 'nickname'),
-              role: role.build());
-    } catch (_) {
-      late String _$failedField;
-      try {
-        _$failedField = 'role';
-        role.build();
-      } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            'ResponseGroupMemberDto', _$failedField, e.toString());
-      }
-      rethrow;
-    }
+    final _$result = _$v ??
+        new _$ResponseGroupMemberDto._(
+            createdAt: createdAt,
+            updatedAt: updatedAt,
+            userId: BuiltValueNullFieldError.checkNotNull(
+                userId, 'ResponseGroupMemberDto', 'userId'),
+            nickname: BuiltValueNullFieldError.checkNotNull(
+                nickname, 'ResponseGroupMemberDto', 'nickname'),
+            role: BuiltValueNullFieldError.checkNotNull(
+                role, 'ResponseGroupMemberDto', 'role'));
     replace(_$result);
     return _$result;
   }

@@ -1,8 +1,8 @@
-# fd_client_dev.api.GroupsApi
+# fd_dart_client.api.GroupsApi
 
 ## Load the API package
 ```dart
-import 'package:fd_client_dev/api.dart';
+import 'package:fd_dart_client/api.dart';
 ```
 
 All URIs are relative to *http://localhost*
@@ -23,7 +23,7 @@ Create a group
 
 ### Example 
 ```dart
-import 'package:fd_client_dev/api.dart';
+import 'package:fd_dart_client/api.dart';
 // TODO Configure HTTP basic authorization: jwt
 //defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
@@ -67,7 +67,7 @@ Get the groups of the user
 
 ### Example 
 ```dart
-import 'package:fd_client_dev/api.dart';
+import 'package:fd_dart_client/api.dart';
 // TODO Configure HTTP basic authorization: jwt
 //defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
@@ -107,7 +107,7 @@ Get the group specified by id
 
 ### Example 
 ```dart
-import 'package:fd_client_dev/api.dart';
+import 'package:fd_dart_client/api.dart';
 // TODO Configure HTTP basic authorization: jwt
 //defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
@@ -151,7 +151,7 @@ Update the group specified by id
 
 ### Example 
 ```dart
-import 'package:fd_client_dev/api.dart';
+import 'package:fd_dart_client/api.dart';
 // TODO Configure HTTP basic authorization: jwt
 //defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
@@ -194,7 +194,7 @@ Update the group specified by id
 
 ### Example 
 ```dart
-import 'package:fd_client_dev/api.dart';
+import 'package:fd_dart_client/api.dart';
 // TODO Configure HTTP basic authorization: jwt
 //defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';

@@ -22,6 +22,10 @@ abstract class UpdateUserDto implements Built<UpdateUserDto, UpdateUserDtoBuilde
     @BuiltValueField(wireName: r'username')
     String? get username;
 
+    /// URL pointing to the user's profile picture.
+    @BuiltValueField(wireName: r'pictureUrl')
+    String? get pictureUrl;
+
     UpdateUserDto._();
 
     static void _initializeBuilder(UpdateUserDtoBuilder b) => b;
@@ -61,6 +65,12 @@ class _$UpdateUserDtoSerializer implements StructuredSerializer<UpdateUserDto> {
                 ..add(serializers.serialize(object.username,
                     specifiedType: const FullType(String)));
         }
+        if (object.pictureUrl != null) {
+            result
+                ..add(r'pictureUrl')
+                ..add(serializers.serialize(object.pictureUrl,
+                    specifiedType: const FullType(String)));
+        }
         return result;
     }
 
@@ -85,6 +95,10 @@ class _$UpdateUserDtoSerializer implements StructuredSerializer<UpdateUserDto> {
                     break;
                 case r'username':
                     result.username = serializers.deserialize(value,
+                        specifiedType: const FullType(String)) as String;
+                    break;
+                case r'pictureUrl':
+                    result.pictureUrl = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
                     break;
             }

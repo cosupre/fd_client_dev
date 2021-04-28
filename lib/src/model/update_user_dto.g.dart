@@ -13,11 +13,15 @@ class _$UpdateUserDto extends UpdateUserDto {
   final String? lastname;
   @override
   final String? username;
+  @override
+  final String? pictureUrl;
 
   factory _$UpdateUserDto([void Function(UpdateUserDtoBuilder)? updates]) =>
       (new UpdateUserDtoBuilder()..update(updates)).build();
 
-  _$UpdateUserDto._({this.firstname, this.lastname, this.username}) : super._();
+  _$UpdateUserDto._(
+      {this.firstname, this.lastname, this.username, this.pictureUrl})
+      : super._();
 
   @override
   UpdateUserDto rebuild(void Function(UpdateUserDtoBuilder) updates) =>
@@ -32,13 +36,16 @@ class _$UpdateUserDto extends UpdateUserDto {
     return other is UpdateUserDto &&
         firstname == other.firstname &&
         lastname == other.lastname &&
-        username == other.username;
+        username == other.username &&
+        pictureUrl == other.pictureUrl;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc(0, firstname.hashCode), lastname.hashCode), username.hashCode));
+        $jc($jc($jc(0, firstname.hashCode), lastname.hashCode),
+            username.hashCode),
+        pictureUrl.hashCode));
   }
 
   @override
@@ -46,7 +53,8 @@ class _$UpdateUserDto extends UpdateUserDto {
     return (newBuiltValueToStringHelper('UpdateUserDto')
           ..add('firstname', firstname)
           ..add('lastname', lastname)
-          ..add('username', username))
+          ..add('username', username)
+          ..add('pictureUrl', pictureUrl))
         .toString();
   }
 }
@@ -67,6 +75,10 @@ class UpdateUserDtoBuilder
   String? get username => _$this._username;
   set username(String? username) => _$this._username = username;
 
+  String? _pictureUrl;
+  String? get pictureUrl => _$this._pictureUrl;
+  set pictureUrl(String? pictureUrl) => _$this._pictureUrl = pictureUrl;
+
   UpdateUserDtoBuilder() {
     UpdateUserDto._initializeBuilder(this);
   }
@@ -77,6 +89,7 @@ class UpdateUserDtoBuilder
       _firstname = $v.firstname;
       _lastname = $v.lastname;
       _username = $v.username;
+      _pictureUrl = $v.pictureUrl;
       _$v = null;
     }
     return this;
@@ -97,7 +110,10 @@ class UpdateUserDtoBuilder
   _$UpdateUserDto build() {
     final _$result = _$v ??
         new _$UpdateUserDto._(
-            firstname: firstname, lastname: lastname, username: username);
+            firstname: firstname,
+            lastname: lastname,
+            username: username,
+            pictureUrl: pictureUrl);
     replace(_$result);
     return _$result;
   }

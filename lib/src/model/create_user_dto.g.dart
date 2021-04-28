@@ -13,12 +13,17 @@ class _$CreateUserDto extends CreateUserDto {
   final String lastname;
   @override
   final String? username;
+  @override
+  final String? pictureUrl;
 
   factory _$CreateUserDto([void Function(CreateUserDtoBuilder)? updates]) =>
       (new CreateUserDtoBuilder()..update(updates)).build();
 
   _$CreateUserDto._(
-      {required this.firstname, required this.lastname, this.username})
+      {required this.firstname,
+      required this.lastname,
+      this.username,
+      this.pictureUrl})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         firstname, 'CreateUserDto', 'firstname');
@@ -39,13 +44,16 @@ class _$CreateUserDto extends CreateUserDto {
     return other is CreateUserDto &&
         firstname == other.firstname &&
         lastname == other.lastname &&
-        username == other.username;
+        username == other.username &&
+        pictureUrl == other.pictureUrl;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc(0, firstname.hashCode), lastname.hashCode), username.hashCode));
+        $jc($jc($jc(0, firstname.hashCode), lastname.hashCode),
+            username.hashCode),
+        pictureUrl.hashCode));
   }
 
   @override
@@ -53,7 +61,8 @@ class _$CreateUserDto extends CreateUserDto {
     return (newBuiltValueToStringHelper('CreateUserDto')
           ..add('firstname', firstname)
           ..add('lastname', lastname)
-          ..add('username', username))
+          ..add('username', username)
+          ..add('pictureUrl', pictureUrl))
         .toString();
   }
 }
@@ -74,6 +83,10 @@ class CreateUserDtoBuilder
   String? get username => _$this._username;
   set username(String? username) => _$this._username = username;
 
+  String? _pictureUrl;
+  String? get pictureUrl => _$this._pictureUrl;
+  set pictureUrl(String? pictureUrl) => _$this._pictureUrl = pictureUrl;
+
   CreateUserDtoBuilder() {
     CreateUserDto._initializeBuilder(this);
   }
@@ -84,6 +97,7 @@ class CreateUserDtoBuilder
       _firstname = $v.firstname;
       _lastname = $v.lastname;
       _username = $v.username;
+      _pictureUrl = $v.pictureUrl;
       _$v = null;
     }
     return this;
@@ -108,7 +122,8 @@ class CreateUserDtoBuilder
                 firstname, 'CreateUserDto', 'firstname'),
             lastname: BuiltValueNullFieldError.checkNotNull(
                 lastname, 'CreateUserDto', 'lastname'),
-            username: username);
+            username: username,
+            pictureUrl: pictureUrl);
     replace(_$result);
     return _$result;
   }

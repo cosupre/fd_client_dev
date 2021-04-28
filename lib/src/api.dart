@@ -10,6 +10,7 @@ import 'package:fd_dart_client/src/auth/api_key_auth.dart';
 import 'package:fd_dart_client/src/auth/basic_auth.dart';
 import 'package:fd_dart_client/src/auth/oauth.dart';
 import 'package:fd_dart_client/src/api/groups_api.dart';
+import 'package:fd_dart_client/src/api/pictures_api.dart';
 import 'package:fd_dart_client/src/api/users_api.dart';
 
 class FdDartClient {
@@ -70,6 +71,12 @@ class FdDartClient {
   /// by doing that all interceptors will not be executed
   GroupsApi getGroupsApi() {
     return GroupsApi(dio, serializers);
+  }
+
+  /// Get PicturesApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  PicturesApi getPicturesApi() {
+    return PicturesApi(dio, serializers);
   }
 
   /// Get UsersApi instance, base route and serializer can be overridden by a given but be careful,

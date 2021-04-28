@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **firstname** | **String** | The firstname of the user | 
 **lastname** | **String** | The lastname of the user | 
 **username** | **String** | The username of the user | [optional] 
+**pictureUrl** | **String** | URL pointing to the user's profile picture. | [optional] 
 **email** | **String** | The email address of the user | 
 **emailVerified** | **bool** | The email has been verified | [optional] 
 **isSocialAuth** | **bool** | The authorization has been done by social auth | 

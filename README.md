@@ -65,6 +65,7 @@ Class | Method | HTTP request | Description
 *GroupsApi* | [**groupsControllerFindOne**](doc/GroupsApi.md#groupscontrollerfindone) | **get** /groups/{id} | Get the group specified by id
 *GroupsApi* | [**groupsControllerRemove**](doc/GroupsApi.md#groupscontrollerremove) | **delete** /groups/{id} | Update the group specified by id
 *GroupsApi* | [**groupsControllerUpdate**](doc/GroupsApi.md#groupscontrollerupdate) | **patch** /groups/{id} | Update the group specified by id
+*PicturesApi* | [**picturesControllerGetAll**](doc/PicturesApi.md#picturescontrollergetall) | **get** /pictures | Get all the default pictures
 *UsersApi* | [**usersControllerCreate**](doc/UsersApi.md#userscontrollercreate) | **post** /users | Create a user on database and patch the auth0 user
 *UsersApi* | [**usersControllerGet**](doc/UsersApi.md#userscontrollerget) | **get** /users/info | Get user information
 *UsersApi* | [**usersControllerPatch**](doc/UsersApi.md#userscontrollerpatch) | **patch** /users/{id} | Patch user information on auth0
@@ -77,6 +78,7 @@ Class | Method | HTTP request | Description
  - [CreateUserDto](doc/CreateUserDto.md)
  - [ResponseGroupDto](doc/ResponseGroupDto.md)
  - [ResponseGroupMemberDto](doc/ResponseGroupMemberDto.md)
+ - [ResponsePictureDto](doc/ResponsePictureDto.md)
  - [ResponseUserDto](doc/ResponseUserDto.md)
  - [UpdateGroupDto](doc/UpdateGroupDto.md)
  - [UpdateUserDto](doc/UpdateUserDto.md)

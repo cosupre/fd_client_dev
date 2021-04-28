@@ -20,6 +20,8 @@ class _$ResponseUserDto extends ResponseUserDto {
   @override
   final String? username;
   @override
+  final String? pictureUrl;
+  @override
   final String email;
   @override
   final bool? emailVerified;
@@ -36,6 +38,7 @@ class _$ResponseUserDto extends ResponseUserDto {
       required this.firstname,
       required this.lastname,
       this.username,
+      this.pictureUrl,
       required this.email,
       this.emailVerified,
       required this.isSocialAuth})
@@ -68,6 +71,7 @@ class _$ResponseUserDto extends ResponseUserDto {
         firstname == other.firstname &&
         lastname == other.lastname &&
         username == other.username &&
+        pictureUrl == other.pictureUrl &&
         email == other.email &&
         emailVerified == other.emailVerified &&
         isSocialAuth == other.isSocialAuth;
@@ -82,12 +86,14 @@ class _$ResponseUserDto extends ResponseUserDto {
                     $jc(
                         $jc(
                             $jc(
-                                $jc($jc(0, createdAt.hashCode),
-                                    updatedAt.hashCode),
-                                id.hashCode),
-                            firstname.hashCode),
-                        lastname.hashCode),
-                    username.hashCode),
+                                $jc(
+                                    $jc($jc(0, createdAt.hashCode),
+                                        updatedAt.hashCode),
+                                    id.hashCode),
+                                firstname.hashCode),
+                            lastname.hashCode),
+                        username.hashCode),
+                    pictureUrl.hashCode),
                 email.hashCode),
             emailVerified.hashCode),
         isSocialAuth.hashCode));
@@ -102,6 +108,7 @@ class _$ResponseUserDto extends ResponseUserDto {
           ..add('firstname', firstname)
           ..add('lastname', lastname)
           ..add('username', username)
+          ..add('pictureUrl', pictureUrl)
           ..add('email', email)
           ..add('emailVerified', emailVerified)
           ..add('isSocialAuth', isSocialAuth))
@@ -137,6 +144,10 @@ class ResponseUserDtoBuilder
   String? get username => _$this._username;
   set username(String? username) => _$this._username = username;
 
+  String? _pictureUrl;
+  String? get pictureUrl => _$this._pictureUrl;
+  set pictureUrl(String? pictureUrl) => _$this._pictureUrl = pictureUrl;
+
   String? _email;
   String? get email => _$this._email;
   set email(String? email) => _$this._email = email;
@@ -163,6 +174,7 @@ class ResponseUserDtoBuilder
       _firstname = $v.firstname;
       _lastname = $v.lastname;
       _username = $v.username;
+      _pictureUrl = $v.pictureUrl;
       _email = $v.email;
       _emailVerified = $v.emailVerified;
       _isSocialAuth = $v.isSocialAuth;
@@ -195,6 +207,7 @@ class ResponseUserDtoBuilder
             lastname: BuiltValueNullFieldError.checkNotNull(
                 lastname, 'ResponseUserDto', 'lastname'),
             username: username,
+            pictureUrl: pictureUrl,
             email: BuiltValueNullFieldError.checkNotNull(
                 email, 'ResponseUserDto', 'email'),
             emailVerified: emailVerified,

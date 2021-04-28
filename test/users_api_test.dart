@@ -4,7 +4,7 @@ import 'package:fd_dart_client/fd_dart_client.dart';
 
 /// tests for UsersApi
 void main() {
-  final instance = FdClientDev().getUsersApi();
+  final instance = FdDartClient().getUsersApi();
 
   group(UsersApi, () {
     // Create a user on database and patch the auth0 user

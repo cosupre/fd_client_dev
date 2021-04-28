@@ -4,7 +4,7 @@ import 'package:fd_dart_client/fd_dart_client.dart';
 
 /// tests for GroupsApi
 void main() {
-  final instance = FdClientDev().getGroupsApi();
+  final instance = FdDartClient().getGroupsApi();
 
   group(GroupsApi, () {
     // Create a group

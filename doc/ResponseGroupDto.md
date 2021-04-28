@@ -1,4 +1,4 @@
-# fd_client_dev.model.ResponseUserDto
+# fd_client_dev.model.ResponseGroupDto
 
 ## Load the model package
 ```dart
@@ -10,13 +10,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **createdAt** | [**DateTime**](DateTime.md) | The creation timestamp of the entity | [optional] 
 **updatedAt** | [**DateTime**](DateTime.md) | The update timestamp of the entity | [optional] 
-**id** | **String** | The id of the user | 
-**firstname** | **String** | The firstname of the user | 
-**lastname** | **String** | The lastname of the user | 
-**username** | **String** | The username of the user | [optional] 
-**email** | **String** | The email address of the user | 
-**emailVerified** | **bool** | The email has been verified | [optional] 
-**isSocialAuth** | **bool** | The authorization has been done by social auth | 
+**id** | **String** | The group id | 
+**name** | **String** | The group name | 
+**sharingCode** | **String** | The group sharing code to join it | 
+**pictureUrl** | **String** | The group picture | 
+**members** | [**BuiltList<ResponseGroupMemberDto>**](ResponseGroupMemberDto.md) | The group members | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

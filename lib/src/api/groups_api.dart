@@ -4,27 +4,27 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
-import 'package:fd_dart_client/src/model/update_user_dto.dart';
-import 'package:fd_dart_client/src/model/response_user_dto.dart';
-import 'package:fd_dart_client/src/model/create_user_dto.dart';
+import 'package:fd_dart_client/src/model/response_group_dto.dart';
+import 'package:fd_dart_client/src/model/create_group_dto.dart';
+import 'package:fd_dart_client/src/model/update_group_dto.dart';
+import 'package:built_collection/built_collection.dart';
 
-class UsersApi {
+class GroupsApi {
 
   final Dio _dio;
 
   final Serializers _serializers;
 
-  const UsersApi(this._dio, this._serializers);
+  const GroupsApi(this._dio, this._serializers);
 
-  /// Create a user on database and patch the auth0 user
+  /// Create a group
   ///
   /// 
-  Future<Response<ResponseUserDto>> usersControllerCreate({ 
-    required CreateUserDto createUserDto,
+  Future<Response<ResponseGroupDto>> groupsControllerCreate({ 
+    required CreateGroupDto createGroupDto,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -32,7 +32,7 @@ class UsersApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/users';
+    final _path = r'/groups';
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -59,8 +59,8 @@ class UsersApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(CreateUserDto);
-      _bodyData = _serializers.serialize(createUserDto, specifiedType: _type);
+      const _type = FullType(CreateGroupDto);
+      _bodyData = _serializers.serialize(createGroupDto, specifiedType: _type);
 
     } catch(error) {
       throw DioError(
@@ -84,14 +84,14 @@ class UsersApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ResponseUserDto _responseData;
+    ResponseGroupDto _responseData;
 
     try {
-      const _responseType = FullType(ResponseUserDto);
+      const _responseType = FullType(ResponseGroupDto);
       _responseData = _serializers.deserialize(
         _response.data!,
         specifiedType: _responseType,
-      ) as ResponseUserDto;
+      ) as ResponseGroupDto;
 
     } catch (error) {
       throw DioError(
@@ -102,7 +102,7 @@ class UsersApi {
       );
     }
 
-    return Response<ResponseUserDto>(
+    return Response<ResponseGroupDto>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -114,10 +114,10 @@ class UsersApi {
     );
   }
 
-  /// Get user information
+  /// Get the groups of the user
   ///
   /// 
-  Future<Response<ResponseUserDto>> usersControllerGet({ 
+  Future<Response<BuiltList<ResponseGroupDto>>> groupsControllerFindAll({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -125,7 +125,7 @@ class UsersApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/users/info';
+    final _path = r'/groups';
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -158,14 +158,14 @@ class UsersApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ResponseUserDto _responseData;
+    BuiltList<ResponseGroupDto> _responseData;
 
     try {
-      const _responseType = FullType(ResponseUserDto);
+      const _responseType = FullType(BuiltList, [FullType(ResponseGroupDto)]);
       _responseData = _serializers.deserialize(
         _response.data!,
         specifiedType: _responseType,
-      ) as ResponseUserDto;
+      ) as BuiltList<ResponseGroupDto>;
 
     } catch (error) {
       throw DioError(
@@ -176,7 +176,7 @@ class UsersApi {
       );
     }
 
-    return Response<ResponseUserDto>(
+    return Response<BuiltList<ResponseGroupDto>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -188,12 +188,11 @@ class UsersApi {
     );
   }
 
-  /// Patch user information on auth0
+  /// Get the group specified by id
   ///
   /// 
-  Future<Response<ResponseUserDto>> usersControllerPatch({ 
-    required JsonObject id,
-    required UpdateUserDto updateUserDto,
+  Future<Response<ResponseGroupDto>> groupsControllerFindOne({ 
+    required String id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -201,9 +200,9 @@ class UsersApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/users/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/groups/{id}'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
-      method: r'PATCH',
+      method: r'GET',
       headers: <String, dynamic>{
         ...?headers,
       },
@@ -225,27 +224,8 @@ class UsersApi {
     final _queryParameters = <String, dynamic>{
     };
 
-    dynamic _bodyData;
-
-    try {
-      const _type = FullType(UpdateUserDto);
-      _bodyData = _serializers.serialize(updateUserDto, specifiedType: _type);
-
-    } catch(error) {
-      throw DioError(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-          queryParameters: _queryParameters,
-        ),
-        type: DioErrorType.other,
-        error: error,
-      );
-    }
-
     final _response = await _dio.request<Object>(
       _path,
-      data: _bodyData,
       options: _options,
       queryParameters: _queryParameters,
       cancelToken: cancelToken,
@@ -253,14 +233,14 @@ class UsersApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ResponseUserDto _responseData;
+    ResponseGroupDto _responseData;
 
     try {
-      const _responseType = FullType(ResponseUserDto);
+      const _responseType = FullType(ResponseGroupDto);
       _responseData = _serializers.deserialize(
         _response.data!,
         specifiedType: _responseType,
-      ) as ResponseUserDto;
+      ) as ResponseGroupDto;
 
     } catch (error) {
       throw DioError(
@@ -271,7 +251,7 @@ class UsersApi {
       );
     }
 
-    return Response<ResponseUserDto>(
+    return Response<ResponseGroupDto>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -283,11 +263,11 @@ class UsersApi {
     );
   }
 
-  /// Delete user from database and auth0
+  /// Update the group specified by id
   ///
   /// 
-  Future<Response<void>> usersControllerRemove({ 
-    required JsonObject id,
+  Future<Response<void>> groupsControllerRemove({ 
+    required String id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -295,7 +275,7 @@ class UsersApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/users/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/groups/{id}'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -329,6 +309,101 @@ class UsersApi {
     );
 
     return _response;
+  }
+
+  /// Update the group specified by id
+  ///
+  /// 
+  Future<Response<ResponseGroupDto>> groupsControllerUpdate({ 
+    required String id,
+    required UpdateGroupDto updateGroupDto,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/groups/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _options = Options(
+      method: r'PATCH',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'name': 'bearer',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: [
+        'application/json',
+      ].first,
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+    };
+
+    dynamic _bodyData;
+
+    try {
+      const _type = FullType(UpdateGroupDto);
+      _bodyData = _serializers.serialize(updateGroupDto, specifiedType: _type);
+
+    } catch(error) {
+      throw DioError(
+         requestOptions: _options.compose(
+          _dio.options,
+          _path,
+          queryParameters: _queryParameters,
+        ),
+        type: DioErrorType.other,
+        error: error,
+      );
+    }
+
+    final _response = await _dio.request<Object>(
+      _path,
+      data: _bodyData,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    ResponseGroupDto _responseData;
+
+    try {
+      const _responseType = FullType(ResponseGroupDto);
+      _responseData = _serializers.deserialize(
+        _response.data!,
+        specifiedType: _responseType,
+      ) as ResponseGroupDto;
+
+    } catch (error) {
+      throw DioError(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioErrorType.other,
+        error: error,
+      );
+    }
+
+    return Response<ResponseGroupDto>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
   }
 
 }

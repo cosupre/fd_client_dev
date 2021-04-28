@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:fd_client_dev/fd_client_dev.dart';
+import 'package:fd_client_dev/fd_dart_client.dart';
 
 // tests for ResponseUserDto
 void main() {
@@ -8,13 +8,13 @@ void main() {
 
   group(ResponseUserDto, () {
     // The creation timestamp of the entity
-    // String createdAt
+    // DateTime createdAt
     test('to test the property `createdAt`', () async {
       // TODO
     });
 
     // The update timestamp of the entity
-    // String updatedAt
+    // DateTime updatedAt
     test('to test the property `updatedAt`', () async {
       // TODO
     });

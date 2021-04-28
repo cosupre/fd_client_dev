@@ -39,17 +39,17 @@ dependencies:
 Please follow the [installation procedure](#installation--usage) and then run the following:
 
 ```dart
-import 'package:fd_client_dev/fd_client_dev.dart';
+import 'package:fd_client_dev/fd_dart_client.dart';
 
 
-final api = UsersApi();
-final createUserDto = CreateUserDto(); // CreateUserDto | 
+final api = GroupsApi();
+final createGroupDto = CreateGroupDto(); // CreateGroupDto | 
 
 try {
-    final response = await api.usersControllerCreate(createUserDto);
+    final response = await api.groupsControllerCreate(createGroupDto);
     print(response);
 } catch on DioError (e) {
-    print("Exception when calling UsersApi->usersControllerCreate: $e\n");
+    print("Exception when calling GroupsApi->groupsControllerCreate: $e\n");
 }
 
 ```
@@ -60,6 +60,11 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*GroupsApi* | [**groupsControllerCreate**](doc/GroupsApi.md#groupscontrollercreate) | **post** /groups | Create a group
+*GroupsApi* | [**groupsControllerFindAll**](doc/GroupsApi.md#groupscontrollerfindall) | **get** /groups | Get the groups of the user
+*GroupsApi* | [**groupsControllerFindOne**](doc/GroupsApi.md#groupscontrollerfindone) | **get** /groups/{id} | Get the group specified by id
+*GroupsApi* | [**groupsControllerRemove**](doc/GroupsApi.md#groupscontrollerremove) | **delete** /groups/{id} | Update the group specified by id
+*GroupsApi* | [**groupsControllerUpdate**](doc/GroupsApi.md#groupscontrollerupdate) | **patch** /groups/{id} | Update the group specified by id
 *UsersApi* | [**usersControllerCreate**](doc/UsersApi.md#userscontrollercreate) | **post** /users | Create a user on database and patch the auth0 user
 *UsersApi* | [**usersControllerGet**](doc/UsersApi.md#userscontrollerget) | **get** /users/info | Get user information
 *UsersApi* | [**usersControllerPatch**](doc/UsersApi.md#userscontrollerpatch) | **patch** /users/{id} | Patch user information on auth0
@@ -68,8 +73,13 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [CreateGroupDto](doc/CreateGroupDto.md)
  - [CreateUserDto](doc/CreateUserDto.md)
+ - [ResponseGroupDto](doc/ResponseGroupDto.md)
+ - [ResponseGroupMemberDto](doc/ResponseGroupMemberDto.md)
+ - [ResponseGroupRoleDto](doc/ResponseGroupRoleDto.md)
  - [ResponseUserDto](doc/ResponseUserDto.md)
+ - [UpdateGroupDto](doc/UpdateGroupDto.md)
  - [UpdateUserDto](doc/UpdateUserDto.md)
 
 

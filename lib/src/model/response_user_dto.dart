@@ -11,12 +11,12 @@ part 'response_user_dto.g.dart';
 
 abstract class ResponseUserDto implements Built<ResponseUserDto, ResponseUserDtoBuilder> {
     /// The creation timestamp of the entity
-    @BuiltValueField(wireName: r'created_at')
-    String? get createdAt;
+    @BuiltValueField(wireName: r'createdAt')
+    DateTime? get createdAt;
 
     /// The update timestamp of the entity
-    @BuiltValueField(wireName: r'updated_at')
-    String? get updatedAt;
+    @BuiltValueField(wireName: r'updatedAt')
+    DateTime? get updatedAt;
 
     /// The id of the user
     @BuiltValueField(wireName: r'id')
@@ -39,11 +39,11 @@ abstract class ResponseUserDto implements Built<ResponseUserDto, ResponseUserDto
     String get email;
 
     /// The email has been verified
-    @BuiltValueField(wireName: r'email_verified')
+    @BuiltValueField(wireName: r'emailVerified')
     bool? get emailVerified;
 
     /// The authorization has been done by social auth
-    @BuiltValueField(wireName: r'is_social_auth')
+    @BuiltValueField(wireName: r'isSocialAuth')
     bool get isSocialAuth;
 
     ResponseUserDto._();
@@ -69,15 +69,15 @@ class _$ResponseUserDtoSerializer implements StructuredSerializer<ResponseUserDt
         final result = <Object?>[];
         if (object.createdAt != null) {
             result
-                ..add(r'created_at')
+                ..add(r'createdAt')
                 ..add(serializers.serialize(object.createdAt,
-                    specifiedType: const FullType(String)));
+                    specifiedType: const FullType(DateTime)));
         }
         if (object.updatedAt != null) {
             result
-                ..add(r'updated_at')
+                ..add(r'updatedAt')
                 ..add(serializers.serialize(object.updatedAt,
-                    specifiedType: const FullType(String)));
+                    specifiedType: const FullType(DateTime)));
         }
         result
             ..add(r'id')
@@ -103,12 +103,12 @@ class _$ResponseUserDtoSerializer implements StructuredSerializer<ResponseUserDt
                 specifiedType: const FullType(String)));
         if (object.emailVerified != null) {
             result
-                ..add(r'email_verified')
+                ..add(r'emailVerified')
                 ..add(serializers.serialize(object.emailVerified,
                     specifiedType: const FullType(bool)));
         }
         result
-            ..add(r'is_social_auth')
+            ..add(r'isSocialAuth')
             ..add(serializers.serialize(object.isSocialAuth,
                 specifiedType: const FullType(bool)));
         return result;
@@ -125,13 +125,13 @@ class _$ResponseUserDtoSerializer implements StructuredSerializer<ResponseUserDt
             iterator.moveNext();
             final Object? value = iterator.current;
             switch (key) {
-                case r'created_at':
+                case r'createdAt':
                     result.createdAt = serializers.deserialize(value,
-                        specifiedType: const FullType(String)) as String;
+                        specifiedType: const FullType(DateTime)) as DateTime;
                     break;
-                case r'updated_at':
+                case r'updatedAt':
                     result.updatedAt = serializers.deserialize(value,
-                        specifiedType: const FullType(String)) as String;
+                        specifiedType: const FullType(DateTime)) as DateTime;
                     break;
                 case r'id':
                     result.id = serializers.deserialize(value,
@@ -153,11 +153,11 @@ class _$ResponseUserDtoSerializer implements StructuredSerializer<ResponseUserDt
                     result.email = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
                     break;
-                case r'email_verified':
+                case r'emailVerified':
                     result.emailVerified = serializers.deserialize(value,
                         specifiedType: const FullType(bool)) as bool;
                     break;
-                case r'is_social_auth':
+                case r'isSocialAuth':
                     result.isSocialAuth = serializers.deserialize(value,
                         specifiedType: const FullType(bool)) as bool;
                     break;

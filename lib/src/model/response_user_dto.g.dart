@@ -8,9 +8,9 @@ part of 'response_user_dto.dart';
 
 class _$ResponseUserDto extends ResponseUserDto {
   @override
-  final String? createdAt;
+  final DateTime? createdAt;
   @override
-  final String? updatedAt;
+  final DateTime? updatedAt;
   @override
   final String id;
   @override
@@ -113,13 +113,13 @@ class ResponseUserDtoBuilder
     implements Builder<ResponseUserDto, ResponseUserDtoBuilder> {
   _$ResponseUserDto? _$v;
 
-  String? _createdAt;
-  String? get createdAt => _$this._createdAt;
-  set createdAt(String? createdAt) => _$this._createdAt = createdAt;
+  DateTime? _createdAt;
+  DateTime? get createdAt => _$this._createdAt;
+  set createdAt(DateTime? createdAt) => _$this._createdAt = createdAt;
 
-  String? _updatedAt;
-  String? get updatedAt => _$this._updatedAt;
-  set updatedAt(String? updatedAt) => _$this._updatedAt = updatedAt;
+  DateTime? _updatedAt;
+  DateTime? get updatedAt => _$this._updatedAt;
+  set updatedAt(DateTime? updatedAt) => _$this._updatedAt = updatedAt;
 
   String? _id;
   String? get id => _$this._id;

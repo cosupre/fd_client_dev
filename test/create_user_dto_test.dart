@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:fd_client_dev/fd_client_dev.dart';
+import 'package:fd_client_dev/fd_dart_client.dart';
 
 // tests for CreateUserDto
 void main() {

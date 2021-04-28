@@ -4,12 +4,13 @@
 
 import 'package:dio/dio.dart';
 import 'package:built_value/serializer.dart';
-import 'package:fd_client_dev/src/auth/bearer_auth.dart';
-import 'package:fd_client_dev/src/serializers.dart';
-import 'package:fd_client_dev/src/auth/api_key_auth.dart';
-import 'package:fd_client_dev/src/auth/basic_auth.dart';
-import 'package:fd_client_dev/src/auth/oauth.dart';
-import 'package:fd_client_dev/src/api/users_api.dart';
+import 'package:fd_dart_client/src/auth/bearer_auth.dart';
+import 'package:fd_dart_client/src/serializers.dart';
+import 'package:fd_dart_client/src/auth/api_key_auth.dart';
+import 'package:fd_dart_client/src/auth/basic_auth.dart';
+import 'package:fd_dart_client/src/auth/oauth.dart';
+import 'package:fd_dart_client/src/api/groups_api.dart';
+import 'package:fd_dart_client/src/api/users_api.dart';
 
 class FdClientDev {
   static const String basePath = r'http://localhost';
@@ -63,6 +64,12 @@ class FdClientDev {
     if (this.dio.interceptors.any((i) => i is ApiKeyAuthInterceptor)) {
       (this.dio.interceptors.firstWhere((element) => element is ApiKeyAuthInterceptor) as ApiKeyAuthInterceptor).apiKeys[name] = apiKey;
     }
+  }
+
+  /// Get GroupsApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  GroupsApi getGroupsApi() {
+    return GroupsApi(dio, serializers);
   }
 
   /// Get UsersApi instance, base route and serializer can be overridden by a given but be careful,

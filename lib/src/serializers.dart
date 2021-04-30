@@ -15,6 +15,7 @@ import 'package:fd_dart_client/src/model/response_group_member_dto.dart';
 import 'package:fd_dart_client/src/model/response_picture_dto.dart';
 import 'package:fd_dart_client/src/model/response_user_dto.dart';
 import 'package:fd_dart_client/src/model/update_group_dto.dart';
+import 'package:fd_dart_client/src/model/update_group_member_dto.dart';
 import 'package:fd_dart_client/src/model/update_user_dto.dart';
 
 part 'serializers.g.dart';
@@ -27,6 +28,7 @@ part 'serializers.g.dart';
   ResponsePictureDto,
   ResponseUserDto,
   UpdateGroupDto,
+  UpdateGroupMemberDto,
   UpdateUserDto,
 ])
 Serializers serializers = (_$serializers.toBuilder()

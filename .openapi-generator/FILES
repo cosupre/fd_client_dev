@@ -10,6 +10,7 @@ doc/ResponseGroupMemberDto.md
 doc/ResponsePictureDto.md
 doc/ResponseUserDto.md
 doc/UpdateGroupDto.md
+doc/UpdateGroupMemberDto.md
 doc/UpdateUserDto.md
 doc/UsersApi.md
 lib/fd_dart_client.dart
@@ -29,8 +30,8 @@ lib/src/model/response_group_member_dto.dart
 lib/src/model/response_picture_dto.dart
 lib/src/model/response_user_dto.dart
 lib/src/model/update_group_dto.dart
+lib/src/model/update_group_member_dto.dart
 lib/src/model/update_user_dto.dart
 lib/src/serializers.dart
 pubspec.yaml
-test/pictures_api_test.dart
-test/response_picture_dto_test.dart
+test/update_group_member_dto_test.dart

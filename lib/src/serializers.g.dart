@@ -14,6 +14,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(ResponsePictureDto.serializer)
       ..add(ResponseUserDto.serializer)
       ..add(UpdateGroupDto.serializer)
+      ..add(UpdateGroupMemberDto.serializer)
       ..add(UpdateUserDto.serializer)
       ..addBuilderFactory(
           const FullType(

@@ -19,4 +19,5 @@ export 'package:fd_dart_client/src/model/response_group_member_dto.dart';
 export 'package:fd_dart_client/src/model/response_picture_dto.dart';
 export 'package:fd_dart_client/src/model/response_user_dto.dart';
 export 'package:fd_dart_client/src/model/update_group_dto.dart';
+export 'package:fd_dart_client/src/model/update_group_member_dto.dart';
 export 'package:fd_dart_client/src/model/update_user_dto.dart';

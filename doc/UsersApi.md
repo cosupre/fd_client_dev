@@ -160,7 +160,7 @@ import 'package:fd_dart_client/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
 
 var api_instance = new UsersApi();
-var userId = ; // JsonObject | 
+var userId = userId_example; // String | 
 
 try { 
     var result = api_instance.usersControllerGetTags(userId);
@@ -174,7 +174,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | [**JsonObject**](.md)|  | 
+ **userId** | **String**|  | 
 
 ### Return type
 
@@ -204,7 +204,7 @@ import 'package:fd_dart_client/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
 
 var api_instance = new UsersApi();
-var id = ; // JsonObject | 
+var id = id_example; // String | 
 var updateUserDto = new UpdateUserDto(); // UpdateUserDto | 
 
 try { 
@@ -219,7 +219,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | [**JsonObject**](.md)|  | 
+ **id** | **String**|  | 
  **updateUserDto** | [**UpdateUserDto**](UpdateUserDto.md)|  | 
 
 ### Return type
@@ -250,7 +250,7 @@ import 'package:fd_dart_client/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
 
 var api_instance = new UsersApi();
-var id = ; // JsonObject | 
+var id = id_example; // String | 
 var updateUserTagDto = new UpdateUserTagDto(); // UpdateUserTagDto | 
 
 try { 
@@ -265,7 +265,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | [**JsonObject**](.md)|  | 
+ **id** | **String**|  | 
  **updateUserTagDto** | [**UpdateUserTagDto**](UpdateUserTagDto.md)|  | 
 
 ### Return type
@@ -296,7 +296,7 @@ import 'package:fd_dart_client/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
 
 var api_instance = new UsersApi();
-var id = ; // JsonObject | 
+var id = id_example; // String | 
 
 try { 
     api_instance.usersControllerRemove(id);
@@ -309,7 +309,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | [**JsonObject**](.md)|  | 
+ **id** | **String**|  | 
 
 ### Return type
 
@@ -339,7 +339,7 @@ import 'package:fd_dart_client/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
 
 var api_instance = new UsersApi();
-var id = ; // JsonObject | 
+var id = id_example; // String | 
 
 try { 
     api_instance.usersControllerRemoveTag(id);
@@ -352,7 +352,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | [**JsonObject**](.md)|  | 
+ **id** | **String**|  | 
 
 ### Return type
 

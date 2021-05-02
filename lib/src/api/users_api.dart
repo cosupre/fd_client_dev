@@ -4,7 +4,6 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
@@ -290,7 +289,7 @@ class UsersApi {
   ///
   /// 
   Future<Response<BuiltList<ResponseUserTagDto>>> usersControllerGetTags({ 
-    required JsonObject userId,
+    required String userId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -365,7 +364,7 @@ class UsersApi {
   ///
   /// 
   Future<Response<ResponseUserDto>> usersControllerPatch({ 
-    required JsonObject id,
+    required String id,
     required UpdateUserDto updateUserDto,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -460,7 +459,7 @@ class UsersApi {
   ///
   /// 
   Future<Response<ResponseUserTagDto>> usersControllerPatchTag({ 
-    required JsonObject id,
+    required String id,
     required UpdateUserTagDto updateUserTagDto,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -555,7 +554,7 @@ class UsersApi {
   ///
   /// 
   Future<Response<void>> usersControllerRemove({ 
-    required JsonObject id,
+    required String id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -603,7 +602,7 @@ class UsersApi {
   ///
   /// 
   Future<Response<void>> usersControllerRemoveTag({ 
-    required JsonObject id,
+    required String id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,

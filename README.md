@@ -69,23 +69,30 @@ Class | Method | HTTP request | Description
 *GroupsApi* | [**groupsControllerUpdate**](doc/GroupsApi.md#groupscontrollerupdate) | **patch** /groups/{id} | Update the group specified by id
 *GroupsApi* | [**groupsControllerUpdateGroupMember**](doc/GroupsApi.md#groupscontrollerupdategroupmember) | **patch** /groups/{groupId}/members/{userId} | Change the group member settings. Only an owner can change other member roles. An owner can&#39;t change his role and is the only owner of the group. Only Admin or Owner can change the nickname of another person
 *PicturesApi* | [**picturesControllerGetAll**](doc/PicturesApi.md#picturescontrollergetall) | **get** /pictures | Get all the default pictures
+*UsersApi* | [**usersControllerAddTag**](doc/UsersApi.md#userscontrolleraddtag) | **post** /users/tags | Add a tag to the user
 *UsersApi* | [**usersControllerCreate**](doc/UsersApi.md#userscontrollercreate) | **post** /users | Create a user on database and patch the auth0 user
 *UsersApi* | [**usersControllerGet**](doc/UsersApi.md#userscontrollerget) | **get** /users/info | Get user information
+*UsersApi* | [**usersControllerGetTags**](doc/UsersApi.md#userscontrollergettags) | **get** /users/{userId}/tags/ | Return all the tags of a user
 *UsersApi* | [**usersControllerPatch**](doc/UsersApi.md#userscontrollerpatch) | **patch** /users/{id} | Patch user information on auth0
+*UsersApi* | [**usersControllerPatchTag**](doc/UsersApi.md#userscontrollerpatchtag) | **patch** /users/tags/{id} | Update a tag of the user
 *UsersApi* | [**usersControllerRemove**](doc/UsersApi.md#userscontrollerremove) | **delete** /users/{id} | Delete user from database and auth0
+*UsersApi* | [**usersControllerRemoveTag**](doc/UsersApi.md#userscontrollerremovetag) | **delete** /users/tags/{id} | Delete a tag of the user
 
 
 ## Documentation For Models
 
  - [CreateGroupDto](doc/CreateGroupDto.md)
  - [CreateUserDto](doc/CreateUserDto.md)
+ - [CreateUserTagDto](doc/CreateUserTagDto.md)
  - [ResponseGroupDto](doc/ResponseGroupDto.md)
  - [ResponseGroupMemberDto](doc/ResponseGroupMemberDto.md)
  - [ResponsePictureDto](doc/ResponsePictureDto.md)
  - [ResponseUserDto](doc/ResponseUserDto.md)
+ - [ResponseUserTagDto](doc/ResponseUserTagDto.md)
  - [UpdateGroupDto](doc/UpdateGroupDto.md)
  - [UpdateGroupMemberDto](doc/UpdateGroupMemberDto.md)
  - [UpdateUserDto](doc/UpdateUserDto.md)
+ - [UpdateUserTagDto](doc/UpdateUserTagDto.md)
 
 
 ## Documentation For Authorization

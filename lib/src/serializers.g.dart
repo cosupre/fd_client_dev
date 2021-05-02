@@ -9,13 +9,16 @@ part of 'serializers.dart';
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add(CreateGroupDto.serializer)
       ..add(CreateUserDto.serializer)
+      ..add(CreateUserTagDto.serializer)
       ..add(ResponseGroupDto.serializer)
       ..add(ResponseGroupMemberDto.serializer)
       ..add(ResponsePictureDto.serializer)
       ..add(ResponseUserDto.serializer)
+      ..add(ResponseUserTagDto.serializer)
       ..add(UpdateGroupDto.serializer)
       ..add(UpdateGroupMemberDto.serializer)
       ..add(UpdateUserDto.serializer)
+      ..add(UpdateUserTagDto.serializer)
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(ResponseGroupMemberDto)]),

@@ -9,8 +9,12 @@ import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:fd_dart_client/src/model/update_user_dto.dart';
+import 'package:fd_dart_client/src/model/update_user_tag_dto.dart';
 import 'package:fd_dart_client/src/model/response_user_dto.dart';
+import 'package:fd_dart_client/src/model/create_user_tag_dto.dart';
+import 'package:fd_dart_client/src/model/response_user_tag_dto.dart';
 import 'package:fd_dart_client/src/model/create_user_dto.dart';
+import 'package:built_collection/built_collection.dart';
 
 class UsersApi {
 
@@ -19,6 +23,100 @@ class UsersApi {
   final Serializers _serializers;
 
   const UsersApi(this._dio, this._serializers);
+
+  /// Add a tag to the user
+  ///
+  /// 
+  Future<Response<ResponseUserDto>> usersControllerAddTag({ 
+    required CreateUserTagDto createUserTagDto,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/users/tags';
+    final _options = Options(
+      method: r'POST',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'name': 'bearer',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: [
+        'application/json',
+      ].first,
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+    };
+
+    dynamic _bodyData;
+
+    try {
+      const _type = FullType(CreateUserTagDto);
+      _bodyData = _serializers.serialize(createUserTagDto, specifiedType: _type);
+
+    } catch(error) {
+      throw DioError(
+         requestOptions: _options.compose(
+          _dio.options,
+          _path,
+          queryParameters: _queryParameters,
+        ),
+        type: DioErrorType.other,
+        error: error,
+      );
+    }
+
+    final _response = await _dio.request<Object>(
+      _path,
+      data: _bodyData,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    ResponseUserDto _responseData;
+
+    try {
+      const _responseType = FullType(ResponseUserDto);
+      _responseData = _serializers.deserialize(
+        _response.data!,
+        specifiedType: _responseType,
+      ) as ResponseUserDto;
+
+    } catch (error) {
+      throw DioError(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioErrorType.other,
+        error: error,
+      );
+    }
+
+    return Response<ResponseUserDto>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
 
   /// Create a user on database and patch the auth0 user
   ///
@@ -188,6 +286,81 @@ class UsersApi {
     );
   }
 
+  /// Return all the tags of a user
+  ///
+  /// 
+  Future<Response<BuiltList<ResponseUserTagDto>>> usersControllerGetTags({ 
+    required JsonObject userId,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/users/{userId}/tags/'.replaceAll('{' r'userId' '}', userId.toString());
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'name': 'bearer',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: [
+        'application/json',
+      ].first,
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    BuiltList<ResponseUserTagDto> _responseData;
+
+    try {
+      const _responseType = FullType(BuiltList, [FullType(ResponseUserTagDto)]);
+      _responseData = _serializers.deserialize(
+        _response.data!,
+        specifiedType: _responseType,
+      ) as BuiltList<ResponseUserTagDto>;
+
+    } catch (error) {
+      throw DioError(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioErrorType.other,
+        error: error,
+      );
+    }
+
+    return Response<BuiltList<ResponseUserTagDto>>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
   /// Patch user information on auth0
   ///
   /// 
@@ -230,6 +403,101 @@ class UsersApi {
     try {
       const _type = FullType(UpdateUserDto);
       _bodyData = _serializers.serialize(updateUserDto, specifiedType: _type);
+
+    } catch(error) {
+      throw DioError(
+         requestOptions: _options.compose(
+          _dio.options,
+          _path,
+          queryParameters: _queryParameters,
+        ),
+        type: DioErrorType.other,
+        error: error,
+      );
+    }
+
+    final _response = await _dio.request<Object>(
+      _path,
+      data: _bodyData,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    ResponseUserDto _responseData;
+
+    try {
+      const _responseType = FullType(ResponseUserDto);
+      _responseData = _serializers.deserialize(
+        _response.data!,
+        specifiedType: _responseType,
+      ) as ResponseUserDto;
+
+    } catch (error) {
+      throw DioError(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioErrorType.other,
+        error: error,
+      );
+    }
+
+    return Response<ResponseUserDto>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Update a tag of the user
+  ///
+  /// 
+  Future<Response<ResponseUserDto>> usersControllerPatchTag({ 
+    required JsonObject id,
+    required UpdateUserTagDto updateUserTagDto,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/users/tags/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _options = Options(
+      method: r'PATCH',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'name': 'bearer',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: [
+        'application/json',
+      ].first,
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+    };
+
+    dynamic _bodyData;
+
+    try {
+      const _type = FullType(UpdateUserTagDto);
+      _bodyData = _serializers.serialize(updateUserTagDto, specifiedType: _type);
 
     } catch(error) {
       throw DioError(

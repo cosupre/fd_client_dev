@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 
 # **usersControllerAddTag**
-> ResponseUserDto usersControllerAddTag(createUserTagDto)
+> ResponseUserTagDto usersControllerAddTag(createUserTagDto)
 
 Add a tag to the user
 
@@ -50,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseUserDto**](ResponseUserDto.md)
+[**ResponseUserTagDto**](ResponseUserTagDto.md)
 
 ### Authorization
 
@@ -238,7 +238,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **usersControllerPatchTag**
-> ResponseUserDto usersControllerPatchTag(id, updateUserTagDto)
+> ResponseUserTagDto usersControllerPatchTag(id, updateUserTagDto)
 
 Update a tag of the user
 
@@ -270,7 +270,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseUserDto**](ResponseUserDto.md)
+[**ResponseUserTagDto**](ResponseUserTagDto.md)
 
 ### Authorization
 

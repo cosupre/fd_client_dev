@@ -27,7 +27,7 @@ class UsersApi {
   /// Add a tag to the user
   ///
   /// 
-  Future<Response<ResponseUserDto>> usersControllerAddTag({ 
+  Future<Response<ResponseUserTagDto>> usersControllerAddTag({ 
     required CreateUserTagDto createUserTagDto,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -88,14 +88,14 @@ class UsersApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ResponseUserDto _responseData;
+    ResponseUserTagDto _responseData;
 
     try {
-      const _responseType = FullType(ResponseUserDto);
+      const _responseType = FullType(ResponseUserTagDto);
       _responseData = _serializers.deserialize(
         _response.data!,
         specifiedType: _responseType,
-      ) as ResponseUserDto;
+      ) as ResponseUserTagDto;
 
     } catch (error) {
       throw DioError(
@@ -106,7 +106,7 @@ class UsersApi {
       );
     }
 
-    return Response<ResponseUserDto>(
+    return Response<ResponseUserTagDto>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -459,7 +459,7 @@ class UsersApi {
   /// Update a tag of the user
   ///
   /// 
-  Future<Response<ResponseUserDto>> usersControllerPatchTag({ 
+  Future<Response<ResponseUserTagDto>> usersControllerPatchTag({ 
     required JsonObject id,
     required UpdateUserTagDto updateUserTagDto,
     CancelToken? cancelToken,
@@ -521,14 +521,14 @@ class UsersApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ResponseUserDto _responseData;
+    ResponseUserTagDto _responseData;
 
     try {
-      const _responseType = FullType(ResponseUserDto);
+      const _responseType = FullType(ResponseUserTagDto);
       _responseData = _serializers.deserialize(
         _response.data!,
         specifiedType: _responseType,
-      ) as ResponseUserDto;
+      ) as ResponseUserTagDto;
 
     } catch (error) {
       throw DioError(
@@ -539,7 +539,7 @@ class UsersApi {
       );
     }
 
-    return Response<ResponseUserDto>(
+    return Response<ResponseUserTagDto>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -564,6 +564,54 @@ class UsersApi {
     ProgressCallback? onReceiveProgress,
   }) async {
     final _path = r'/users/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _options = Options(
+      method: r'DELETE',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'name': 'bearer',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: [
+        'application/json',
+      ].first,
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    return _response;
+  }
+
+  /// Delete a tag of the user
+  ///
+  /// 
+  Future<Response<void>> usersControllerRemoveTag({ 
+    required JsonObject id,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/users/tags/{id}'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{

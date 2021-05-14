@@ -43,13 +43,14 @@ import 'package:fd_dart_client/fd_dart_client.dart';
 
 
 final api = GroupsApi();
-final createGroupDto = CreateGroupDto(); // CreateGroupDto | 
+final groupId = groupId_example; // String | 
+final userId = userId_example; // String | 
 
 try {
-    final response = await api.groupsControllerCreate(createGroupDto);
+    final response = await api.groupsControllerChangeGroupOwner(groupId, userId);
     print(response);
 } catch on DioError (e) {
-    print("Exception when calling GroupsApi->groupsControllerCreate: $e\n");
+    print("Exception when calling GroupsApi->groupsControllerChangeGroupOwner: $e\n");
 }
 
 ```
@@ -60,11 +61,13 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*GroupsApi* | [**groupsControllerChangeGroupOwner**](doc/GroupsApi.md#groupscontrollerchangegroupowner) | **post** /groups/{groupId}/change-owner/{userId} | Change the owner of the group. Only owner can give his rights to another member
+*GroupsApi* | [**groupsControllerChangeGroupSharingCode**](doc/GroupsApi.md#groupscontrollerchangegroupsharingcode) | **post** /groups/{id}/change-code/ | Change the sharing code of the group.
 *GroupsApi* | [**groupsControllerCreate**](doc/GroupsApi.md#groupscontrollercreate) | **post** /groups | Create a group and register the logged in user as owner
 *GroupsApi* | [**groupsControllerFindAll**](doc/GroupsApi.md#groupscontrollerfindall) | **get** /groups | Get the groups of the user
 *GroupsApi* | [**groupsControllerFindOne**](doc/GroupsApi.md#groupscontrollerfindone) | **get** /groups/{id} | Get the group specified by id
 *GroupsApi* | [**groupsControllerJoin**](doc/GroupsApi.md#groupscontrollerjoin) | **get** /groups/join/{sharing_code} | join a group with its sharing code
-*GroupsApi* | [**groupsControllerRemove**](doc/GroupsApi.md#groupscontrollerremove) | **delete** /groups/{id} | Update the group specified by id
+*GroupsApi* | [**groupsControllerRemove**](doc/GroupsApi.md#groupscontrollerremove) | **delete** /groups/{id} | Delete the group specified by id
 *GroupsApi* | [**groupsControllerRemoveGroupMember**](doc/GroupsApi.md#groupscontrollerremovegroupmember) | **delete** /groups/{groupId}/members/{userId} | Remove a member from a group. Owner can&#39;t be removed and only superior level user can remove another user.
 *GroupsApi* | [**groupsControllerUpdate**](doc/GroupsApi.md#groupscontrollerupdate) | **patch** /groups/{id} | Update the group specified by id
 *GroupsApi* | [**groupsControllerUpdateGroupMember**](doc/GroupsApi.md#groupscontrollerupdategroupmember) | **patch** /groups/{groupId}/members/{userId} | Change the group member settings. Only an owner can change other member roles. An owner can&#39;t change his role and is the only owner of the group. Only Admin or Owner can change the nickname of another person

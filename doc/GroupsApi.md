@@ -9,15 +9,107 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**groupsControllerChangeGroupOwner**](GroupsApi.md#groupscontrollerchangegroupowner) | **post** /groups/{groupId}/change-owner/{userId} | Change the owner of the group. Only owner can give his rights to another member
+[**groupsControllerChangeGroupSharingCode**](GroupsApi.md#groupscontrollerchangegroupsharingcode) | **post** /groups/{id}/change-code/ | Change the sharing code of the group.
 [**groupsControllerCreate**](GroupsApi.md#groupscontrollercreate) | **post** /groups | Create a group and register the logged in user as owner
 [**groupsControllerFindAll**](GroupsApi.md#groupscontrollerfindall) | **get** /groups | Get the groups of the user
 [**groupsControllerFindOne**](GroupsApi.md#groupscontrollerfindone) | **get** /groups/{id} | Get the group specified by id
 [**groupsControllerJoin**](GroupsApi.md#groupscontrollerjoin) | **get** /groups/join/{sharing_code} | join a group with its sharing code
-[**groupsControllerRemove**](GroupsApi.md#groupscontrollerremove) | **delete** /groups/{id} | Update the group specified by id
+[**groupsControllerRemove**](GroupsApi.md#groupscontrollerremove) | **delete** /groups/{id} | Delete the group specified by id
 [**groupsControllerRemoveGroupMember**](GroupsApi.md#groupscontrollerremovegroupmember) | **delete** /groups/{groupId}/members/{userId} | Remove a member from a group. Owner can&#39;t be removed and only superior level user can remove another user.
 [**groupsControllerUpdate**](GroupsApi.md#groupscontrollerupdate) | **patch** /groups/{id} | Update the group specified by id
 [**groupsControllerUpdateGroupMember**](GroupsApi.md#groupscontrollerupdategroupmember) | **patch** /groups/{groupId}/members/{userId} | Change the group member settings. Only an owner can change other member roles. An owner can&#39;t change his role and is the only owner of the group. Only Admin or Owner can change the nickname of another person
 
+
+# **groupsControllerChangeGroupOwner**
+> ResponseGroupDto groupsControllerChangeGroupOwner(groupId, userId)
+
+Change the owner of the group. Only owner can give his rights to another member
+
+### Example 
+```dart
+import 'package:fd_dart_client/api.dart';
+// TODO Configure HTTP basic authorization: jwt
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
+
+var api_instance = new GroupsApi();
+var groupId = groupId_example; // String | 
+var userId = userId_example; // String | 
+
+try { 
+    var result = api_instance.groupsControllerChangeGroupOwner(groupId, userId);
+    print(result);
+} catch (e) {
+    print('Exception when calling GroupsApi->groupsControllerChangeGroupOwner: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupId** | **String**|  | 
+ **userId** | **String**|  | 
+
+### Return type
+
+[**ResponseGroupDto**](ResponseGroupDto.md)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **groupsControllerChangeGroupSharingCode**
+> ResponseGroupDto groupsControllerChangeGroupSharingCode(id)
+
+Change the sharing code of the group.
+
+### Example 
+```dart
+import 'package:fd_dart_client/api.dart';
+// TODO Configure HTTP basic authorization: jwt
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
+
+var api_instance = new GroupsApi();
+var id = id_example; // String | 
+
+try { 
+    var result = api_instance.groupsControllerChangeGroupSharingCode(id);
+    print(result);
+} catch (e) {
+    print('Exception when calling GroupsApi->groupsControllerChangeGroupSharingCode: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  | 
+
+### Return type
+
+[**ResponseGroupDto**](ResponseGroupDto.md)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **groupsControllerCreate**
 > ResponseGroupDto groupsControllerCreate(createGroupDto)
@@ -194,7 +286,7 @@ Name | Type | Description  | Notes
 # **groupsControllerRemove**
 > groupsControllerRemove(id)
 
-Update the group specified by id
+Delete the group specified by id
 
 ### Example 
 ```dart

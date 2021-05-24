@@ -1,4 +1,4 @@
-# fd_dart_client.model.ResponseGroupDto
+# fd_dart_client.model.ResponseInventoryProductDto
 
 ## Load the model package
 ```dart
@@ -10,12 +10,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **createdAt** | [**DateTime**](DateTime.md) | The creation timestamp of the entity | [optional] 
 **updatedAt** | [**DateTime**](DateTime.md) | The update timestamp of the entity | [optional] 
-**id** | **String** | The group id | 
-**name** | **String** | The group name | 
-**sharingCode** | **String** | The group sharing code to join it | 
-**pictureUrl** | **String** | The group picture | 
-**members** | [**BuiltList<ResponseGroupMemberDto>**](ResponseGroupMemberDto.md) | The group members | 
-**bannedMembers** | [**BuiltList<ResponseBannedGroupMemberDto>**](ResponseBannedGroupMemberDto.md) | The banned member of this group | 
+**id** | **String** | The inventory product id | 
+**productBarcode** | **String** | The barcode of the product | [optional] 
+**productId** | **String** | The id of the product | [optional] 
+**ownerIds** | **BuiltList<String>** | The id of the users owning this product | 
+**count** | **String** | The number of products | 
+**expirationDate** | [**DateTime**](DateTime.md) | The number of products | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

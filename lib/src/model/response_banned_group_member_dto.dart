@@ -5,11 +5,11 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'response_group_member_dto.g.dart';
+part 'response_banned_group_member_dto.g.dart';
 
 
 
-abstract class ResponseGroupMemberDto implements Built<ResponseGroupMemberDto, ResponseGroupMemberDtoBuilder> {
+abstract class ResponseBannedGroupMemberDto implements Built<ResponseBannedGroupMemberDto, ResponseBannedGroupMemberDtoBuilder> {
     /// The creation timestamp of the entity
     @BuiltValueField(wireName: r'createdAt')
     DateTime? get createdAt;
@@ -30,29 +30,29 @@ abstract class ResponseGroupMemberDto implements Built<ResponseGroupMemberDto, R
     @BuiltValueField(wireName: r'pictureUrl')
     String get pictureUrl;
 
-    /// The role of this member in the group
-    @BuiltValueField(wireName: r'role')
-    String get role;
+    /// The date the user was banned from this group
+    @BuiltValueField(wireName: r'banDate')
+    DateTime get banDate;
 
-    ResponseGroupMemberDto._();
+    ResponseBannedGroupMemberDto._();
 
-    static void _initializeBuilder(ResponseGroupMemberDtoBuilder b) => b;
+    static void _initializeBuilder(ResponseBannedGroupMemberDtoBuilder b) => b;
 
-    factory ResponseGroupMemberDto([void updates(ResponseGroupMemberDtoBuilder b)]) = _$ResponseGroupMemberDto;
+    factory ResponseBannedGroupMemberDto([void updates(ResponseBannedGroupMemberDtoBuilder b)]) = _$ResponseBannedGroupMemberDto;
 
     @BuiltValueSerializer(custom: true)
-    static Serializer<ResponseGroupMemberDto> get serializer => _$ResponseGroupMemberDtoSerializer();
+    static Serializer<ResponseBannedGroupMemberDto> get serializer => _$ResponseBannedGroupMemberDtoSerializer();
 }
 
-class _$ResponseGroupMemberDtoSerializer implements StructuredSerializer<ResponseGroupMemberDto> {
+class _$ResponseBannedGroupMemberDtoSerializer implements StructuredSerializer<ResponseBannedGroupMemberDto> {
     @override
-    final Iterable<Type> types = const [ResponseGroupMemberDto, _$ResponseGroupMemberDto];
+    final Iterable<Type> types = const [ResponseBannedGroupMemberDto, _$ResponseBannedGroupMemberDto];
 
     @override
-    final String wireName = r'ResponseGroupMemberDto';
+    final String wireName = r'ResponseBannedGroupMemberDto';
 
     @override
-    Iterable<Object?> serialize(Serializers serializers, ResponseGroupMemberDto object,
+    Iterable<Object?> serialize(Serializers serializers, ResponseBannedGroupMemberDto object,
         {FullType specifiedType = FullType.unspecified}) {
         final result = <Object?>[];
         if (object.createdAt != null) {
@@ -80,16 +80,16 @@ class _$ResponseGroupMemberDtoSerializer implements StructuredSerializer<Respons
             ..add(serializers.serialize(object.pictureUrl,
                 specifiedType: const FullType(String)));
         result
-            ..add(r'role')
-            ..add(serializers.serialize(object.role,
-                specifiedType: const FullType(String)));
+            ..add(r'banDate')
+            ..add(serializers.serialize(object.banDate,
+                specifiedType: const FullType(DateTime)));
         return result;
     }
 
     @override
-    ResponseGroupMemberDto deserialize(Serializers serializers, Iterable<Object?> serialized,
+    ResponseBannedGroupMemberDto deserialize(Serializers serializers, Iterable<Object?> serialized,
         {FullType specifiedType = FullType.unspecified}) {
-        final result = ResponseGroupMemberDtoBuilder();
+        final result = ResponseBannedGroupMemberDtoBuilder();
 
         final iterator = serialized.iterator;
         while (iterator.moveNext()) {
@@ -117,9 +117,9 @@ class _$ResponseGroupMemberDtoSerializer implements StructuredSerializer<Respons
                     result.pictureUrl = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
                     break;
-                case r'role':
-                    result.role = serializers.deserialize(value,
-                        specifiedType: const FullType(String)) as String;
+                case r'banDate':
+                    result.banDate = serializers.deserialize(value,
+                        specifiedType: const FullType(DateTime)) as DateTime;
                     break;
             }
         }

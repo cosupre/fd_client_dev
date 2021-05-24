@@ -3,6 +3,7 @@
 //
 
 import 'package:built_collection/built_collection.dart';
+import 'package:fd_dart_client/src/model/response_banned_group_member_dto.dart';
 import 'package:fd_dart_client/src/model/response_group_member_dto.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -39,6 +40,10 @@ abstract class ResponseGroupDto implements Built<ResponseGroupDto, ResponseGroup
     /// The group members
     @BuiltValueField(wireName: r'members')
     BuiltList<ResponseGroupMemberDto> get members;
+
+    /// The banned member of this group
+    @BuiltValueField(wireName: r'bannedMembers')
+    BuiltList<ResponseBannedGroupMemberDto> get bannedMembers;
 
     ResponseGroupDto._();
 
@@ -93,6 +98,10 @@ class _$ResponseGroupDtoSerializer implements StructuredSerializer<ResponseGroup
             ..add(r'members')
             ..add(serializers.serialize(object.members,
                 specifiedType: const FullType(BuiltList, [FullType(ResponseGroupMemberDto)])));
+        result
+            ..add(r'bannedMembers')
+            ..add(serializers.serialize(object.bannedMembers,
+                specifiedType: const FullType(BuiltList, [FullType(ResponseBannedGroupMemberDto)])));
         return result;
     }
 
@@ -134,6 +143,10 @@ class _$ResponseGroupDtoSerializer implements StructuredSerializer<ResponseGroup
                 case r'members':
                     result.members.replace(serializers.deserialize(value,
                         specifiedType: const FullType(BuiltList, [FullType(ResponseGroupMemberDto)])) as BuiltList<ResponseGroupMemberDto>);
+                    break;
+                case r'bannedMembers':
+                    result.bannedMembers.replace(serializers.deserialize(value,
+                        specifiedType: const FullType(BuiltList, [FullType(ResponseBannedGroupMemberDto)])) as BuiltList<ResponseBannedGroupMemberDto>);
                     break;
             }
         }

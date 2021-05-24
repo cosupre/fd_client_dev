@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'response_group_member_dto.dart';
+part of 'response_banned_group_member_dto.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$ResponseGroupMemberDto extends ResponseGroupMemberDto {
+class _$ResponseBannedGroupMemberDto extends ResponseBannedGroupMemberDto {
   @override
   final DateTime? createdAt;
   @override
@@ -18,49 +18,49 @@ class _$ResponseGroupMemberDto extends ResponseGroupMemberDto {
   @override
   final String pictureUrl;
   @override
-  final String role;
+  final DateTime banDate;
 
-  factory _$ResponseGroupMemberDto(
-          [void Function(ResponseGroupMemberDtoBuilder)? updates]) =>
-      (new ResponseGroupMemberDtoBuilder()..update(updates)).build();
+  factory _$ResponseBannedGroupMemberDto(
+          [void Function(ResponseBannedGroupMemberDtoBuilder)? updates]) =>
+      (new ResponseBannedGroupMemberDtoBuilder()..update(updates)).build();
 
-  _$ResponseGroupMemberDto._(
+  _$ResponseBannedGroupMemberDto._(
       {this.createdAt,
       this.updatedAt,
       required this.userId,
       required this.nickname,
       required this.pictureUrl,
-      required this.role})
+      required this.banDate})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        userId, 'ResponseGroupMemberDto', 'userId');
+        userId, 'ResponseBannedGroupMemberDto', 'userId');
     BuiltValueNullFieldError.checkNotNull(
-        nickname, 'ResponseGroupMemberDto', 'nickname');
+        nickname, 'ResponseBannedGroupMemberDto', 'nickname');
     BuiltValueNullFieldError.checkNotNull(
-        pictureUrl, 'ResponseGroupMemberDto', 'pictureUrl');
+        pictureUrl, 'ResponseBannedGroupMemberDto', 'pictureUrl');
     BuiltValueNullFieldError.checkNotNull(
-        role, 'ResponseGroupMemberDto', 'role');
+        banDate, 'ResponseBannedGroupMemberDto', 'banDate');
   }
 
   @override
-  ResponseGroupMemberDto rebuild(
-          void Function(ResponseGroupMemberDtoBuilder) updates) =>
+  ResponseBannedGroupMemberDto rebuild(
+          void Function(ResponseBannedGroupMemberDtoBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  ResponseGroupMemberDtoBuilder toBuilder() =>
-      new ResponseGroupMemberDtoBuilder()..replace(this);
+  ResponseBannedGroupMemberDtoBuilder toBuilder() =>
+      new ResponseBannedGroupMemberDtoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is ResponseGroupMemberDto &&
+    return other is ResponseBannedGroupMemberDto &&
         createdAt == other.createdAt &&
         updatedAt == other.updatedAt &&
         userId == other.userId &&
         nickname == other.nickname &&
         pictureUrl == other.pictureUrl &&
-        role == other.role;
+        banDate == other.banDate;
   }
 
   @override
@@ -72,25 +72,27 @@ class _$ResponseGroupMemberDto extends ResponseGroupMemberDto {
                     userId.hashCode),
                 nickname.hashCode),
             pictureUrl.hashCode),
-        role.hashCode));
+        banDate.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('ResponseGroupMemberDto')
+    return (newBuiltValueToStringHelper('ResponseBannedGroupMemberDto')
           ..add('createdAt', createdAt)
           ..add('updatedAt', updatedAt)
           ..add('userId', userId)
           ..add('nickname', nickname)
           ..add('pictureUrl', pictureUrl)
-          ..add('role', role))
+          ..add('banDate', banDate))
         .toString();
   }
 }
 
-class ResponseGroupMemberDtoBuilder
-    implements Builder<ResponseGroupMemberDto, ResponseGroupMemberDtoBuilder> {
-  _$ResponseGroupMemberDto? _$v;
+class ResponseBannedGroupMemberDtoBuilder
+    implements
+        Builder<ResponseBannedGroupMemberDto,
+            ResponseBannedGroupMemberDtoBuilder> {
+  _$ResponseBannedGroupMemberDto? _$v;
 
   DateTime? _createdAt;
   DateTime? get createdAt => _$this._createdAt;
@@ -112,15 +114,15 @@ class ResponseGroupMemberDtoBuilder
   String? get pictureUrl => _$this._pictureUrl;
   set pictureUrl(String? pictureUrl) => _$this._pictureUrl = pictureUrl;
 
-  String? _role;
-  String? get role => _$this._role;
-  set role(String? role) => _$this._role = role;
+  DateTime? _banDate;
+  DateTime? get banDate => _$this._banDate;
+  set banDate(DateTime? banDate) => _$this._banDate = banDate;
 
-  ResponseGroupMemberDtoBuilder() {
-    ResponseGroupMemberDto._initializeBuilder(this);
+  ResponseBannedGroupMemberDtoBuilder() {
+    ResponseBannedGroupMemberDto._initializeBuilder(this);
   }
 
-  ResponseGroupMemberDtoBuilder get _$this {
+  ResponseBannedGroupMemberDtoBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _createdAt = $v.createdAt;
@@ -128,37 +130,37 @@ class ResponseGroupMemberDtoBuilder
       _userId = $v.userId;
       _nickname = $v.nickname;
       _pictureUrl = $v.pictureUrl;
-      _role = $v.role;
+      _banDate = $v.banDate;
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(ResponseGroupMemberDto other) {
+  void replace(ResponseBannedGroupMemberDto other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$ResponseGroupMemberDto;
+    _$v = other as _$ResponseBannedGroupMemberDto;
   }
 
   @override
-  void update(void Function(ResponseGroupMemberDtoBuilder)? updates) {
+  void update(void Function(ResponseBannedGroupMemberDtoBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$ResponseGroupMemberDto build() {
+  _$ResponseBannedGroupMemberDto build() {
     final _$result = _$v ??
-        new _$ResponseGroupMemberDto._(
+        new _$ResponseBannedGroupMemberDto._(
             createdAt: createdAt,
             updatedAt: updatedAt,
             userId: BuiltValueNullFieldError.checkNotNull(
-                userId, 'ResponseGroupMemberDto', 'userId'),
+                userId, 'ResponseBannedGroupMemberDto', 'userId'),
             nickname: BuiltValueNullFieldError.checkNotNull(
-                nickname, 'ResponseGroupMemberDto', 'nickname'),
+                nickname, 'ResponseBannedGroupMemberDto', 'nickname'),
             pictureUrl: BuiltValueNullFieldError.checkNotNull(
-                pictureUrl, 'ResponseGroupMemberDto', 'pictureUrl'),
-            role: BuiltValueNullFieldError.checkNotNull(
-                role, 'ResponseGroupMemberDto', 'role'));
+                pictureUrl, 'ResponseBannedGroupMemberDto', 'pictureUrl'),
+            banDate: BuiltValueNullFieldError.checkNotNull(
+                banDate, 'ResponseBannedGroupMemberDto', 'banDate'));
     replace(_$result);
     return _$result;
   }

@@ -21,6 +21,82 @@ class GroupsApi {
 
   const GroupsApi(this._dio, this._serializers);
 
+  /// Ban a member. Owner can't be banned. You can't ban yourself or a member with equal or superior role
+  ///
+  /// 
+  Future<Response<ResponseGroupDto>> groupsControllerBanGroupOwner({ 
+    required String groupId,
+    required String userId,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/groups/{groupId}/ban/{userId}'.replaceAll('{' r'groupId' '}', groupId.toString()).replaceAll('{' r'userId' '}', userId.toString());
+    final _options = Options(
+      method: r'PATCH',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'name': 'bearer',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: [
+        'application/json',
+      ].first,
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    ResponseGroupDto _responseData;
+
+    try {
+      const _responseType = FullType(ResponseGroupDto);
+      _responseData = _serializers.deserialize(
+        _response.data!,
+        specifiedType: _responseType,
+      ) as ResponseGroupDto;
+
+    } catch (error) {
+      throw DioError(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioErrorType.other,
+        error: error,
+      );
+    }
+
+    return Response<ResponseGroupDto>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
   /// Change the owner of the group. Only owner can give his rights to another member
   ///
   /// 
@@ -36,7 +112,7 @@ class GroupsApi {
   }) async {
     final _path = r'/groups/{groupId}/change-owner/{userId}'.replaceAll('{' r'groupId' '}', groupId.toString()).replaceAll('{' r'userId' '}', userId.toString());
     final _options = Options(
-      method: r'POST',
+      method: r'PATCH',
       headers: <String, dynamic>{
         ...?headers,
       },
@@ -109,9 +185,9 @@ class GroupsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/groups/{id}/change-code/'.replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/groups/{id}/change-code'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
-      method: r'POST',
+      method: r'PATCH',
       headers: <String, dynamic>{
         ...?headers,
       },
@@ -585,6 +661,82 @@ class GroupsApi {
     );
 
     return _response;
+  }
+
+  /// Unban a member. Only owner and admin can unban someone.
+  ///
+  /// 
+  Future<Response<ResponseGroupDto>> groupsControllerUnbanGroupOwner({ 
+    required String groupId,
+    required String userId,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/groups/{groupId}/unban/{userId}'.replaceAll('{' r'groupId' '}', groupId.toString()).replaceAll('{' r'userId' '}', userId.toString());
+    final _options = Options(
+      method: r'PATCH',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'name': 'bearer',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: [
+        'application/json',
+      ].first,
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    ResponseGroupDto _responseData;
+
+    try {
+      const _responseType = FullType(ResponseGroupDto);
+      _responseData = _serializers.deserialize(
+        _response.data!,
+        specifiedType: _responseType,
+      ) as ResponseGroupDto;
+
+    } catch (error) {
+      throw DioError(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioErrorType.other,
+        error: error,
+      );
+    }
+
+    return Response<ResponseGroupDto>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
   }
 
   /// Update the group specified by id

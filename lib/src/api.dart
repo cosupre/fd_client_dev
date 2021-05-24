@@ -9,7 +9,9 @@ import 'package:fd_dart_client/src/serializers.dart';
 import 'package:fd_dart_client/src/auth/api_key_auth.dart';
 import 'package:fd_dart_client/src/auth/basic_auth.dart';
 import 'package:fd_dart_client/src/auth/oauth.dart';
+import 'package:fd_dart_client/src/api/favorite_products_api.dart';
 import 'package:fd_dart_client/src/api/groups_api.dart';
+import 'package:fd_dart_client/src/api/inventories_api.dart';
 import 'package:fd_dart_client/src/api/pictures_api.dart';
 import 'package:fd_dart_client/src/api/users_api.dart';
 
@@ -67,10 +69,22 @@ class FdDartClient {
     }
   }
 
+  /// Get FavoriteProductsApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  FavoriteProductsApi getFavoriteProductsApi() {
+    return FavoriteProductsApi(dio, serializers);
+  }
+
   /// Get GroupsApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   GroupsApi getGroupsApi() {
     return GroupsApi(dio, serializers);
+  }
+
+  /// Get InventoriesApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  InventoriesApi getInventoriesApi() {
+    return InventoriesApi(dio, serializers);
   }
 
   /// Get PicturesApi instance, base route and serializer can be overridden by a given but be careful,

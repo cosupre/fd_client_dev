@@ -42,15 +42,14 @@ Please follow the [installation procedure](#installation--usage) and then run th
 import 'package:fd_dart_client/fd_dart_client.dart';
 
 
-final api = GroupsApi();
-final groupId = groupId_example; // String | 
-final userId = userId_example; // String | 
+final api = FavoriteProductsApi();
+final createFavoriteProductDto = CreateFavoriteProductDto(); // CreateFavoriteProductDto | 
 
 try {
-    final response = await api.groupsControllerChangeGroupOwner(groupId, userId);
+    final response = await api.favoriteProductsControllerAddFavorite(createFavoriteProductDto);
     print(response);
 } catch on DioError (e) {
-    print("Exception when calling GroupsApi->groupsControllerChangeGroupOwner: $e\n");
+    print("Exception when calling FavoriteProductsApi->favoriteProductsControllerAddFavorite: $e\n");
 }
 
 ```
@@ -61,16 +60,26 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*GroupsApi* | [**groupsControllerChangeGroupOwner**](doc/GroupsApi.md#groupscontrollerchangegroupowner) | **post** /groups/{groupId}/change-owner/{userId} | Change the owner of the group. Only owner can give his rights to another member
-*GroupsApi* | [**groupsControllerChangeGroupSharingCode**](doc/GroupsApi.md#groupscontrollerchangegroupsharingcode) | **post** /groups/{id}/change-code/ | Change the sharing code of the group.
+*FavoriteProductsApi* | [**favoriteProductsControllerAddFavorite**](doc/FavoriteProductsApi.md#favoriteproductscontrolleraddfavorite) | **post** /favorite-products | Add a product as favorite
+*FavoriteProductsApi* | [**favoriteProductsControllerDeleteFavorite**](doc/FavoriteProductsApi.md#favoriteproductscontrollerdeletefavorite) | **delete** /favorite-products/{productId} | Delete one of your favorite products
+*FavoriteProductsApi* | [**favoriteProductsControllerGetFavorites**](doc/FavoriteProductsApi.md#favoriteproductscontrollergetfavorites) | **get** /favorite-products | Get the favorite products of the user
+*FavoriteProductsApi* | [**favoriteProductsControllerUpdateFavorite**](doc/FavoriteProductsApi.md#favoriteproductscontrollerupdatefavorite) | **patch** /favorite-products/{productId} | Update one of your favorite products
+*GroupsApi* | [**groupsControllerBanGroupOwner**](doc/GroupsApi.md#groupscontrollerbangroupowner) | **patch** /groups/{groupId}/ban/{userId} | Ban a member. Owner can&#39;t be banned. You can&#39;t ban yourself or a member with equal or superior role
+*GroupsApi* | [**groupsControllerChangeGroupOwner**](doc/GroupsApi.md#groupscontrollerchangegroupowner) | **patch** /groups/{groupId}/change-owner/{userId} | Change the owner of the group. Only owner can give his rights to another member
+*GroupsApi* | [**groupsControllerChangeGroupSharingCode**](doc/GroupsApi.md#groupscontrollerchangegroupsharingcode) | **patch** /groups/{id}/change-code | Change the sharing code of the group.
 *GroupsApi* | [**groupsControllerCreate**](doc/GroupsApi.md#groupscontrollercreate) | **post** /groups | Create a group and register the logged in user as owner
 *GroupsApi* | [**groupsControllerFindAll**](doc/GroupsApi.md#groupscontrollerfindall) | **get** /groups | Get the groups of the user
 *GroupsApi* | [**groupsControllerFindOne**](doc/GroupsApi.md#groupscontrollerfindone) | **get** /groups/{id} | Get the group specified by id
 *GroupsApi* | [**groupsControllerJoin**](doc/GroupsApi.md#groupscontrollerjoin) | **get** /groups/join/{sharing_code} | join a group with its sharing code
 *GroupsApi* | [**groupsControllerRemove**](doc/GroupsApi.md#groupscontrollerremove) | **delete** /groups/{id} | Delete the group specified by id
 *GroupsApi* | [**groupsControllerRemoveGroupMember**](doc/GroupsApi.md#groupscontrollerremovegroupmember) | **delete** /groups/{groupId}/members/{userId} | Remove a member from a group. Owner can&#39;t be removed and only superior level user can remove another user.
+*GroupsApi* | [**groupsControllerUnbanGroupOwner**](doc/GroupsApi.md#groupscontrollerunbangroupowner) | **patch** /groups/{groupId}/unban/{userId} | Unban a member. Only owner and admin can unban someone.
 *GroupsApi* | [**groupsControllerUpdate**](doc/GroupsApi.md#groupscontrollerupdate) | **patch** /groups/{id} | Update the group specified by id
 *GroupsApi* | [**groupsControllerUpdateGroupMember**](doc/GroupsApi.md#groupscontrollerupdategroupmember) | **patch** /groups/{groupId}/members/{userId} | Change the group member settings. Only an owner can change other member roles. An owner can&#39;t change his role and is the only owner of the group. Only Admin or Owner can change the nickname of another person
+*InventoriesApi* | [**inventoriesControllerAddProduct**](doc/InventoriesApi.md#inventoriescontrolleraddproduct) | **post** /groups/{groupId}/inventory | Add a product to the group&#39;s inventory
+*InventoriesApi* | [**inventoriesControllerDelete**](doc/InventoriesApi.md#inventoriescontrollerdelete) | **delete** /groups/{groupId}/inventory/{id} | Delete a product from the inventory
+*InventoriesApi* | [**inventoriesControllerGetInventory**](doc/InventoriesApi.md#inventoriescontrollergetinventory) | **get** /groups/{groupId}/inventory | Get the products from the group&#39;s inventory
+*InventoriesApi* | [**inventoriesControllerUpdate**](doc/InventoriesApi.md#inventoriescontrollerupdate) | **patch** /groups/{groupId}/inventory/{id} | Update a product of the inventory
 *PicturesApi* | [**picturesControllerGetAll**](doc/PicturesApi.md#picturescontrollergetall) | **get** /pictures | Get all the default pictures
 *UsersApi* | [**usersControllerAddTag**](doc/UsersApi.md#userscontrolleraddtag) | **post** /users/tags | Add a tag to the user
 *UsersApi* | [**usersControllerCreate**](doc/UsersApi.md#userscontrollercreate) | **post** /users | Create a user on database and patch the auth0 user
@@ -84,16 +93,23 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [CreateFavoriteProductDto](doc/CreateFavoriteProductDto.md)
  - [CreateGroupDto](doc/CreateGroupDto.md)
+ - [CreateInventoryProductDto](doc/CreateInventoryProductDto.md)
  - [CreateUserDto](doc/CreateUserDto.md)
  - [CreateUserTagDto](doc/CreateUserTagDto.md)
+ - [ResponseBannedGroupMemberDto](doc/ResponseBannedGroupMemberDto.md)
+ - [ResponseFavoriteProductDto](doc/ResponseFavoriteProductDto.md)
  - [ResponseGroupDto](doc/ResponseGroupDto.md)
  - [ResponseGroupMemberDto](doc/ResponseGroupMemberDto.md)
+ - [ResponseInventoryProductDto](doc/ResponseInventoryProductDto.md)
  - [ResponsePictureDto](doc/ResponsePictureDto.md)
  - [ResponseUserDto](doc/ResponseUserDto.md)
  - [ResponseUserTagDto](doc/ResponseUserTagDto.md)
+ - [UpdateFavoriteProductDto](doc/UpdateFavoriteProductDto.md)
  - [UpdateGroupDto](doc/UpdateGroupDto.md)
  - [UpdateGroupMemberDto](doc/UpdateGroupMemberDto.md)
+ - [UpdateInventoryProductDto](doc/UpdateInventoryProductDto.md)
  - [UpdateUserDto](doc/UpdateUserDto.md)
  - [UpdateUserTagDto](doc/UpdateUserTagDto.md)
 

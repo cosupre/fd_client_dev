@@ -8,19 +8,28 @@ export 'package:fd_dart_client/src/auth/basic_auth.dart';
 export 'package:fd_dart_client/src/auth/oauth.dart';
 export 'package:fd_dart_client/src/serializers.dart';
 
+export 'package:fd_dart_client/src/api/favorite_products_api.dart';
 export 'package:fd_dart_client/src/api/groups_api.dart';
+export 'package:fd_dart_client/src/api/inventories_api.dart';
 export 'package:fd_dart_client/src/api/pictures_api.dart';
 export 'package:fd_dart_client/src/api/users_api.dart';
 
+export 'package:fd_dart_client/src/model/create_favorite_product_dto.dart';
 export 'package:fd_dart_client/src/model/create_group_dto.dart';
+export 'package:fd_dart_client/src/model/create_inventory_product_dto.dart';
 export 'package:fd_dart_client/src/model/create_user_dto.dart';
 export 'package:fd_dart_client/src/model/create_user_tag_dto.dart';
+export 'package:fd_dart_client/src/model/response_banned_group_member_dto.dart';
+export 'package:fd_dart_client/src/model/response_favorite_product_dto.dart';
 export 'package:fd_dart_client/src/model/response_group_dto.dart';
 export 'package:fd_dart_client/src/model/response_group_member_dto.dart';
+export 'package:fd_dart_client/src/model/response_inventory_product_dto.dart';
 export 'package:fd_dart_client/src/model/response_picture_dto.dart';
 export 'package:fd_dart_client/src/model/response_user_dto.dart';
 export 'package:fd_dart_client/src/model/response_user_tag_dto.dart';
+export 'package:fd_dart_client/src/model/update_favorite_product_dto.dart';
 export 'package:fd_dart_client/src/model/update_group_dto.dart';
 export 'package:fd_dart_client/src/model/update_group_member_dto.dart';
+export 'package:fd_dart_client/src/model/update_inventory_product_dto.dart';
 export 'package:fd_dart_client/src/model/update_user_dto.dart';
 export 'package:fd_dart_client/src/model/update_user_tag_dto.dart';

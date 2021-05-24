@@ -21,6 +21,8 @@ class _$ResponseGroupDto extends ResponseGroupDto {
   final String pictureUrl;
   @override
   final BuiltList<ResponseGroupMemberDto> members;
+  @override
+  final BuiltList<ResponseBannedGroupMemberDto> bannedMembers;
 
   factory _$ResponseGroupDto(
           [void Function(ResponseGroupDtoBuilder)? updates]) =>
@@ -33,7 +35,8 @@ class _$ResponseGroupDto extends ResponseGroupDto {
       required this.name,
       required this.sharingCode,
       required this.pictureUrl,
-      required this.members})
+      required this.members,
+      required this.bannedMembers})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(id, 'ResponseGroupDto', 'id');
     BuiltValueNullFieldError.checkNotNull(name, 'ResponseGroupDto', 'name');
@@ -43,6 +46,8 @@ class _$ResponseGroupDto extends ResponseGroupDto {
         pictureUrl, 'ResponseGroupDto', 'pictureUrl');
     BuiltValueNullFieldError.checkNotNull(
         members, 'ResponseGroupDto', 'members');
+    BuiltValueNullFieldError.checkNotNull(
+        bannedMembers, 'ResponseGroupDto', 'bannedMembers');
   }
 
   @override
@@ -63,7 +68,8 @@ class _$ResponseGroupDto extends ResponseGroupDto {
         name == other.name &&
         sharingCode == other.sharingCode &&
         pictureUrl == other.pictureUrl &&
-        members == other.members;
+        members == other.members &&
+        bannedMembers == other.bannedMembers;
   }
 
   @override
@@ -72,12 +78,14 @@ class _$ResponseGroupDto extends ResponseGroupDto {
         $jc(
             $jc(
                 $jc(
-                    $jc($jc($jc(0, createdAt.hashCode), updatedAt.hashCode),
-                        id.hashCode),
-                    name.hashCode),
-                sharingCode.hashCode),
-            pictureUrl.hashCode),
-        members.hashCode));
+                    $jc(
+                        $jc($jc($jc(0, createdAt.hashCode), updatedAt.hashCode),
+                            id.hashCode),
+                        name.hashCode),
+                    sharingCode.hashCode),
+                pictureUrl.hashCode),
+            members.hashCode),
+        bannedMembers.hashCode));
   }
 
   @override
@@ -89,7 +97,8 @@ class _$ResponseGroupDto extends ResponseGroupDto {
           ..add('name', name)
           ..add('sharingCode', sharingCode)
           ..add('pictureUrl', pictureUrl)
-          ..add('members', members))
+          ..add('members', members)
+          ..add('bannedMembers', bannedMembers))
         .toString();
   }
 }
@@ -128,6 +137,12 @@ class ResponseGroupDtoBuilder
   set members(ListBuilder<ResponseGroupMemberDto>? members) =>
       _$this._members = members;
 
+  ListBuilder<ResponseBannedGroupMemberDto>? _bannedMembers;
+  ListBuilder<ResponseBannedGroupMemberDto> get bannedMembers =>
+      _$this._bannedMembers ??= new ListBuilder<ResponseBannedGroupMemberDto>();
+  set bannedMembers(ListBuilder<ResponseBannedGroupMemberDto>? bannedMembers) =>
+      _$this._bannedMembers = bannedMembers;
+
   ResponseGroupDtoBuilder() {
     ResponseGroupDto._initializeBuilder(this);
   }
@@ -142,6 +157,7 @@ class ResponseGroupDtoBuilder
       _sharingCode = $v.sharingCode;
       _pictureUrl = $v.pictureUrl;
       _members = $v.members.toBuilder();
+      _bannedMembers = $v.bannedMembers.toBuilder();
       _$v = null;
     }
     return this;
@@ -174,12 +190,15 @@ class ResponseGroupDtoBuilder
                   sharingCode, 'ResponseGroupDto', 'sharingCode'),
               pictureUrl: BuiltValueNullFieldError.checkNotNull(
                   pictureUrl, 'ResponseGroupDto', 'pictureUrl'),
-              members: members.build());
+              members: members.build(),
+              bannedMembers: bannedMembers.build());
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'members';
         members.build();
+        _$failedField = 'bannedMembers';
+        bannedMembers.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'ResponseGroupDto', _$failedField, e.toString());

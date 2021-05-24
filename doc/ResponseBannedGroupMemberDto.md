@@ -1,4 +1,4 @@
-# fd_dart_client.model.ResponseGroupDto
+# fd_dart_client.model.ResponseBannedGroupMemberDto
 
 ## Load the model package
 ```dart
@@ -10,12 +10,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **createdAt** | [**DateTime**](DateTime.md) | The creation timestamp of the entity | [optional] 
 **updatedAt** | [**DateTime**](DateTime.md) | The update timestamp of the entity | [optional] 
-**id** | **String** | The group id | 
-**name** | **String** | The group name | 
-**sharingCode** | **String** | The group sharing code to join it | 
-**pictureUrl** | **String** | The group picture | 
-**members** | [**BuiltList<ResponseGroupMemberDto>**](ResponseGroupMemberDto.md) | The group members | 
-**bannedMembers** | [**BuiltList<ResponseBannedGroupMemberDto>**](ResponseBannedGroupMemberDto.md) | The banned member of this group | 
+**userId** | **String** | The user's id linked to this member | 
+**nickname** | **String** | The user's nickname in the linked group | 
+**pictureUrl** | **String** | The user's picture url | 
+**banDate** | [**DateTime**](DateTime.md) | The date the user was banned from this group | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -9,17 +9,65 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**groupsControllerChangeGroupOwner**](GroupsApi.md#groupscontrollerchangegroupowner) | **post** /groups/{groupId}/change-owner/{userId} | Change the owner of the group. Only owner can give his rights to another member
-[**groupsControllerChangeGroupSharingCode**](GroupsApi.md#groupscontrollerchangegroupsharingcode) | **post** /groups/{id}/change-code/ | Change the sharing code of the group.
+[**groupsControllerBanGroupOwner**](GroupsApi.md#groupscontrollerbangroupowner) | **patch** /groups/{groupId}/ban/{userId} | Ban a member. Owner can&#39;t be banned. You can&#39;t ban yourself or a member with equal or superior role
+[**groupsControllerChangeGroupOwner**](GroupsApi.md#groupscontrollerchangegroupowner) | **patch** /groups/{groupId}/change-owner/{userId} | Change the owner of the group. Only owner can give his rights to another member
+[**groupsControllerChangeGroupSharingCode**](GroupsApi.md#groupscontrollerchangegroupsharingcode) | **patch** /groups/{id}/change-code | Change the sharing code of the group.
 [**groupsControllerCreate**](GroupsApi.md#groupscontrollercreate) | **post** /groups | Create a group and register the logged in user as owner
 [**groupsControllerFindAll**](GroupsApi.md#groupscontrollerfindall) | **get** /groups | Get the groups of the user
 [**groupsControllerFindOne**](GroupsApi.md#groupscontrollerfindone) | **get** /groups/{id} | Get the group specified by id
 [**groupsControllerJoin**](GroupsApi.md#groupscontrollerjoin) | **get** /groups/join/{sharing_code} | join a group with its sharing code
 [**groupsControllerRemove**](GroupsApi.md#groupscontrollerremove) | **delete** /groups/{id} | Delete the group specified by id
 [**groupsControllerRemoveGroupMember**](GroupsApi.md#groupscontrollerremovegroupmember) | **delete** /groups/{groupId}/members/{userId} | Remove a member from a group. Owner can&#39;t be removed and only superior level user can remove another user.
+[**groupsControllerUnbanGroupOwner**](GroupsApi.md#groupscontrollerunbangroupowner) | **patch** /groups/{groupId}/unban/{userId} | Unban a member. Only owner and admin can unban someone.
 [**groupsControllerUpdate**](GroupsApi.md#groupscontrollerupdate) | **patch** /groups/{id} | Update the group specified by id
 [**groupsControllerUpdateGroupMember**](GroupsApi.md#groupscontrollerupdategroupmember) | **patch** /groups/{groupId}/members/{userId} | Change the group member settings. Only an owner can change other member roles. An owner can&#39;t change his role and is the only owner of the group. Only Admin or Owner can change the nickname of another person
 
+
+# **groupsControllerBanGroupOwner**
+> ResponseGroupDto groupsControllerBanGroupOwner(groupId, userId)
+
+Ban a member. Owner can't be banned. You can't ban yourself or a member with equal or superior role
+
+### Example 
+```dart
+import 'package:fd_dart_client/api.dart';
+// TODO Configure HTTP basic authorization: jwt
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
+
+var api_instance = new GroupsApi();
+var groupId = groupId_example; // String | 
+var userId = userId_example; // String | 
+
+try { 
+    var result = api_instance.groupsControllerBanGroupOwner(groupId, userId);
+    print(result);
+} catch (e) {
+    print('Exception when calling GroupsApi->groupsControllerBanGroupOwner: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupId** | **String**|  | 
+ **userId** | **String**|  | 
+
+### Return type
+
+[**ResponseGroupDto**](ResponseGroupDto.md)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **groupsControllerChangeGroupOwner**
 > ResponseGroupDto groupsControllerChangeGroupOwner(groupId, userId)
@@ -368,6 +416,52 @@ void (empty response body)
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **groupsControllerUnbanGroupOwner**
+> ResponseGroupDto groupsControllerUnbanGroupOwner(groupId, userId)
+
+Unban a member. Only owner and admin can unban someone.
+
+### Example 
+```dart
+import 'package:fd_dart_client/api.dart';
+// TODO Configure HTTP basic authorization: jwt
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
+
+var api_instance = new GroupsApi();
+var groupId = groupId_example; // String | 
+var userId = userId_example; // String | 
+
+try { 
+    var result = api_instance.groupsControllerUnbanGroupOwner(groupId, userId);
+    print(result);
+} catch (e) {
+    print('Exception when calling GroupsApi->groupsControllerUnbanGroupOwner: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupId** | **String**|  | 
+ **userId** | **String**|  | 
+
+### Return type
+
+[**ResponseGroupDto**](ResponseGroupDto.md)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

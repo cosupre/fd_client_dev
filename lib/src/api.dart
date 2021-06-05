@@ -13,6 +13,8 @@ import 'package:fd_dart_client/src/api/favorite_products_api.dart';
 import 'package:fd_dart_client/src/api/groups_api.dart';
 import 'package:fd_dart_client/src/api/inventories_api.dart';
 import 'package:fd_dart_client/src/api/pictures_api.dart';
+import 'package:fd_dart_client/src/api/product_tags_api.dart';
+import 'package:fd_dart_client/src/api/products_api.dart';
 import 'package:fd_dart_client/src/api/users_api.dart';
 
 class FdDartClient {
@@ -91,6 +93,18 @@ class FdDartClient {
   /// by doing that all interceptors will not be executed
   PicturesApi getPicturesApi() {
     return PicturesApi(dio, serializers);
+  }
+
+  /// Get ProductTagsApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  ProductTagsApi getProductTagsApi() {
+    return ProductTagsApi(dio, serializers);
+  }
+
+  /// Get ProductsApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  ProductsApi getProductsApi() {
+    return ProductsApi(dio, serializers);
   }
 
   /// Get UsersApi instance, base route and serializer can be overridden by a given but be careful,

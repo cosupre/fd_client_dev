@@ -19,6 +19,7 @@ doc/ResponseGroupDto.md
 doc/ResponseGroupMemberDto.md
 doc/ResponseInventoryProductDetailDto.md
 doc/ResponseInventoryProductDto.md
+doc/ResponsePaginationInventoryProductDto.md
 doc/ResponsePictureDto.md
 doc/ResponseProductDto.md
 doc/ResponseUserDto.md
@@ -57,6 +58,7 @@ lib/src/model/response_group_dto.dart
 lib/src/model/response_group_member_dto.dart
 lib/src/model/response_inventory_product_detail_dto.dart
 lib/src/model/response_inventory_product_dto.dart
+lib/src/model/response_pagination_inventory_product_dto.dart
 lib/src/model/response_picture_dto.dart
 lib/src/model/response_product_dto.dart
 lib/src/model/response_user_dto.dart
@@ -70,3 +72,4 @@ lib/src/model/update_user_product_tag_dto.dart
 lib/src/model/update_user_tag_dto.dart
 lib/src/serializers.dart
 pubspec.yaml
+test/response_pagination_inventory_product_dto_test.dart

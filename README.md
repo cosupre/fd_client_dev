@@ -114,6 +114,7 @@ Class | Method | HTTP request | Description
  - [ResponseGroupMemberDto](doc/ResponseGroupMemberDto.md)
  - [ResponseInventoryProductDetailDto](doc/ResponseInventoryProductDetailDto.md)
  - [ResponseInventoryProductDto](doc/ResponseInventoryProductDto.md)
+ - [ResponsePaginationInventoryProductDto](doc/ResponsePaginationInventoryProductDto.md)
  - [ResponsePictureDto](doc/ResponsePictureDto.md)
  - [ResponseProductDto](doc/ResponseProductDto.md)
  - [ResponseUserDto](doc/ResponseUserDto.md)

@@ -9,8 +9,8 @@ import 'package:dio/dio.dart';
 
 import 'package:fd_dart_client/src/model/response_inventory_product_dto.dart';
 import 'package:fd_dart_client/src/model/create_inventory_product_dto.dart';
+import 'package:fd_dart_client/src/model/response_pagination_inventory_product_dto.dart';
 import 'package:fd_dart_client/src/model/update_inventory_product_dto.dart';
-import 'package:built_collection/built_collection.dart';
 
 class InventoriesApi {
 
@@ -167,7 +167,7 @@ class InventoriesApi {
   /// Get the products from the group's inventory
   ///
   /// 
-  Future<Response<BuiltList<ResponseInventoryProductDto>>> inventoriesControllerFindAll({ 
+  Future<Response<ResponsePaginationInventoryProductDto>> inventoriesControllerFindAll({ 
     required String groupId,
     String? page,
     String? limit,
@@ -213,14 +213,14 @@ class InventoriesApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<ResponseInventoryProductDto> _responseData;
+    ResponsePaginationInventoryProductDto _responseData;
 
     try {
-      const _responseType = FullType(BuiltList, [FullType(ResponseInventoryProductDto)]);
+      const _responseType = FullType(ResponsePaginationInventoryProductDto);
       _responseData = _serializers.deserialize(
         _response.data!,
         specifiedType: _responseType,
-      ) as BuiltList<ResponseInventoryProductDto>;
+      ) as ResponsePaginationInventoryProductDto;
 
     } catch (error) {
       throw DioError(
@@ -231,7 +231,7 @@ class InventoriesApi {
       );
     }
 
-    return Response<BuiltList<ResponseInventoryProductDto>>(
+    return Response<ResponsePaginationInventoryProductDto>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

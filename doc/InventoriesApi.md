@@ -107,7 +107,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **inventoriesControllerFindAll**
-> BuiltList<ResponseInventoryProductDto> inventoriesControllerFindAll(groupId, page, limit)
+> ResponsePaginationInventoryProductDto inventoriesControllerFindAll(groupId, page, limit)
 
 Get the products from the group's inventory
 
@@ -141,7 +141,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BuiltList<ResponseInventoryProductDto>**](ResponseInventoryProductDto.md)
+[**ResponsePaginationInventoryProductDto**](ResponsePaginationInventoryProductDto.md)
 
 ### Authorization
 

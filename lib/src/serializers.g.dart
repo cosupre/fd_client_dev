@@ -19,6 +19,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(ResponseGroupMemberDto.serializer)
       ..add(ResponseInventoryProductDetailDto.serializer)
       ..add(ResponseInventoryProductDto.serializer)
+      ..add(ResponsePaginationInventoryProductDto.serializer)
       ..add(ResponsePictureDto.serializer)
       ..add(ResponseProductDto.serializer)
       ..add(ResponseUserDto.serializer)
@@ -38,6 +39,10 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(
               BuiltList, const [const FullType(ResponseBannedGroupMemberDto)]),
           () => new ListBuilder<ResponseBannedGroupMemberDto>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(ResponseInventoryProductDto)]),
+          () => new ListBuilder<ResponseInventoryProductDto>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())

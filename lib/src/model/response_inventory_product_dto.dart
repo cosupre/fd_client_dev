@@ -3,6 +3,7 @@
 //
 
 import 'package:built_collection/built_collection.dart';
+import 'package:fd_dart_client/src/model/response_inventory_product_detail_dto.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -23,13 +24,13 @@ abstract class ResponseInventoryProductDto implements Built<ResponseInventoryPro
     @BuiltValueField(wireName: r'id')
     String get id;
 
-    /// The barcode of the product
-    @BuiltValueField(wireName: r'productBarcode')
-    String? get productBarcode;
+    /// The id of the group
+    @BuiltValueField(wireName: r'groupId')
+    String get groupId;
 
-    /// The id of the product
-    @BuiltValueField(wireName: r'productId')
-    String? get productId;
+    /// The product
+    @BuiltValueField(wireName: r'product')
+    ResponseInventoryProductDetailDto get product;
 
     /// The id of the users owning this product
     @BuiltValueField(wireName: r'ownerIds')
@@ -80,18 +81,14 @@ class _$ResponseInventoryProductDtoSerializer implements StructuredSerializer<Re
             ..add(r'id')
             ..add(serializers.serialize(object.id,
                 specifiedType: const FullType(String)));
-        if (object.productBarcode != null) {
-            result
-                ..add(r'productBarcode')
-                ..add(serializers.serialize(object.productBarcode,
-                    specifiedType: const FullType(String)));
-        }
-        if (object.productId != null) {
-            result
-                ..add(r'productId')
-                ..add(serializers.serialize(object.productId,
-                    specifiedType: const FullType(String)));
-        }
+        result
+            ..add(r'groupId')
+            ..add(serializers.serialize(object.groupId,
+                specifiedType: const FullType(String)));
+        result
+            ..add(r'product')
+            ..add(serializers.serialize(object.product,
+                specifiedType: const FullType(ResponseInventoryProductDetailDto)));
         result
             ..add(r'ownerIds')
             ..add(serializers.serialize(object.ownerIds,
@@ -132,13 +129,13 @@ class _$ResponseInventoryProductDtoSerializer implements StructuredSerializer<Re
                     result.id = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
                     break;
-                case r'productBarcode':
-                    result.productBarcode = serializers.deserialize(value,
+                case r'groupId':
+                    result.groupId = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
                     break;
-                case r'productId':
-                    result.productId = serializers.deserialize(value,
-                        specifiedType: const FullType(String)) as String;
+                case r'product':
+                    result.product.replace(serializers.deserialize(value,
+                        specifiedType: const FullType(ResponseInventoryProductDetailDto)) as ResponseInventoryProductDetailDto);
                     break;
                 case r'ownerIds':
                     result.ownerIds.replace(serializers.deserialize(value,

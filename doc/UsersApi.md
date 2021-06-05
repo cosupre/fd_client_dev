@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**usersControllerAddTag**](UsersApi.md#userscontrolleraddtag) | **post** /users/tags | Add a tag to the user
 [**usersControllerCreate**](UsersApi.md#userscontrollercreate) | **post** /users | Create a user on database and patch the auth0 user
 [**usersControllerGet**](UsersApi.md#userscontrollerget) | **get** /users/info | Get user information
+[**usersControllerGetTag**](UsersApi.md#userscontrollergettag) | **get** /users/tags/{id} | Find a user tag
 [**usersControllerGetTags**](UsersApi.md#userscontrollergettags) | **get** /users/{userId}/tags/ | Return all the tags of a user
 [**usersControllerPatch**](UsersApi.md#userscontrollerpatch) | **patch** /users/{id} | Patch user information on auth0
 [**usersControllerPatchTag**](UsersApi.md#userscontrollerpatchtag) | **patch** /users/tags/{id} | Update a tag of the user
@@ -135,6 +136,50 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**ResponseUserDto**](ResponseUserDto.md)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **usersControllerGetTag**
+> ResponseUserTagDto usersControllerGetTag(id)
+
+Find a user tag
+
+### Example 
+```dart
+import 'package:fd_dart_client/api.dart';
+// TODO Configure HTTP basic authorization: jwt
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
+
+var api_instance = new UsersApi();
+var id = id_example; // String | 
+
+try { 
+    var result = api_instance.usersControllerGetTag(id);
+    print(result);
+} catch (e) {
+    print('Exception when calling UsersApi->usersControllerGetTag: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  | 
+
+### Return type
+
+[**ResponseUserTagDto**](ResponseUserTagDto.md)
 
 ### Authorization
 

@@ -7,25 +7,24 @@ import 'dart:async';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
-import 'package:fd_dart_client/src/model/response_inventory_product_dto.dart';
-import 'package:fd_dart_client/src/model/create_inventory_product_dto.dart';
-import 'package:fd_dart_client/src/model/update_inventory_product_dto.dart';
+import 'package:fd_dart_client/src/model/response_user_product_tag_dto.dart';
+import 'package:fd_dart_client/src/model/create_user_product_tag_dto.dart';
+import 'package:fd_dart_client/src/model/update_user_product_tag_dto.dart';
 import 'package:built_collection/built_collection.dart';
 
-class InventoriesApi {
+class ProductTagsApi {
 
   final Dio _dio;
 
   final Serializers _serializers;
 
-  const InventoriesApi(this._dio, this._serializers);
+  const ProductTagsApi(this._dio, this._serializers);
 
-  /// Add a product to the group's inventory
+  /// Add a tag
   ///
   /// 
-  Future<Response<ResponseInventoryProductDto>> inventoriesControllerCreate({ 
-    required String groupId,
-    required CreateInventoryProductDto createInventoryProductDto,
+  Future<Response<ResponseUserProductTagDto>> userProductTagsControllerCreate({ 
+    required CreateUserProductTagDto createUserProductTagDto,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -33,7 +32,7 @@ class InventoriesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/groups/{groupId}/inventory'.replaceAll('{' r'groupId' '}', groupId.toString());
+    final _path = r'/user-product-tags';
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -60,8 +59,8 @@ class InventoriesApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(CreateInventoryProductDto);
-      _bodyData = _serializers.serialize(createInventoryProductDto, specifiedType: _type);
+      const _type = FullType(CreateUserProductTagDto);
+      _bodyData = _serializers.serialize(createUserProductTagDto, specifiedType: _type);
 
     } catch(error) {
       throw DioError(
@@ -85,14 +84,14 @@ class InventoriesApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ResponseInventoryProductDto _responseData;
+    ResponseUserProductTagDto _responseData;
 
     try {
-      const _responseType = FullType(ResponseInventoryProductDto);
+      const _responseType = FullType(ResponseUserProductTagDto);
       _responseData = _serializers.deserialize(
         _response.data!,
         specifiedType: _responseType,
-      ) as ResponseInventoryProductDto;
+      ) as ResponseUserProductTagDto;
 
     } catch (error) {
       throw DioError(
@@ -103,7 +102,7 @@ class InventoriesApi {
       );
     }
 
-    return Response<ResponseInventoryProductDto>(
+    return Response<ResponseUserProductTagDto>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -115,11 +114,84 @@ class InventoriesApi {
     );
   }
 
-  /// Delete a product from the inventory
+  /// Get all product tags of the user
   ///
   /// 
-  Future<Response<void>> inventoriesControllerDelete({ 
-    required String groupId,
+  Future<Response<BuiltList<ResponseUserProductTagDto>>> userProductTagsControllerFindAll({ 
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/user-product-tags';
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'name': 'bearer',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: [
+        'application/json',
+      ].first,
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    BuiltList<ResponseUserProductTagDto> _responseData;
+
+    try {
+      const _responseType = FullType(BuiltList, [FullType(ResponseUserProductTagDto)]);
+      _responseData = _serializers.deserialize(
+        _response.data!,
+        specifiedType: _responseType,
+      ) as BuiltList<ResponseUserProductTagDto>;
+
+    } catch (error) {
+      throw DioError(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioErrorType.other,
+        error: error,
+      );
+    }
+
+    return Response<BuiltList<ResponseUserProductTagDto>>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Get the user product tag by id
+  ///
+  /// 
+  Future<Response<ResponseUserProductTagDto>> userProductTagsControllerFindOne({ 
     required String id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -128,7 +200,82 @@ class InventoriesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/groups/{groupId}/inventory/{id}'.replaceAll('{' r'groupId' '}', groupId.toString()).replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/user-product-tags/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'name': 'bearer',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: [
+        'application/json',
+      ].first,
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    ResponseUserProductTagDto _responseData;
+
+    try {
+      const _responseType = FullType(ResponseUserProductTagDto);
+      _responseData = _serializers.deserialize(
+        _response.data!,
+        specifiedType: _responseType,
+      ) as ResponseUserProductTagDto;
+
+    } catch (error) {
+      throw DioError(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioErrorType.other,
+        error: error,
+      );
+    }
+
+    return Response<ResponseUserProductTagDto>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Delete the product tag
+  ///
+  /// 
+  Future<Response<void>> userProductTagsControllerRemove({ 
+    required String id,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/user-product-tags/{id}'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -164,92 +311,12 @@ class InventoriesApi {
     return _response;
   }
 
-  /// Get the products from the group's inventory
+  /// Update the product tag
   ///
   /// 
-  Future<Response<BuiltList<ResponseInventoryProductDto>>> inventoriesControllerFindAll({ 
-    required String groupId,
-    String? page,
-    String? limit,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/groups/{groupId}/inventory'.replaceAll('{' r'groupId' '}', groupId.toString());
-    final _options = Options(
-      method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'name': 'bearer',
-          },
-        ],
-        ...?extra,
-      },
-      contentType: [
-        'application/json',
-      ].first,
-      validateStatus: validateStatus,
-    );
-
-    final _queryParameters = <String, dynamic>{
-      if (page != null) r'page': page,
-      if (limit != null) r'limit': limit,
-    };
-
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      queryParameters: _queryParameters,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    BuiltList<ResponseInventoryProductDto> _responseData;
-
-    try {
-      const _responseType = FullType(BuiltList, [FullType(ResponseInventoryProductDto)]);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
-      ) as BuiltList<ResponseInventoryProductDto>;
-
-    } catch (error) {
-      throw DioError(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioErrorType.other,
-        error: error,
-      );
-    }
-
-    return Response<BuiltList<ResponseInventoryProductDto>>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
-    );
-  }
-
-  /// Update a product of the inventory
-  ///
-  /// 
-  Future<Response<ResponseInventoryProductDto>> inventoriesControllerUpdate({ 
-    required String groupId,
+  Future<Response<ResponseUserProductTagDto>> userProductTagsControllerUpdate({ 
     required String id,
-    required UpdateInventoryProductDto updateInventoryProductDto,
+    required UpdateUserProductTagDto updateUserProductTagDto,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -257,7 +324,7 @@ class InventoriesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/groups/{groupId}/inventory/{id}'.replaceAll('{' r'groupId' '}', groupId.toString()).replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/user-product-tags/{id}'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -284,8 +351,8 @@ class InventoriesApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(UpdateInventoryProductDto);
-      _bodyData = _serializers.serialize(updateInventoryProductDto, specifiedType: _type);
+      const _type = FullType(UpdateUserProductTagDto);
+      _bodyData = _serializers.serialize(updateUserProductTagDto, specifiedType: _type);
 
     } catch(error) {
       throw DioError(
@@ -309,14 +376,14 @@ class InventoriesApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ResponseInventoryProductDto _responseData;
+    ResponseUserProductTagDto _responseData;
 
     try {
-      const _responseType = FullType(ResponseInventoryProductDto);
+      const _responseType = FullType(ResponseUserProductTagDto);
       _responseData = _serializers.deserialize(
         _response.data!,
         specifiedType: _responseType,
-      ) as ResponseInventoryProductDto;
+      ) as ResponseUserProductTagDto;
 
     } catch (error) {
       throw DioError(
@@ -327,7 +394,7 @@ class InventoriesApi {
       );
     }
 
-    return Response<ResponseInventoryProductDto>(
+    return Response<ResponseUserProductTagDto>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

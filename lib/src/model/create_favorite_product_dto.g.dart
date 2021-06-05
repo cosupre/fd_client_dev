@@ -9,15 +9,12 @@ part of 'create_favorite_product_dto.dart';
 class _$CreateFavoriteProductDto extends CreateFavoriteProductDto {
   @override
   final String productId;
-  @override
-  final String? description;
 
   factory _$CreateFavoriteProductDto(
           [void Function(CreateFavoriteProductDtoBuilder)? updates]) =>
       (new CreateFavoriteProductDtoBuilder()..update(updates)).build();
 
-  _$CreateFavoriteProductDto._({required this.productId, this.description})
-      : super._() {
+  _$CreateFavoriteProductDto._({required this.productId}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         productId, 'CreateFavoriteProductDto', 'productId');
   }
@@ -34,21 +31,18 @@ class _$CreateFavoriteProductDto extends CreateFavoriteProductDto {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is CreateFavoriteProductDto &&
-        productId == other.productId &&
-        description == other.description;
+    return other is CreateFavoriteProductDto && productId == other.productId;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, productId.hashCode), description.hashCode));
+    return $jf($jc(0, productId.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('CreateFavoriteProductDto')
-          ..add('productId', productId)
-          ..add('description', description))
+          ..add('productId', productId))
         .toString();
   }
 }
@@ -62,10 +56,6 @@ class CreateFavoriteProductDtoBuilder
   String? get productId => _$this._productId;
   set productId(String? productId) => _$this._productId = productId;
 
-  String? _description;
-  String? get description => _$this._description;
-  set description(String? description) => _$this._description = description;
-
   CreateFavoriteProductDtoBuilder() {
     CreateFavoriteProductDto._initializeBuilder(this);
   }
@@ -74,7 +64,6 @@ class CreateFavoriteProductDtoBuilder
     final $v = _$v;
     if ($v != null) {
       _productId = $v.productId;
-      _description = $v.description;
       _$v = null;
     }
     return this;
@@ -96,8 +85,7 @@ class CreateFavoriteProductDtoBuilder
     final _$result = _$v ??
         new _$CreateFavoriteProductDto._(
             productId: BuiltValueNullFieldError.checkNotNull(
-                productId, 'CreateFavoriteProductDto', 'productId'),
-            description: description);
+                productId, 'CreateFavoriteProductDto', 'productId'));
     replace(_$result);
     return _$result;
   }

@@ -14,10 +14,6 @@ abstract class CreateFavoriteProductDto implements Built<CreateFavoriteProductDt
     @BuiltValueField(wireName: r'productId')
     String get productId;
 
-    /// The description given to this favorite product
-    @BuiltValueField(wireName: r'description')
-    String? get description;
-
     CreateFavoriteProductDto._();
 
     static void _initializeBuilder(CreateFavoriteProductDtoBuilder b) => b;
@@ -43,12 +39,6 @@ class _$CreateFavoriteProductDtoSerializer implements StructuredSerializer<Creat
             ..add(r'productId')
             ..add(serializers.serialize(object.productId,
                 specifiedType: const FullType(String)));
-        if (object.description != null) {
-            result
-                ..add(r'description')
-                ..add(serializers.serialize(object.description,
-                    specifiedType: const FullType(String)));
-        }
         return result;
     }
 
@@ -65,10 +55,6 @@ class _$CreateFavoriteProductDtoSerializer implements StructuredSerializer<Creat
             switch (key) {
                 case r'productId':
                     result.productId = serializers.deserialize(value,
-                        specifiedType: const FullType(String)) as String;
-                    break;
-                case r'description':
-                    result.description = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
                     break;
             }

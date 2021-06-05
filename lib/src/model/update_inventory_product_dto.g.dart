@@ -8,7 +8,9 @@ part of 'update_inventory_product_dto.dart';
 
 class _$UpdateInventoryProductDto extends UpdateInventoryProductDto {
   @override
-  final String count;
+  final BuiltList<String>? ownerIds;
+  @override
+  final String? count;
   @override
   final DateTime? expirationDate;
 
@@ -16,11 +18,9 @@ class _$UpdateInventoryProductDto extends UpdateInventoryProductDto {
           [void Function(UpdateInventoryProductDtoBuilder)? updates]) =>
       (new UpdateInventoryProductDtoBuilder()..update(updates)).build();
 
-  _$UpdateInventoryProductDto._({required this.count, this.expirationDate})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        count, 'UpdateInventoryProductDto', 'count');
-  }
+  _$UpdateInventoryProductDto._(
+      {this.ownerIds, this.count, this.expirationDate})
+      : super._();
 
   @override
   UpdateInventoryProductDto rebuild(
@@ -35,18 +35,21 @@ class _$UpdateInventoryProductDto extends UpdateInventoryProductDto {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is UpdateInventoryProductDto &&
+        ownerIds == other.ownerIds &&
         count == other.count &&
         expirationDate == other.expirationDate;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, count.hashCode), expirationDate.hashCode));
+    return $jf($jc($jc($jc(0, ownerIds.hashCode), count.hashCode),
+        expirationDate.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('UpdateInventoryProductDto')
+          ..add('ownerIds', ownerIds)
           ..add('count', count)
           ..add('expirationDate', expirationDate))
         .toString();
@@ -57,6 +60,11 @@ class UpdateInventoryProductDtoBuilder
     implements
         Builder<UpdateInventoryProductDto, UpdateInventoryProductDtoBuilder> {
   _$UpdateInventoryProductDto? _$v;
+
+  ListBuilder<String>? _ownerIds;
+  ListBuilder<String> get ownerIds =>
+      _$this._ownerIds ??= new ListBuilder<String>();
+  set ownerIds(ListBuilder<String>? ownerIds) => _$this._ownerIds = ownerIds;
 
   String? _count;
   String? get count => _$this._count;
@@ -74,6 +82,7 @@ class UpdateInventoryProductDtoBuilder
   UpdateInventoryProductDtoBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _ownerIds = $v.ownerIds?.toBuilder();
       _count = $v.count;
       _expirationDate = $v.expirationDate;
       _$v = null;
@@ -94,11 +103,24 @@ class UpdateInventoryProductDtoBuilder
 
   @override
   _$UpdateInventoryProductDto build() {
-    final _$result = _$v ??
-        new _$UpdateInventoryProductDto._(
-            count: BuiltValueNullFieldError.checkNotNull(
-                count, 'UpdateInventoryProductDto', 'count'),
-            expirationDate: expirationDate);
+    _$UpdateInventoryProductDto _$result;
+    try {
+      _$result = _$v ??
+          new _$UpdateInventoryProductDto._(
+              ownerIds: _ownerIds?.build(),
+              count: count,
+              expirationDate: expirationDate);
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'ownerIds';
+        _ownerIds?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'UpdateInventoryProductDto', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

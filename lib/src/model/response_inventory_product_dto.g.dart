@@ -14,9 +14,9 @@ class _$ResponseInventoryProductDto extends ResponseInventoryProductDto {
   @override
   final String id;
   @override
-  final String? productBarcode;
+  final String groupId;
   @override
-  final String? productId;
+  final ResponseInventoryProductDetailDto product;
   @override
   final BuiltList<String> ownerIds;
   @override
@@ -32,14 +32,18 @@ class _$ResponseInventoryProductDto extends ResponseInventoryProductDto {
       {this.createdAt,
       this.updatedAt,
       required this.id,
-      this.productBarcode,
-      this.productId,
+      required this.groupId,
+      required this.product,
       required this.ownerIds,
       required this.count,
       this.expirationDate})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         id, 'ResponseInventoryProductDto', 'id');
+    BuiltValueNullFieldError.checkNotNull(
+        groupId, 'ResponseInventoryProductDto', 'groupId');
+    BuiltValueNullFieldError.checkNotNull(
+        product, 'ResponseInventoryProductDto', 'product');
     BuiltValueNullFieldError.checkNotNull(
         ownerIds, 'ResponseInventoryProductDto', 'ownerIds');
     BuiltValueNullFieldError.checkNotNull(
@@ -62,8 +66,8 @@ class _$ResponseInventoryProductDto extends ResponseInventoryProductDto {
         createdAt == other.createdAt &&
         updatedAt == other.updatedAt &&
         id == other.id &&
-        productBarcode == other.productBarcode &&
-        productId == other.productId &&
+        groupId == other.groupId &&
+        product == other.product &&
         ownerIds == other.ownerIds &&
         count == other.count &&
         expirationDate == other.expirationDate;
@@ -78,8 +82,8 @@ class _$ResponseInventoryProductDto extends ResponseInventoryProductDto {
                     $jc(
                         $jc($jc($jc(0, createdAt.hashCode), updatedAt.hashCode),
                             id.hashCode),
-                        productBarcode.hashCode),
-                    productId.hashCode),
+                        groupId.hashCode),
+                    product.hashCode),
                 ownerIds.hashCode),
             count.hashCode),
         expirationDate.hashCode));
@@ -91,8 +95,8 @@ class _$ResponseInventoryProductDto extends ResponseInventoryProductDto {
           ..add('createdAt', createdAt)
           ..add('updatedAt', updatedAt)
           ..add('id', id)
-          ..add('productBarcode', productBarcode)
-          ..add('productId', productId)
+          ..add('groupId', groupId)
+          ..add('product', product)
           ..add('ownerIds', ownerIds)
           ..add('count', count)
           ..add('expirationDate', expirationDate))
@@ -118,14 +122,15 @@ class ResponseInventoryProductDtoBuilder
   String? get id => _$this._id;
   set id(String? id) => _$this._id = id;
 
-  String? _productBarcode;
-  String? get productBarcode => _$this._productBarcode;
-  set productBarcode(String? productBarcode) =>
-      _$this._productBarcode = productBarcode;
+  String? _groupId;
+  String? get groupId => _$this._groupId;
+  set groupId(String? groupId) => _$this._groupId = groupId;
 
-  String? _productId;
-  String? get productId => _$this._productId;
-  set productId(String? productId) => _$this._productId = productId;
+  ResponseInventoryProductDetailDtoBuilder? _product;
+  ResponseInventoryProductDetailDtoBuilder get product =>
+      _$this._product ??= new ResponseInventoryProductDetailDtoBuilder();
+  set product(ResponseInventoryProductDetailDtoBuilder? product) =>
+      _$this._product = product;
 
   ListBuilder<String>? _ownerIds;
   ListBuilder<String> get ownerIds =>
@@ -151,8 +156,8 @@ class ResponseInventoryProductDtoBuilder
       _createdAt = $v.createdAt;
       _updatedAt = $v.updatedAt;
       _id = $v.id;
-      _productBarcode = $v.productBarcode;
-      _productId = $v.productId;
+      _groupId = $v.groupId;
+      _product = $v.product.toBuilder();
       _ownerIds = $v.ownerIds.toBuilder();
       _count = $v.count;
       _expirationDate = $v.expirationDate;
@@ -182,8 +187,9 @@ class ResponseInventoryProductDtoBuilder
               updatedAt: updatedAt,
               id: BuiltValueNullFieldError.checkNotNull(
                   id, 'ResponseInventoryProductDto', 'id'),
-              productBarcode: productBarcode,
-              productId: productId,
+              groupId: BuiltValueNullFieldError.checkNotNull(
+                  groupId, 'ResponseInventoryProductDto', 'groupId'),
+              product: product.build(),
               ownerIds: ownerIds.build(),
               count: BuiltValueNullFieldError.checkNotNull(
                   count, 'ResponseInventoryProductDto', 'count'),
@@ -191,6 +197,8 @@ class ResponseInventoryProductDtoBuilder
     } catch (_) {
       late String _$failedField;
       try {
+        _$failedField = 'product';
+        product.build();
         _$failedField = 'ownerIds';
         ownerIds.build();
       } catch (e) {

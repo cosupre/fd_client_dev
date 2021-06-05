@@ -13,18 +13,13 @@ class _$ResponseFavoriteProductDto extends ResponseFavoriteProductDto {
   final DateTime? updatedAt;
   @override
   final String productId;
-  @override
-  final String? description;
 
   factory _$ResponseFavoriteProductDto(
           [void Function(ResponseFavoriteProductDtoBuilder)? updates]) =>
       (new ResponseFavoriteProductDtoBuilder()..update(updates)).build();
 
   _$ResponseFavoriteProductDto._(
-      {this.createdAt,
-      this.updatedAt,
-      required this.productId,
-      this.description})
+      {this.createdAt, this.updatedAt, required this.productId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         productId, 'ResponseFavoriteProductDto', 'productId');
@@ -45,16 +40,13 @@ class _$ResponseFavoriteProductDto extends ResponseFavoriteProductDto {
     return other is ResponseFavoriteProductDto &&
         createdAt == other.createdAt &&
         updatedAt == other.updatedAt &&
-        productId == other.productId &&
-        description == other.description;
+        productId == other.productId;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc($jc(0, createdAt.hashCode), updatedAt.hashCode),
-            productId.hashCode),
-        description.hashCode));
+    return $jf($jc($jc($jc(0, createdAt.hashCode), updatedAt.hashCode),
+        productId.hashCode));
   }
 
   @override
@@ -62,8 +54,7 @@ class _$ResponseFavoriteProductDto extends ResponseFavoriteProductDto {
     return (newBuiltValueToStringHelper('ResponseFavoriteProductDto')
           ..add('createdAt', createdAt)
           ..add('updatedAt', updatedAt)
-          ..add('productId', productId)
-          ..add('description', description))
+          ..add('productId', productId))
         .toString();
   }
 }
@@ -85,10 +76,6 @@ class ResponseFavoriteProductDtoBuilder
   String? get productId => _$this._productId;
   set productId(String? productId) => _$this._productId = productId;
 
-  String? _description;
-  String? get description => _$this._description;
-  set description(String? description) => _$this._description = description;
-
   ResponseFavoriteProductDtoBuilder() {
     ResponseFavoriteProductDto._initializeBuilder(this);
   }
@@ -99,7 +86,6 @@ class ResponseFavoriteProductDtoBuilder
       _createdAt = $v.createdAt;
       _updatedAt = $v.updatedAt;
       _productId = $v.productId;
-      _description = $v.description;
       _$v = null;
     }
     return this;
@@ -123,8 +109,7 @@ class ResponseFavoriteProductDtoBuilder
             createdAt: createdAt,
             updatedAt: updatedAt,
             productId: BuiltValueNullFieldError.checkNotNull(
-                productId, 'ResponseFavoriteProductDto', 'productId'),
-            description: description);
+                productId, 'ResponseFavoriteProductDto', 'productId'));
     replace(_$result);
     return _$result;
   }

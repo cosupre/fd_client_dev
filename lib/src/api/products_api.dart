@@ -7,23 +7,22 @@ import 'dart:async';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
-import 'package:fd_dart_client/src/model/response_favorite_product_dto.dart';
-import 'package:fd_dart_client/src/model/create_favorite_product_dto.dart';
-import 'package:built_collection/built_collection.dart';
+import 'package:fd_dart_client/src/model/response_product_dto.dart';
 
-class FavoriteProductsApi {
+class ProductsApi {
 
   final Dio _dio;
 
   final Serializers _serializers;
 
-  const FavoriteProductsApi(this._dio, this._serializers);
+  const ProductsApi(this._dio, this._serializers);
 
-  /// Add a product as favorite
+  /// Add a tag to a product
   ///
   /// 
-  Future<Response<ResponseFavoriteProductDto>> favoriteProductsControllerAddFavorite({ 
-    required CreateFavoriteProductDto createFavoriteProductDto,
+  Future<Response<ResponseProductDto>> productsControllerAddTagProduct({ 
+    required String tagId,
+    required String productId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -31,9 +30,9 @@ class FavoriteProductsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/favorite-products';
+    final _path = r'/products/{productId}/add-tag/{tagId}'.replaceAll('{' r'tagId' '}', tagId.toString()).replaceAll('{' r'productId' '}', productId.toString());
     final _options = Options(
-      method: r'POST',
+      method: r'PATCH',
       headers: <String, dynamic>{
         ...?headers,
       },
@@ -41,7 +40,7 @@ class FavoriteProductsApi {
         'secure': <Map<String, String>>[
           {
             'type': 'http',
-            'name': 'bearer',
+            'name': 'jwt',
           },
         ],
         ...?extra,
@@ -55,27 +54,8 @@ class FavoriteProductsApi {
     final _queryParameters = <String, dynamic>{
     };
 
-    dynamic _bodyData;
-
-    try {
-      const _type = FullType(CreateFavoriteProductDto);
-      _bodyData = _serializers.serialize(createFavoriteProductDto, specifiedType: _type);
-
-    } catch(error) {
-      throw DioError(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-          queryParameters: _queryParameters,
-        ),
-        type: DioErrorType.other,
-        error: error,
-      );
-    }
-
     final _response = await _dio.request<Object>(
       _path,
-      data: _bodyData,
       options: _options,
       queryParameters: _queryParameters,
       cancelToken: cancelToken,
@@ -83,14 +63,14 @@ class FavoriteProductsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ResponseFavoriteProductDto _responseData;
+    ResponseProductDto _responseData;
 
     try {
-      const _responseType = FullType(ResponseFavoriteProductDto);
+      const _responseType = FullType(ResponseProductDto);
       _responseData = _serializers.deserialize(
         _response.data!,
         specifiedType: _responseType,
-      ) as ResponseFavoriteProductDto;
+      ) as ResponseProductDto;
 
     } catch (error) {
       throw DioError(
@@ -101,7 +81,7 @@ class FavoriteProductsApi {
       );
     }
 
-    return Response<ResponseFavoriteProductDto>(
+    return Response<ResponseProductDto>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -113,11 +93,11 @@ class FavoriteProductsApi {
     );
   }
 
-  /// Delete one of your favorite products
+  /// Get a product using its barcode
   ///
   /// 
-  Future<Response<void>> favoriteProductsControllerDeleteFavorite({ 
-    required String productId,
+  Future<Response<ResponseProductDto>> productsControllerGetByBarcode({ 
+    required String barcode,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -125,54 +105,7 @@ class FavoriteProductsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/favorite-products/{productId}'.replaceAll('{' r'productId' '}', productId.toString());
-    final _options = Options(
-      method: r'DELETE',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'name': 'bearer',
-          },
-        ],
-        ...?extra,
-      },
-      contentType: [
-        'application/json',
-      ].first,
-      validateStatus: validateStatus,
-    );
-
-    final _queryParameters = <String, dynamic>{
-    };
-
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      queryParameters: _queryParameters,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    return _response;
-  }
-
-  /// Get the favorite products of the user
-  ///
-  /// 
-  Future<Response<BuiltList<ResponseFavoriteProductDto>>> favoriteProductsControllerGetFavorites({ 
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/favorite-products';
+    final _path = r'/products/barcode/{barcode}'.replaceAll('{' r'barcode' '}', barcode.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -182,7 +115,7 @@ class FavoriteProductsApi {
         'secure': <Map<String, String>>[
           {
             'type': 'http',
-            'name': 'bearer',
+            'name': 'jwt',
           },
         ],
         ...?extra,
@@ -205,14 +138,14 @@ class FavoriteProductsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<ResponseFavoriteProductDto> _responseData;
+    ResponseProductDto _responseData;
 
     try {
-      const _responseType = FullType(BuiltList, [FullType(ResponseFavoriteProductDto)]);
+      const _responseType = FullType(ResponseProductDto);
       _responseData = _serializers.deserialize(
         _response.data!,
         specifiedType: _responseType,
-      ) as BuiltList<ResponseFavoriteProductDto>;
+      ) as ResponseProductDto;
 
     } catch (error) {
       throw DioError(
@@ -223,7 +156,158 @@ class FavoriteProductsApi {
       );
     }
 
-    return Response<BuiltList<ResponseFavoriteProductDto>>(
+    return Response<ResponseProductDto>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Get a product using its id
+  ///
+  /// 
+  Future<Response<ResponseProductDto>> productsControllerGetById({ 
+    required String id,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/products/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'name': 'jwt',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: [
+        'application/json',
+      ].first,
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    ResponseProductDto _responseData;
+
+    try {
+      const _responseType = FullType(ResponseProductDto);
+      _responseData = _serializers.deserialize(
+        _response.data!,
+        specifiedType: _responseType,
+      ) as ResponseProductDto;
+
+    } catch (error) {
+      throw DioError(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioErrorType.other,
+        error: error,
+      );
+    }
+
+    return Response<ResponseProductDto>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Remove the tag of a product
+  ///
+  /// 
+  Future<Response<ResponseProductDto>> productsControllerRemoveTagProduct({ 
+    required String tagId,
+    required String productId,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/products/{productId}/remove-tag/{tagId}'.replaceAll('{' r'tagId' '}', tagId.toString()).replaceAll('{' r'productId' '}', productId.toString());
+    final _options = Options(
+      method: r'PATCH',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'name': 'jwt',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: [
+        'application/json',
+      ].first,
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    ResponseProductDto _responseData;
+
+    try {
+      const _responseType = FullType(ResponseProductDto);
+      _responseData = _serializers.deserialize(
+        _response.data!,
+        specifiedType: _responseType,
+      ) as ResponseProductDto;
+
+    } catch (error) {
+      throw DioError(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioErrorType.other,
+        error: error,
+      );
+    }
+
+    return Response<ResponseProductDto>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

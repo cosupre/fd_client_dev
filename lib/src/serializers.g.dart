@@ -11,20 +11,24 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(CreateGroupDto.serializer)
       ..add(CreateInventoryProductDto.serializer)
       ..add(CreateUserDto.serializer)
+      ..add(CreateUserProductTagDto.serializer)
       ..add(CreateUserTagDto.serializer)
       ..add(ResponseBannedGroupMemberDto.serializer)
       ..add(ResponseFavoriteProductDto.serializer)
       ..add(ResponseGroupDto.serializer)
       ..add(ResponseGroupMemberDto.serializer)
+      ..add(ResponseInventoryProductDetailDto.serializer)
       ..add(ResponseInventoryProductDto.serializer)
       ..add(ResponsePictureDto.serializer)
+      ..add(ResponseProductDto.serializer)
       ..add(ResponseUserDto.serializer)
+      ..add(ResponseUserProductTagDto.serializer)
       ..add(ResponseUserTagDto.serializer)
-      ..add(UpdateFavoriteProductDto.serializer)
       ..add(UpdateGroupDto.serializer)
       ..add(UpdateGroupMemberDto.serializer)
       ..add(UpdateInventoryProductDto.serializer)
       ..add(UpdateUserDto.serializer)
+      ..add(UpdateUserProductTagDto.serializer)
       ..add(UpdateUserTagDto.serializer)
       ..addBuilderFactory(
           const FullType(
@@ -34,6 +38,15 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(
               BuiltList, const [const FullType(ResponseBannedGroupMemberDto)]),
           () => new ListBuilder<ResponseBannedGroupMemberDto>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())

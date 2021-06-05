@@ -12,11 +12,10 @@ Method | HTTP request | Description
 [**favoriteProductsControllerAddFavorite**](FavoriteProductsApi.md#favoriteproductscontrolleraddfavorite) | **post** /favorite-products | Add a product as favorite
 [**favoriteProductsControllerDeleteFavorite**](FavoriteProductsApi.md#favoriteproductscontrollerdeletefavorite) | **delete** /favorite-products/{productId} | Delete one of your favorite products
 [**favoriteProductsControllerGetFavorites**](FavoriteProductsApi.md#favoriteproductscontrollergetfavorites) | **get** /favorite-products | Get the favorite products of the user
-[**favoriteProductsControllerUpdateFavorite**](FavoriteProductsApi.md#favoriteproductscontrollerupdatefavorite) | **patch** /favorite-products/{productId} | Update one of your favorite products
 
 
 # **favoriteProductsControllerAddFavorite**
-> CreateFavoriteProductDto favoriteProductsControllerAddFavorite(createFavoriteProductDto)
+> ResponseFavoriteProductDto favoriteProductsControllerAddFavorite(createFavoriteProductDto)
 
 Add a product as favorite
 
@@ -46,7 +45,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateFavoriteProductDto**](CreateFavoriteProductDto.md)
+[**ResponseFavoriteProductDto**](ResponseFavoriteProductDto.md)
 
 ### Authorization
 
@@ -138,52 +137,6 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **favoriteProductsControllerUpdateFavorite**
-> CreateFavoriteProductDto favoriteProductsControllerUpdateFavorite(productId, updateFavoriteProductDto)
-
-Update one of your favorite products
-
-### Example 
-```dart
-import 'package:fd_dart_client/api.dart';
-// TODO Configure HTTP basic authorization: jwt
-//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
-
-var api_instance = new FavoriteProductsApi();
-var productId = productId_example; // String | 
-var updateFavoriteProductDto = new UpdateFavoriteProductDto(); // UpdateFavoriteProductDto | 
-
-try { 
-    var result = api_instance.favoriteProductsControllerUpdateFavorite(productId, updateFavoriteProductDto);
-    print(result);
-} catch (e) {
-    print('Exception when calling FavoriteProductsApi->favoriteProductsControllerUpdateFavorite: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **productId** | **String**|  | 
- **updateFavoriteProductDto** | [**UpdateFavoriteProductDto**](UpdateFavoriteProductDto.md)|  | 
-
-### Return type
-
-[**CreateFavoriteProductDto**](CreateFavoriteProductDto.md)
-
-### Authorization
-
-[jwt](../README.md#jwt)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

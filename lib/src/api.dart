@@ -4,6 +4,7 @@
 
 import 'package:dio/dio.dart';
 import 'package:built_value/serializer.dart';
+import 'package:fd_dart_client/src/auth/bearer_auth.dart';
 import 'package:fd_dart_client/src/serializers.dart';
 import 'package:fd_dart_client/src/auth/api_key_auth.dart';
 import 'package:fd_dart_client/src/auth/basic_auth.dart';

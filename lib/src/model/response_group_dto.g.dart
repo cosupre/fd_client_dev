@@ -20,6 +20,10 @@ class _$ResponseGroupDto extends ResponseGroupDto {
   @override
   final String pictureUrl;
   @override
+  final bool userCanUpdateAllInventoryProducts;
+  @override
+  final bool userCanUpdateAllShoppingItems;
+  @override
   final BuiltList<ResponseGroupMemberDto> members;
   @override
   final BuiltList<ResponseBannedGroupMemberDto> bannedMembers;
@@ -35,6 +39,8 @@ class _$ResponseGroupDto extends ResponseGroupDto {
       required this.name,
       required this.sharingCode,
       required this.pictureUrl,
+      required this.userCanUpdateAllInventoryProducts,
+      required this.userCanUpdateAllShoppingItems,
       required this.members,
       required this.bannedMembers})
       : super._() {
@@ -44,6 +50,10 @@ class _$ResponseGroupDto extends ResponseGroupDto {
         sharingCode, 'ResponseGroupDto', 'sharingCode');
     BuiltValueNullFieldError.checkNotNull(
         pictureUrl, 'ResponseGroupDto', 'pictureUrl');
+    BuiltValueNullFieldError.checkNotNull(userCanUpdateAllInventoryProducts,
+        'ResponseGroupDto', 'userCanUpdateAllInventoryProducts');
+    BuiltValueNullFieldError.checkNotNull(userCanUpdateAllShoppingItems,
+        'ResponseGroupDto', 'userCanUpdateAllShoppingItems');
     BuiltValueNullFieldError.checkNotNull(
         members, 'ResponseGroupDto', 'members');
     BuiltValueNullFieldError.checkNotNull(
@@ -68,6 +78,9 @@ class _$ResponseGroupDto extends ResponseGroupDto {
         name == other.name &&
         sharingCode == other.sharingCode &&
         pictureUrl == other.pictureUrl &&
+        userCanUpdateAllInventoryProducts ==
+            other.userCanUpdateAllInventoryProducts &&
+        userCanUpdateAllShoppingItems == other.userCanUpdateAllShoppingItems &&
         members == other.members &&
         bannedMembers == other.bannedMembers;
   }
@@ -79,11 +92,17 @@ class _$ResponseGroupDto extends ResponseGroupDto {
             $jc(
                 $jc(
                     $jc(
-                        $jc($jc($jc(0, createdAt.hashCode), updatedAt.hashCode),
-                            id.hashCode),
-                        name.hashCode),
-                    sharingCode.hashCode),
-                pictureUrl.hashCode),
+                        $jc(
+                            $jc(
+                                $jc(
+                                    $jc($jc(0, createdAt.hashCode),
+                                        updatedAt.hashCode),
+                                    id.hashCode),
+                                name.hashCode),
+                            sharingCode.hashCode),
+                        pictureUrl.hashCode),
+                    userCanUpdateAllInventoryProducts.hashCode),
+                userCanUpdateAllShoppingItems.hashCode),
             members.hashCode),
         bannedMembers.hashCode));
   }
@@ -97,6 +116,9 @@ class _$ResponseGroupDto extends ResponseGroupDto {
           ..add('name', name)
           ..add('sharingCode', sharingCode)
           ..add('pictureUrl', pictureUrl)
+          ..add('userCanUpdateAllInventoryProducts',
+              userCanUpdateAllInventoryProducts)
+          ..add('userCanUpdateAllShoppingItems', userCanUpdateAllShoppingItems)
           ..add('members', members)
           ..add('bannedMembers', bannedMembers))
         .toString();
@@ -131,6 +153,20 @@ class ResponseGroupDtoBuilder
   String? get pictureUrl => _$this._pictureUrl;
   set pictureUrl(String? pictureUrl) => _$this._pictureUrl = pictureUrl;
 
+  bool? _userCanUpdateAllInventoryProducts;
+  bool? get userCanUpdateAllInventoryProducts =>
+      _$this._userCanUpdateAllInventoryProducts;
+  set userCanUpdateAllInventoryProducts(
+          bool? userCanUpdateAllInventoryProducts) =>
+      _$this._userCanUpdateAllInventoryProducts =
+          userCanUpdateAllInventoryProducts;
+
+  bool? _userCanUpdateAllShoppingItems;
+  bool? get userCanUpdateAllShoppingItems =>
+      _$this._userCanUpdateAllShoppingItems;
+  set userCanUpdateAllShoppingItems(bool? userCanUpdateAllShoppingItems) =>
+      _$this._userCanUpdateAllShoppingItems = userCanUpdateAllShoppingItems;
+
   ListBuilder<ResponseGroupMemberDto>? _members;
   ListBuilder<ResponseGroupMemberDto> get members =>
       _$this._members ??= new ListBuilder<ResponseGroupMemberDto>();
@@ -156,6 +192,8 @@ class ResponseGroupDtoBuilder
       _name = $v.name;
       _sharingCode = $v.sharingCode;
       _pictureUrl = $v.pictureUrl;
+      _userCanUpdateAllInventoryProducts = $v.userCanUpdateAllInventoryProducts;
+      _userCanUpdateAllShoppingItems = $v.userCanUpdateAllShoppingItems;
       _members = $v.members.toBuilder();
       _bannedMembers = $v.bannedMembers.toBuilder();
       _$v = null;
@@ -190,6 +228,16 @@ class ResponseGroupDtoBuilder
                   sharingCode, 'ResponseGroupDto', 'sharingCode'),
               pictureUrl: BuiltValueNullFieldError.checkNotNull(
                   pictureUrl, 'ResponseGroupDto', 'pictureUrl'),
+              userCanUpdateAllInventoryProducts:
+                  BuiltValueNullFieldError.checkNotNull(
+                      userCanUpdateAllInventoryProducts,
+                      'ResponseGroupDto',
+                      'userCanUpdateAllInventoryProducts'),
+              userCanUpdateAllShoppingItems:
+                  BuiltValueNullFieldError.checkNotNull(
+                      userCanUpdateAllShoppingItems,
+                      'ResponseGroupDto',
+                      'userCanUpdateAllShoppingItems'),
               members: members.build(),
               bannedMembers: bannedMembers.build());
     } catch (_) {

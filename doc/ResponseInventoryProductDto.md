@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **product** | [**ResponseInventoryProductDetailDto**](ResponseInventoryProductDetailDto.md) | The product | 
 **ownerIds** | **BuiltList<String>** | The id of the users owning this product | 
 **count** | **String** | The number of products | 
-**expirationDate** | [**DateTime**](DateTime.md) | The number of products | [optional] 
+**expirationDate** | [**DateTime**](DateTime.md) | The expiration date of the product | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

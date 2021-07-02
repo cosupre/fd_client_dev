@@ -11,12 +11,25 @@ class _$CreateGroupDto extends CreateGroupDto {
   final String name;
   @override
   final String? pictureUrl;
+  @override
+  final bool userCanUpdateAllInventoryProducts;
+  @override
+  final bool userCanUpdateAllShoppingItems;
 
   factory _$CreateGroupDto([void Function(CreateGroupDtoBuilder)? updates]) =>
       (new CreateGroupDtoBuilder()..update(updates)).build();
 
-  _$CreateGroupDto._({required this.name, this.pictureUrl}) : super._() {
+  _$CreateGroupDto._(
+      {required this.name,
+      this.pictureUrl,
+      required this.userCanUpdateAllInventoryProducts,
+      required this.userCanUpdateAllShoppingItems})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(name, 'CreateGroupDto', 'name');
+    BuiltValueNullFieldError.checkNotNull(userCanUpdateAllInventoryProducts,
+        'CreateGroupDto', 'userCanUpdateAllInventoryProducts');
+    BuiltValueNullFieldError.checkNotNull(userCanUpdateAllShoppingItems,
+        'CreateGroupDto', 'userCanUpdateAllShoppingItems');
   }
 
   @override
@@ -32,19 +45,28 @@ class _$CreateGroupDto extends CreateGroupDto {
     if (identical(other, this)) return true;
     return other is CreateGroupDto &&
         name == other.name &&
-        pictureUrl == other.pictureUrl;
+        pictureUrl == other.pictureUrl &&
+        userCanUpdateAllInventoryProducts ==
+            other.userCanUpdateAllInventoryProducts &&
+        userCanUpdateAllShoppingItems == other.userCanUpdateAllShoppingItems;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, name.hashCode), pictureUrl.hashCode));
+    return $jf($jc(
+        $jc($jc($jc(0, name.hashCode), pictureUrl.hashCode),
+            userCanUpdateAllInventoryProducts.hashCode),
+        userCanUpdateAllShoppingItems.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('CreateGroupDto')
           ..add('name', name)
-          ..add('pictureUrl', pictureUrl))
+          ..add('pictureUrl', pictureUrl)
+          ..add('userCanUpdateAllInventoryProducts',
+              userCanUpdateAllInventoryProducts)
+          ..add('userCanUpdateAllShoppingItems', userCanUpdateAllShoppingItems))
         .toString();
   }
 }
@@ -61,6 +83,20 @@ class CreateGroupDtoBuilder
   String? get pictureUrl => _$this._pictureUrl;
   set pictureUrl(String? pictureUrl) => _$this._pictureUrl = pictureUrl;
 
+  bool? _userCanUpdateAllInventoryProducts;
+  bool? get userCanUpdateAllInventoryProducts =>
+      _$this._userCanUpdateAllInventoryProducts;
+  set userCanUpdateAllInventoryProducts(
+          bool? userCanUpdateAllInventoryProducts) =>
+      _$this._userCanUpdateAllInventoryProducts =
+          userCanUpdateAllInventoryProducts;
+
+  bool? _userCanUpdateAllShoppingItems;
+  bool? get userCanUpdateAllShoppingItems =>
+      _$this._userCanUpdateAllShoppingItems;
+  set userCanUpdateAllShoppingItems(bool? userCanUpdateAllShoppingItems) =>
+      _$this._userCanUpdateAllShoppingItems = userCanUpdateAllShoppingItems;
+
   CreateGroupDtoBuilder() {
     CreateGroupDto._initializeBuilder(this);
   }
@@ -70,6 +106,8 @@ class CreateGroupDtoBuilder
     if ($v != null) {
       _name = $v.name;
       _pictureUrl = $v.pictureUrl;
+      _userCanUpdateAllInventoryProducts = $v.userCanUpdateAllInventoryProducts;
+      _userCanUpdateAllShoppingItems = $v.userCanUpdateAllShoppingItems;
       _$v = null;
     }
     return this;
@@ -92,7 +130,17 @@ class CreateGroupDtoBuilder
         new _$CreateGroupDto._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, 'CreateGroupDto', 'name'),
-            pictureUrl: pictureUrl);
+            pictureUrl: pictureUrl,
+            userCanUpdateAllInventoryProducts:
+                BuiltValueNullFieldError.checkNotNull(
+                    userCanUpdateAllInventoryProducts,
+                    'CreateGroupDto',
+                    'userCanUpdateAllInventoryProducts'),
+            userCanUpdateAllShoppingItems:
+                BuiltValueNullFieldError.checkNotNull(
+                    userCanUpdateAllShoppingItems,
+                    'CreateGroupDto',
+                    'userCanUpdateAllShoppingItems'));
     replace(_$result);
     return _$result;
   }

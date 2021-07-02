@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **email** | **String** | The email address of the user | 
 **emailVerified** | **bool** | The email has been verified | [optional] 
 **isSocialAuth** | **bool** | The authorization has been done by social auth | 
+**favoriteProductIds** | **BuiltList<String>** | The id of the user favorite products | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

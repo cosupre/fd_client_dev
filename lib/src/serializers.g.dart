@@ -7,14 +7,19 @@ part of 'serializers.dart';
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
-      ..add(CreateFavoriteProductDto.serializer)
+      ..add(CreateCustomInventoryProductDto.serializer)
+      ..add(CreateCustomProductDto.serializer)
+      ..add(CreateCustomShoppingItemDto.serializer)
       ..add(CreateGroupDto.serializer)
       ..add(CreateInventoryProductDto.serializer)
+      ..add(CreateResponseScanModuleDto.serializer)
+      ..add(CreateScanModuleDto.serializer)
+      ..add(CreateShoppingItemDto.serializer)
       ..add(CreateUserDto.serializer)
       ..add(CreateUserProductTagDto.serializer)
       ..add(CreateUserTagDto.serializer)
       ..add(ResponseBannedGroupMemberDto.serializer)
-      ..add(ResponseFavoriteProductDto.serializer)
+      ..add(ResponseCustomProductDto.serializer)
       ..add(ResponseGroupDto.serializer)
       ..add(ResponseGroupMemberDto.serializer)
       ..add(ResponseInventoryProductDetailDto.serializer)
@@ -22,12 +27,17 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(ResponsePaginationInventoryProductDto.serializer)
       ..add(ResponsePictureDto.serializer)
       ..add(ResponseProductDto.serializer)
+      ..add(ResponseScanModuleDto.serializer)
+      ..add(ResponseShoppingItemDto.serializer)
       ..add(ResponseUserDto.serializer)
       ..add(ResponseUserProductTagDto.serializer)
       ..add(ResponseUserTagDto.serializer)
+      ..add(UpdateCustomProductDto.serializer)
       ..add(UpdateGroupDto.serializer)
       ..add(UpdateGroupMemberDto.serializer)
       ..add(UpdateInventoryProductDto.serializer)
+      ..add(UpdateScanModuleDto.serializer)
+      ..add(UpdateShoppingItemDto.serializer)
       ..add(UpdateUserDto.serializer)
       ..add(UpdateUserProductTagDto.serializer)
       ..add(UpdateUserTagDto.serializer)
@@ -43,6 +53,24 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(
               BuiltList, const [const FullType(ResponseInventoryProductDto)]),
           () => new ListBuilder<ResponseInventoryProductDto>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())

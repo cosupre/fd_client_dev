@@ -2,6 +2,7 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
+import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -49,6 +50,10 @@ abstract class ResponseUserDto implements Built<ResponseUserDto, ResponseUserDto
     /// The authorization has been done by social auth
     @BuiltValueField(wireName: r'isSocialAuth')
     bool get isSocialAuth;
+
+    /// The id of the user favorite products
+    @BuiltValueField(wireName: r'favoriteProductIds')
+    BuiltList<String> get favoriteProductIds;
 
     ResponseUserDto._();
 
@@ -121,6 +126,10 @@ class _$ResponseUserDtoSerializer implements StructuredSerializer<ResponseUserDt
             ..add(r'isSocialAuth')
             ..add(serializers.serialize(object.isSocialAuth,
                 specifiedType: const FullType(bool)));
+        result
+            ..add(r'favoriteProductIds')
+            ..add(serializers.serialize(object.favoriteProductIds,
+                specifiedType: const FullType(BuiltList, [FullType(String)])));
         return result;
     }
 
@@ -174,6 +183,10 @@ class _$ResponseUserDtoSerializer implements StructuredSerializer<ResponseUserDt
                 case r'isSocialAuth':
                     result.isSocialAuth = serializers.deserialize(value,
                         specifiedType: const FullType(bool)) as bool;
+                    break;
+                case r'favoriteProductIds':
+                    result.favoriteProductIds.replace(serializers.deserialize(value,
+                        specifiedType: const FullType(BuiltList, [FullType(String)])) as BuiltList<String>);
                     break;
             }
         }

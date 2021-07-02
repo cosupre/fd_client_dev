@@ -491,7 +491,7 @@ class GroupsApi {
     );
   }
 
-  /// join a group with its sharing code
+  /// Join a group with its sharing code
   ///
   /// 
   Future<Response<ResponseGroupDto>> groupsControllerJoin({ 

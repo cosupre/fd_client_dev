@@ -19,7 +19,7 @@ abstract class UpdateInventoryProductDto implements Built<UpdateInventoryProduct
     @BuiltValueField(wireName: r'count')
     String? get count;
 
-    /// The number of products
+    /// The expiration date of the product
     @BuiltValueField(wireName: r'expirationDate')
     DateTime? get expirationDate;
 

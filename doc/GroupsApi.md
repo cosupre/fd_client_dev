@@ -15,7 +15,7 @@ Method | HTTP request | Description
 [**groupsControllerCreate**](GroupsApi.md#groupscontrollercreate) | **post** /groups | Create a group and register the logged in user as owner
 [**groupsControllerFindAll**](GroupsApi.md#groupscontrollerfindall) | **get** /groups | Get the groups of the user
 [**groupsControllerFindOne**](GroupsApi.md#groupscontrollerfindone) | **get** /groups/{id} | Get the group specified by id
-[**groupsControllerJoin**](GroupsApi.md#groupscontrollerjoin) | **get** /groups/join/{sharing_code} | join a group with its sharing code
+[**groupsControllerJoin**](GroupsApi.md#groupscontrollerjoin) | **get** /groups/join/{sharing_code} | Join a group with its sharing code
 [**groupsControllerRemove**](GroupsApi.md#groupscontrollerremove) | **delete** /groups/{id} | Delete the group specified by id
 [**groupsControllerRemoveGroupMember**](GroupsApi.md#groupscontrollerremovegroupmember) | **delete** /groups/{groupId}/members/{userId} | Remove a member from a group. Owner can&#39;t be removed and only superior level user can remove another user.
 [**groupsControllerUnbanGroupOwner**](GroupsApi.md#groupscontrollerunbangroupowner) | **patch** /groups/{groupId}/unban/{userId} | Unban a member. Only owner and admin can unban someone.
@@ -290,7 +290,7 @@ Name | Type | Description  | Notes
 # **groupsControllerJoin**
 > ResponseGroupDto groupsControllerJoin(sharingCode)
 
-join a group with its sharing code
+Join a group with its sharing code
 
 ### Example 
 ```dart

@@ -18,6 +18,14 @@ abstract class CreateGroupDto implements Built<CreateGroupDto, CreateGroupDtoBui
     @BuiltValueField(wireName: r'pictureUrl')
     String? get pictureUrl;
 
+    /// If true all users can update and delete any products from the inventory. If false, only the owner of the group or the product and admins can update/delete the product
+    @BuiltValueField(wireName: r'userCanUpdateAllInventoryProducts')
+    bool get userCanUpdateAllInventoryProducts;
+
+    /// If true all users can update and delete any item from the shopping list. If false, only the owner of the group or the item and admins can update/delete the shopping item
+    @BuiltValueField(wireName: r'userCanUpdateAllShoppingItems')
+    bool get userCanUpdateAllShoppingItems;
+
     CreateGroupDto._();
 
     static void _initializeBuilder(CreateGroupDtoBuilder b) => b;
@@ -49,6 +57,14 @@ class _$CreateGroupDtoSerializer implements StructuredSerializer<CreateGroupDto>
                 ..add(serializers.serialize(object.pictureUrl,
                     specifiedType: const FullType(String)));
         }
+        result
+            ..add(r'userCanUpdateAllInventoryProducts')
+            ..add(serializers.serialize(object.userCanUpdateAllInventoryProducts,
+                specifiedType: const FullType(bool)));
+        result
+            ..add(r'userCanUpdateAllShoppingItems')
+            ..add(serializers.serialize(object.userCanUpdateAllShoppingItems,
+                specifiedType: const FullType(bool)));
         return result;
     }
 
@@ -70,6 +86,14 @@ class _$CreateGroupDtoSerializer implements StructuredSerializer<CreateGroupDto>
                 case r'pictureUrl':
                     result.pictureUrl = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
+                    break;
+                case r'userCanUpdateAllInventoryProducts':
+                    result.userCanUpdateAllInventoryProducts = serializers.deserialize(value,
+                        specifiedType: const FullType(bool)) as bool;
+                    break;
+                case r'userCanUpdateAllShoppingItems':
+                    result.userCanUpdateAllShoppingItems = serializers.deserialize(value,
+                        specifiedType: const FullType(bool)) as bool;
                     break;
             }
         }

@@ -27,7 +27,7 @@ abstract class CreateInventoryProductDto implements Built<CreateInventoryProduct
     @BuiltValueField(wireName: r'count')
     String get count;
 
-    /// The number of products
+    /// The expiration date of the product
     @BuiltValueField(wireName: r'expirationDate')
     DateTime? get expirationDate;
 

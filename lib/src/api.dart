@@ -4,17 +4,18 @@
 
 import 'package:dio/dio.dart';
 import 'package:built_value/serializer.dart';
-import 'package:fd_dart_client/src/auth/bearer_auth.dart';
 import 'package:fd_dart_client/src/serializers.dart';
 import 'package:fd_dart_client/src/auth/api_key_auth.dart';
 import 'package:fd_dart_client/src/auth/basic_auth.dart';
 import 'package:fd_dart_client/src/auth/oauth.dart';
-import 'package:fd_dart_client/src/api/favorite_products_api.dart';
+import 'package:fd_dart_client/src/api/custom_products_api.dart';
 import 'package:fd_dart_client/src/api/groups_api.dart';
 import 'package:fd_dart_client/src/api/inventories_api.dart';
 import 'package:fd_dart_client/src/api/pictures_api.dart';
 import 'package:fd_dart_client/src/api/product_tags_api.dart';
 import 'package:fd_dart_client/src/api/products_api.dart';
+import 'package:fd_dart_client/src/api/scan_module_api.dart';
+import 'package:fd_dart_client/src/api/shopping_list_api.dart';
 import 'package:fd_dart_client/src/api/users_api.dart';
 
 class FdDartClient {
@@ -40,16 +41,9 @@ class FdDartClient {
         OAuthInterceptor(),
         BasicAuthInterceptor(),
         ApiKeyAuthInterceptor(),
-        HttpBearerInterceptor(),
       ]);
     } else {
       this.dio.interceptors.addAll(interceptors);
-    }
-  }
-
-  void setHttpBearerToken(String name, String token) {
-    if (this.dio.interceptors.any((i) => i is HttpBearerInterceptor)) {
-    (this.dio.interceptors.firstWhere((i) => i is HttpBearerInterceptor) as HttpBearerInterceptor).tokens[name] = token;
     }
   }
 
@@ -71,10 +65,10 @@ class FdDartClient {
     }
   }
 
-  /// Get FavoriteProductsApi instance, base route and serializer can be overridden by a given but be careful,
+  /// Get CustomProductsApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
-  FavoriteProductsApi getFavoriteProductsApi() {
-    return FavoriteProductsApi(dio, serializers);
+  CustomProductsApi getCustomProductsApi() {
+    return CustomProductsApi(dio, serializers);
   }
 
   /// Get GroupsApi instance, base route and serializer can be overridden by a given but be careful,
@@ -105,6 +99,18 @@ class FdDartClient {
   /// by doing that all interceptors will not be executed
   ProductsApi getProductsApi() {
     return ProductsApi(dio, serializers);
+  }
+
+  /// Get ScanModuleApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  ScanModuleApi getScanModuleApi() {
+    return ScanModuleApi(dio, serializers);
+  }
+
+  /// Get ShoppingListApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  ShoppingListApi getShoppingListApi() {
+    return ShoppingListApi(dio, serializers);
   }
 
   /// Get UsersApi instance, base route and serializer can be overridden by a given but be careful,

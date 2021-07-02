@@ -10,6 +10,7 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**inventoriesControllerCreate**](InventoriesApi.md#inventoriescontrollercreate) | **post** /groups/{groupId}/inventory | Add a product to the group&#39;s inventory
+[**inventoriesControllerCreateCustom**](InventoriesApi.md#inventoriescontrollercreatecustom) | **post** /groups/{groupId}/inventory/custom-product | Add a custom product to the group&#39;s inventory
 [**inventoriesControllerDelete**](InventoriesApi.md#inventoriescontrollerdelete) | **delete** /groups/{groupId}/inventory/{id} | Delete a product from the inventory
 [**inventoriesControllerFindAll**](InventoriesApi.md#inventoriescontrollerfindall) | **get** /groups/{groupId}/inventory | Get the products from the group&#39;s inventory
 [**inventoriesControllerUpdate**](InventoriesApi.md#inventoriescontrollerupdate) | **patch** /groups/{groupId}/inventory/{id} | Update a product of the inventory
@@ -45,6 +46,52 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **String**|  | 
  **createInventoryProductDto** | [**CreateInventoryProductDto**](CreateInventoryProductDto.md)|  | 
+
+### Return type
+
+[**ResponseInventoryProductDto**](ResponseInventoryProductDto.md)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **inventoriesControllerCreateCustom**
+> ResponseInventoryProductDto inventoriesControllerCreateCustom(groupId, createCustomInventoryProductDto)
+
+Add a custom product to the group's inventory
+
+### Example 
+```dart
+import 'package:fd_dart_client/api.dart';
+// TODO Configure HTTP basic authorization: jwt
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
+
+var api_instance = new InventoriesApi();
+var groupId = groupId_example; // String | 
+var createCustomInventoryProductDto = new CreateCustomInventoryProductDto(); // CreateCustomInventoryProductDto | 
+
+try { 
+    var result = api_instance.inventoriesControllerCreateCustom(groupId, createCustomInventoryProductDto);
+    print(result);
+} catch (e) {
+    print('Exception when calling InventoriesApi->inventoriesControllerCreateCustom: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupId** | **String**|  | 
+ **createCustomInventoryProductDto** | [**CreateCustomInventoryProductDto**](CreateCustomInventoryProductDto.md)|  | 
 
 ### Return type
 

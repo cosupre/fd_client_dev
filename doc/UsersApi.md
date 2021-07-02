@@ -9,8 +9,10 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**usersControllerAddFavorite**](UsersApi.md#userscontrolleraddfavorite) | **post** /users/favorite-products/{productId} | Add a product as favorite
 [**usersControllerAddTag**](UsersApi.md#userscontrolleraddtag) | **post** /users/tags | Add a tag to the user
 [**usersControllerCreate**](UsersApi.md#userscontrollercreate) | **post** /users | Create a user on database and patch the auth0 user
+[**usersControllerDeleteFavorite**](UsersApi.md#userscontrollerdeletefavorite) | **delete** /users/favorite-products/{productId} | Delete one of your favorite products
 [**usersControllerGet**](UsersApi.md#userscontrollerget) | **get** /users/info | Get user information
 [**usersControllerGetTag**](UsersApi.md#userscontrollergettag) | **get** /users/tags/{id} | Find a user tag
 [**usersControllerGetTags**](UsersApi.md#userscontrollergettags) | **get** /users/{userId}/tags/ | Return all the tags of a user
@@ -19,6 +21,49 @@ Method | HTTP request | Description
 [**usersControllerRemove**](UsersApi.md#userscontrollerremove) | **delete** /users/{id} | Delete user from database and auth0
 [**usersControllerRemoveTag**](UsersApi.md#userscontrollerremovetag) | **delete** /users/tags/{id} | Delete a tag of the user
 
+
+# **usersControllerAddFavorite**
+> usersControllerAddFavorite(productId)
+
+Add a product as favorite
+
+### Example 
+```dart
+import 'package:fd_dart_client/api.dart';
+// TODO Configure HTTP basic authorization: jwt
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
+
+var api_instance = new UsersApi();
+var productId = productId_example; // String | 
+
+try { 
+    api_instance.usersControllerAddFavorite(productId);
+} catch (e) {
+    print('Exception when calling UsersApi->usersControllerAddFavorite: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **productId** | **String**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **usersControllerAddTag**
 > ResponseUserTagDto usersControllerAddTag(createUserTagDto)
@@ -105,6 +150,49 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **usersControllerDeleteFavorite**
+> usersControllerDeleteFavorite(productId)
+
+Delete one of your favorite products
+
+### Example 
+```dart
+import 'package:fd_dart_client/api.dart';
+// TODO Configure HTTP basic authorization: jwt
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
+
+var api_instance = new UsersApi();
+var productId = productId_example; // String | 
+
+try { 
+    api_instance.usersControllerDeleteFavorite(productId);
+} catch (e) {
+    print('Exception when calling UsersApi->usersControllerDeleteFavorite: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **productId** | **String**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

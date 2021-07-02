@@ -11,11 +11,20 @@ class _$UpdateGroupDto extends UpdateGroupDto {
   final String? name;
   @override
   final String? pictureUrl;
+  @override
+  final bool? userCanUpdateAllInventoryProducts;
+  @override
+  final bool? userCanUpdateAllShoppingItems;
 
   factory _$UpdateGroupDto([void Function(UpdateGroupDtoBuilder)? updates]) =>
       (new UpdateGroupDtoBuilder()..update(updates)).build();
 
-  _$UpdateGroupDto._({this.name, this.pictureUrl}) : super._();
+  _$UpdateGroupDto._(
+      {this.name,
+      this.pictureUrl,
+      this.userCanUpdateAllInventoryProducts,
+      this.userCanUpdateAllShoppingItems})
+      : super._();
 
   @override
   UpdateGroupDto rebuild(void Function(UpdateGroupDtoBuilder) updates) =>
@@ -30,19 +39,28 @@ class _$UpdateGroupDto extends UpdateGroupDto {
     if (identical(other, this)) return true;
     return other is UpdateGroupDto &&
         name == other.name &&
-        pictureUrl == other.pictureUrl;
+        pictureUrl == other.pictureUrl &&
+        userCanUpdateAllInventoryProducts ==
+            other.userCanUpdateAllInventoryProducts &&
+        userCanUpdateAllShoppingItems == other.userCanUpdateAllShoppingItems;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, name.hashCode), pictureUrl.hashCode));
+    return $jf($jc(
+        $jc($jc($jc(0, name.hashCode), pictureUrl.hashCode),
+            userCanUpdateAllInventoryProducts.hashCode),
+        userCanUpdateAllShoppingItems.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('UpdateGroupDto')
           ..add('name', name)
-          ..add('pictureUrl', pictureUrl))
+          ..add('pictureUrl', pictureUrl)
+          ..add('userCanUpdateAllInventoryProducts',
+              userCanUpdateAllInventoryProducts)
+          ..add('userCanUpdateAllShoppingItems', userCanUpdateAllShoppingItems))
         .toString();
   }
 }
@@ -59,6 +77,20 @@ class UpdateGroupDtoBuilder
   String? get pictureUrl => _$this._pictureUrl;
   set pictureUrl(String? pictureUrl) => _$this._pictureUrl = pictureUrl;
 
+  bool? _userCanUpdateAllInventoryProducts;
+  bool? get userCanUpdateAllInventoryProducts =>
+      _$this._userCanUpdateAllInventoryProducts;
+  set userCanUpdateAllInventoryProducts(
+          bool? userCanUpdateAllInventoryProducts) =>
+      _$this._userCanUpdateAllInventoryProducts =
+          userCanUpdateAllInventoryProducts;
+
+  bool? _userCanUpdateAllShoppingItems;
+  bool? get userCanUpdateAllShoppingItems =>
+      _$this._userCanUpdateAllShoppingItems;
+  set userCanUpdateAllShoppingItems(bool? userCanUpdateAllShoppingItems) =>
+      _$this._userCanUpdateAllShoppingItems = userCanUpdateAllShoppingItems;
+
   UpdateGroupDtoBuilder() {
     UpdateGroupDto._initializeBuilder(this);
   }
@@ -68,6 +100,8 @@ class UpdateGroupDtoBuilder
     if ($v != null) {
       _name = $v.name;
       _pictureUrl = $v.pictureUrl;
+      _userCanUpdateAllInventoryProducts = $v.userCanUpdateAllInventoryProducts;
+      _userCanUpdateAllShoppingItems = $v.userCanUpdateAllShoppingItems;
       _$v = null;
     }
     return this;
@@ -86,8 +120,13 @@ class UpdateGroupDtoBuilder
 
   @override
   _$UpdateGroupDto build() {
-    final _$result =
-        _$v ?? new _$UpdateGroupDto._(name: name, pictureUrl: pictureUrl);
+    final _$result = _$v ??
+        new _$UpdateGroupDto._(
+            name: name,
+            pictureUrl: pictureUrl,
+            userCanUpdateAllInventoryProducts:
+                userCanUpdateAllInventoryProducts,
+            userCanUpdateAllShoppingItems: userCanUpdateAllShoppingItems);
     replace(_$result);
     return _$result;
   }

@@ -7,6 +7,7 @@ import 'dart:async';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
+import 'package:fd_dart_client/src/model/create_custom_inventory_product_dto.dart';
 import 'package:fd_dart_client/src/model/response_inventory_product_dto.dart';
 import 'package:fd_dart_client/src/model/create_inventory_product_dto.dart';
 import 'package:fd_dart_client/src/model/response_pagination_inventory_product_dto.dart';
@@ -62,6 +63,101 @@ class InventoriesApi {
     try {
       const _type = FullType(CreateInventoryProductDto);
       _bodyData = _serializers.serialize(createInventoryProductDto, specifiedType: _type);
+
+    } catch(error) {
+      throw DioError(
+         requestOptions: _options.compose(
+          _dio.options,
+          _path,
+          queryParameters: _queryParameters,
+        ),
+        type: DioErrorType.other,
+        error: error,
+      );
+    }
+
+    final _response = await _dio.request<Object>(
+      _path,
+      data: _bodyData,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    ResponseInventoryProductDto _responseData;
+
+    try {
+      const _responseType = FullType(ResponseInventoryProductDto);
+      _responseData = _serializers.deserialize(
+        _response.data!,
+        specifiedType: _responseType,
+      ) as ResponseInventoryProductDto;
+
+    } catch (error) {
+      throw DioError(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioErrorType.other,
+        error: error,
+      );
+    }
+
+    return Response<ResponseInventoryProductDto>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Add a custom product to the group's inventory
+  ///
+  /// 
+  Future<Response<ResponseInventoryProductDto>> inventoriesControllerCreateCustom({ 
+    required String groupId,
+    required CreateCustomInventoryProductDto createCustomInventoryProductDto,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/groups/{groupId}/inventory/custom-product'.replaceAll('{' r'groupId' '}', groupId.toString());
+    final _options = Options(
+      method: r'POST',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'name': 'bearer',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: [
+        'application/json',
+      ].first,
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+    };
+
+    dynamic _bodyData;
+
+    try {
+      const _type = FullType(CreateCustomInventoryProductDto);
+      _bodyData = _serializers.serialize(createCustomInventoryProductDto, specifiedType: _type);
 
     } catch(error) {
       throw DioError(

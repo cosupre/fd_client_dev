@@ -27,6 +27,8 @@ class _$ResponseUserDto extends ResponseUserDto {
   final bool? emailVerified;
   @override
   final bool isSocialAuth;
+  @override
+  final BuiltList<String> favoriteProductIds;
 
   factory _$ResponseUserDto([void Function(ResponseUserDtoBuilder)? updates]) =>
       (new ResponseUserDtoBuilder()..update(updates)).build();
@@ -41,7 +43,8 @@ class _$ResponseUserDto extends ResponseUserDto {
       this.pictureUrl,
       required this.email,
       this.emailVerified,
-      required this.isSocialAuth})
+      required this.isSocialAuth,
+      required this.favoriteProductIds})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(id, 'ResponseUserDto', 'id');
     BuiltValueNullFieldError.checkNotNull(
@@ -51,6 +54,8 @@ class _$ResponseUserDto extends ResponseUserDto {
     BuiltValueNullFieldError.checkNotNull(email, 'ResponseUserDto', 'email');
     BuiltValueNullFieldError.checkNotNull(
         isSocialAuth, 'ResponseUserDto', 'isSocialAuth');
+    BuiltValueNullFieldError.checkNotNull(
+        favoriteProductIds, 'ResponseUserDto', 'favoriteProductIds');
   }
 
   @override
@@ -74,7 +79,8 @@ class _$ResponseUserDto extends ResponseUserDto {
         pictureUrl == other.pictureUrl &&
         email == other.email &&
         emailVerified == other.emailVerified &&
-        isSocialAuth == other.isSocialAuth;
+        isSocialAuth == other.isSocialAuth &&
+        favoriteProductIds == other.favoriteProductIds;
   }
 
   @override
@@ -87,16 +93,18 @@ class _$ResponseUserDto extends ResponseUserDto {
                         $jc(
                             $jc(
                                 $jc(
-                                    $jc($jc(0, createdAt.hashCode),
-                                        updatedAt.hashCode),
-                                    id.hashCode),
-                                firstname.hashCode),
-                            lastname.hashCode),
-                        username.hashCode),
-                    pictureUrl.hashCode),
-                email.hashCode),
-            emailVerified.hashCode),
-        isSocialAuth.hashCode));
+                                    $jc(
+                                        $jc($jc(0, createdAt.hashCode),
+                                            updatedAt.hashCode),
+                                        id.hashCode),
+                                    firstname.hashCode),
+                                lastname.hashCode),
+                            username.hashCode),
+                        pictureUrl.hashCode),
+                    email.hashCode),
+                emailVerified.hashCode),
+            isSocialAuth.hashCode),
+        favoriteProductIds.hashCode));
   }
 
   @override
@@ -111,7 +119,8 @@ class _$ResponseUserDto extends ResponseUserDto {
           ..add('pictureUrl', pictureUrl)
           ..add('email', email)
           ..add('emailVerified', emailVerified)
-          ..add('isSocialAuth', isSocialAuth))
+          ..add('isSocialAuth', isSocialAuth)
+          ..add('favoriteProductIds', favoriteProductIds))
         .toString();
   }
 }
@@ -161,6 +170,12 @@ class ResponseUserDtoBuilder
   bool? get isSocialAuth => _$this._isSocialAuth;
   set isSocialAuth(bool? isSocialAuth) => _$this._isSocialAuth = isSocialAuth;
 
+  ListBuilder<String>? _favoriteProductIds;
+  ListBuilder<String> get favoriteProductIds =>
+      _$this._favoriteProductIds ??= new ListBuilder<String>();
+  set favoriteProductIds(ListBuilder<String>? favoriteProductIds) =>
+      _$this._favoriteProductIds = favoriteProductIds;
+
   ResponseUserDtoBuilder() {
     ResponseUserDto._initializeBuilder(this);
   }
@@ -178,6 +193,7 @@ class ResponseUserDtoBuilder
       _email = $v.email;
       _emailVerified = $v.emailVerified;
       _isSocialAuth = $v.isSocialAuth;
+      _favoriteProductIds = $v.favoriteProductIds.toBuilder();
       _$v = null;
     }
     return this;
@@ -196,23 +212,37 @@ class ResponseUserDtoBuilder
 
   @override
   _$ResponseUserDto build() {
-    final _$result = _$v ??
-        new _$ResponseUserDto._(
-            createdAt: createdAt,
-            updatedAt: updatedAt,
-            id: BuiltValueNullFieldError.checkNotNull(
-                id, 'ResponseUserDto', 'id'),
-            firstname: BuiltValueNullFieldError.checkNotNull(
-                firstname, 'ResponseUserDto', 'firstname'),
-            lastname: BuiltValueNullFieldError.checkNotNull(
-                lastname, 'ResponseUserDto', 'lastname'),
-            username: username,
-            pictureUrl: pictureUrl,
-            email: BuiltValueNullFieldError.checkNotNull(
-                email, 'ResponseUserDto', 'email'),
-            emailVerified: emailVerified,
-            isSocialAuth: BuiltValueNullFieldError.checkNotNull(
-                isSocialAuth, 'ResponseUserDto', 'isSocialAuth'));
+    _$ResponseUserDto _$result;
+    try {
+      _$result = _$v ??
+          new _$ResponseUserDto._(
+              createdAt: createdAt,
+              updatedAt: updatedAt,
+              id: BuiltValueNullFieldError.checkNotNull(
+                  id, 'ResponseUserDto', 'id'),
+              firstname: BuiltValueNullFieldError.checkNotNull(
+                  firstname, 'ResponseUserDto', 'firstname'),
+              lastname: BuiltValueNullFieldError.checkNotNull(
+                  lastname, 'ResponseUserDto', 'lastname'),
+              username: username,
+              pictureUrl: pictureUrl,
+              email: BuiltValueNullFieldError.checkNotNull(
+                  email, 'ResponseUserDto', 'email'),
+              emailVerified: emailVerified,
+              isSocialAuth: BuiltValueNullFieldError.checkNotNull(
+                  isSocialAuth, 'ResponseUserDto', 'isSocialAuth'),
+              favoriteProductIds: favoriteProductIds.build());
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'favoriteProductIds';
+        favoriteProductIds.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'ResponseUserDto', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ownerIds** | **BuiltList<String>** | The ids of the user owning this product | [optional] 
 **count** | **String** | The number of products | [optional] 
-**expirationDate** | [**DateTime**](DateTime.md) | The number of products | [optional] 
+**expirationDate** | [**DateTime**](DateTime.md) | The expiration date of the product | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

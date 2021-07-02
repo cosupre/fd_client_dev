@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**usersControllerCreate**](UsersApi.md#userscontrollercreate) | **post** /users | Create a user on database and patch the auth0 user
 [**usersControllerDeleteFavorite**](UsersApi.md#userscontrollerdeletefavorite) | **delete** /users/favorite-products/{productId} | Delete one of your favorite products
 [**usersControllerGet**](UsersApi.md#userscontrollerget) | **get** /users/info | Get user information
+[**usersControllerGetFavorites**](UsersApi.md#userscontrollergetfavorites) | **get** /users/favorite-products | Return all the favorite products of a user
 [**usersControllerGetTag**](UsersApi.md#userscontrollergettag) | **get** /users/tags/{id} | Find a user tag
 [**usersControllerGetTags**](UsersApi.md#userscontrollergettags) | **get** /users/{userId}/tags/ | Return all the tags of a user
 [**usersControllerPatch**](UsersApi.md#userscontrollerpatch) | **patch** /users/{id} | Patch user information on auth0
@@ -224,6 +225,46 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**ResponseUserDto**](ResponseUserDto.md)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **usersControllerGetFavorites**
+> BuiltList<ResponseFavoriteProductDto> usersControllerGetFavorites()
+
+Return all the favorite products of a user
+
+### Example 
+```dart
+import 'package:fd_dart_client/api.dart';
+// TODO Configure HTTP basic authorization: jwt
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
+
+var api_instance = new UsersApi();
+
+try { 
+    var result = api_instance.usersControllerGetFavorites();
+    print(result);
+} catch (e) {
+    print('Exception when calling UsersApi->usersControllerGetFavorites: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**BuiltList<ResponseFavoriteProductDto>**](ResponseFavoriteProductDto.md)
 
 ### Authorization
 

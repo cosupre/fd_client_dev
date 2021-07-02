@@ -21,6 +21,7 @@ import 'package:fd_dart_client/src/model/create_user_product_tag_dto.dart';
 import 'package:fd_dart_client/src/model/create_user_tag_dto.dart';
 import 'package:fd_dart_client/src/model/response_banned_group_member_dto.dart';
 import 'package:fd_dart_client/src/model/response_custom_product_dto.dart';
+import 'package:fd_dart_client/src/model/response_favorite_product_dto.dart';
 import 'package:fd_dart_client/src/model/response_group_dto.dart';
 import 'package:fd_dart_client/src/model/response_group_member_dto.dart';
 import 'package:fd_dart_client/src/model/response_inventory_product_detail_dto.dart';
@@ -59,6 +60,7 @@ part 'serializers.g.dart';
   CreateUserTagDto,
   ResponseBannedGroupMemberDto,
   ResponseCustomProductDto,
+  ResponseFavoriteProductDto,
   ResponseGroupDto,
   ResponseGroupMemberDto,
   ResponseInventoryProductDetailDto,
@@ -105,6 +107,10 @@ Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
         const FullType(BuiltList, [FullType(ResponseShoppingItemDto)]),
         () => ListBuilder<ResponseShoppingItemDto>(),
+      )
+      ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(ResponseFavoriteProductDto)]),
+        () => ListBuilder<ResponseFavoriteProductDto>(),
       )
       ..addBuilderFactory(
         const FullType(BuiltList, [FullType(ResponseUserTagDto)]),

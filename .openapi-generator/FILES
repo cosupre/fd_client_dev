@@ -20,6 +20,7 @@ doc/ProductTagsApi.md
 doc/ProductsApi.md
 doc/ResponseBannedGroupMemberDto.md
 doc/ResponseCustomProductDto.md
+doc/ResponseFavoriteProductDto.md
 doc/ResponseGroupDto.md
 doc/ResponseGroupMemberDto.md
 doc/ResponseInventoryProductDetailDto.md
@@ -73,6 +74,7 @@ lib/src/model/create_user_product_tag_dto.dart
 lib/src/model/create_user_tag_dto.dart
 lib/src/model/response_banned_group_member_dto.dart
 lib/src/model/response_custom_product_dto.dart
+lib/src/model/response_favorite_product_dto.dart
 lib/src/model/response_group_dto.dart
 lib/src/model/response_group_member_dto.dart
 lib/src/model/response_inventory_product_detail_dto.dart
@@ -96,18 +98,3 @@ lib/src/model/update_user_product_tag_dto.dart
 lib/src/model/update_user_tag_dto.dart
 lib/src/serializers.dart
 pubspec.yaml
-test/create_custom_inventory_product_dto_test.dart
-test/create_custom_product_dto_test.dart
-test/create_custom_shopping_item_dto_test.dart
-test/create_response_scan_module_dto_test.dart
-test/create_scan_module_dto_test.dart
-test/create_shopping_item_dto_test.dart
-test/custom_products_api_test.dart
-test/response_custom_product_dto_test.dart
-test/response_scan_module_dto_test.dart
-test/response_shopping_item_dto_test.dart
-test/scan_module_api_test.dart
-test/shopping_list_api_test.dart
-test/update_custom_product_dto_test.dart
-test/update_scan_module_dto_test.dart
-test/update_shopping_item_dto_test.dart

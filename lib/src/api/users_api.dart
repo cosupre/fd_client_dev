@@ -11,6 +11,7 @@ import 'package:fd_dart_client/src/model/update_user_dto.dart';
 import 'package:fd_dart_client/src/model/update_user_tag_dto.dart';
 import 'package:fd_dart_client/src/model/response_user_dto.dart';
 import 'package:fd_dart_client/src/model/create_user_tag_dto.dart';
+import 'package:fd_dart_client/src/model/response_favorite_product_dto.dart';
 import 'package:fd_dart_client/src/model/response_user_tag_dto.dart';
 import 'package:fd_dart_client/src/model/create_user_dto.dart';
 import 'package:built_collection/built_collection.dart';
@@ -370,6 +371,80 @@ class UsersApi {
     }
 
     return Response<ResponseUserDto>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Return all the favorite products of a user
+  ///
+  /// 
+  Future<Response<BuiltList<ResponseFavoriteProductDto>>> usersControllerGetFavorites({ 
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/users/favorite-products';
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'name': 'bearer',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: [
+        'application/json',
+      ].first,
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    BuiltList<ResponseFavoriteProductDto> _responseData;
+
+    try {
+      const _responseType = FullType(BuiltList, [FullType(ResponseFavoriteProductDto)]);
+      _responseData = _serializers.deserialize(
+        _response.data!,
+        specifiedType: _responseType,
+      ) as BuiltList<ResponseFavoriteProductDto>;
+
+    } catch (error) {
+      throw DioError(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioErrorType.other,
+        error: error,
+      );
+    }
+
+    return Response<BuiltList<ResponseFavoriteProductDto>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

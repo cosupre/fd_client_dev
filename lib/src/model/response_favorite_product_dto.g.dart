@@ -8,19 +8,13 @@ part of 'response_favorite_product_dto.dart';
 
 class _$ResponseFavoriteProductDto extends ResponseFavoriteProductDto {
   @override
-  final DateTime? createdAt;
-  @override
-  final DateTime? updatedAt;
-  @override
   final String productId;
 
   factory _$ResponseFavoriteProductDto(
           [void Function(ResponseFavoriteProductDtoBuilder)? updates]) =>
       (new ResponseFavoriteProductDtoBuilder()..update(updates)).build();
 
-  _$ResponseFavoriteProductDto._(
-      {this.createdAt, this.updatedAt, required this.productId})
-      : super._() {
+  _$ResponseFavoriteProductDto._({required this.productId}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         productId, 'ResponseFavoriteProductDto', 'productId');
   }
@@ -37,23 +31,17 @@ class _$ResponseFavoriteProductDto extends ResponseFavoriteProductDto {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is ResponseFavoriteProductDto &&
-        createdAt == other.createdAt &&
-        updatedAt == other.updatedAt &&
-        productId == other.productId;
+    return other is ResponseFavoriteProductDto && productId == other.productId;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, createdAt.hashCode), updatedAt.hashCode),
-        productId.hashCode));
+    return $jf($jc(0, productId.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('ResponseFavoriteProductDto')
-          ..add('createdAt', createdAt)
-          ..add('updatedAt', updatedAt)
           ..add('productId', productId))
         .toString();
   }
@@ -63,14 +51,6 @@ class ResponseFavoriteProductDtoBuilder
     implements
         Builder<ResponseFavoriteProductDto, ResponseFavoriteProductDtoBuilder> {
   _$ResponseFavoriteProductDto? _$v;
-
-  DateTime? _createdAt;
-  DateTime? get createdAt => _$this._createdAt;
-  set createdAt(DateTime? createdAt) => _$this._createdAt = createdAt;
-
-  DateTime? _updatedAt;
-  DateTime? get updatedAt => _$this._updatedAt;
-  set updatedAt(DateTime? updatedAt) => _$this._updatedAt = updatedAt;
 
   String? _productId;
   String? get productId => _$this._productId;
@@ -83,8 +63,6 @@ class ResponseFavoriteProductDtoBuilder
   ResponseFavoriteProductDtoBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _createdAt = $v.createdAt;
-      _updatedAt = $v.updatedAt;
       _productId = $v.productId;
       _$v = null;
     }
@@ -106,8 +84,6 @@ class ResponseFavoriteProductDtoBuilder
   _$ResponseFavoriteProductDto build() {
     final _$result = _$v ??
         new _$ResponseFavoriteProductDto._(
-            createdAt: createdAt,
-            updatedAt: updatedAt,
             productId: BuiltValueNullFieldError.checkNotNull(
                 productId, 'ResponseFavoriteProductDto', 'productId'));
     replace(_$result);

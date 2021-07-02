@@ -109,6 +109,7 @@ Class | Method | HTTP request | Description
 *UsersApi* | [**usersControllerCreate**](doc/UsersApi.md#userscontrollercreate) | **post** /users | Create a user on database and patch the auth0 user
 *UsersApi* | [**usersControllerDeleteFavorite**](doc/UsersApi.md#userscontrollerdeletefavorite) | **delete** /users/favorite-products/{productId} | Delete one of your favorite products
 *UsersApi* | [**usersControllerGet**](doc/UsersApi.md#userscontrollerget) | **get** /users/info | Get user information
+*UsersApi* | [**usersControllerGetFavorites**](doc/UsersApi.md#userscontrollergetfavorites) | **get** /users/favorite-products | Return all the favorite products of a user
 *UsersApi* | [**usersControllerGetTag**](doc/UsersApi.md#userscontrollergettag) | **get** /users/tags/{id} | Find a user tag
 *UsersApi* | [**usersControllerGetTags**](doc/UsersApi.md#userscontrollergettags) | **get** /users/{userId}/tags/ | Return all the tags of a user
 *UsersApi* | [**usersControllerPatch**](doc/UsersApi.md#userscontrollerpatch) | **patch** /users/{id} | Patch user information on auth0
@@ -132,6 +133,7 @@ Class | Method | HTTP request | Description
  - [CreateUserTagDto](doc/CreateUserTagDto.md)
  - [ResponseBannedGroupMemberDto](doc/ResponseBannedGroupMemberDto.md)
  - [ResponseCustomProductDto](doc/ResponseCustomProductDto.md)
+ - [ResponseFavoriteProductDto](doc/ResponseFavoriteProductDto.md)
  - [ResponseGroupDto](doc/ResponseGroupDto.md)
  - [ResponseGroupMemberDto](doc/ResponseGroupMemberDto.md)
  - [ResponseInventoryProductDetailDto](doc/ResponseInventoryProductDetailDto.md)

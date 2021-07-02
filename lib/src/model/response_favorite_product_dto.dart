@@ -10,15 +10,7 @@ part 'response_favorite_product_dto.g.dart';
 
 
 abstract class ResponseFavoriteProductDto implements Built<ResponseFavoriteProductDto, ResponseFavoriteProductDtoBuilder> {
-    /// The creation timestamp of the entity
-    @BuiltValueField(wireName: r'createdAt')
-    DateTime? get createdAt;
-
-    /// The update timestamp of the entity
-    @BuiltValueField(wireName: r'updatedAt')
-    DateTime? get updatedAt;
-
-    /// The id of the product
+    /// The id of the user associated with this tag
     @BuiltValueField(wireName: r'productId')
     String get productId;
 
@@ -43,18 +35,6 @@ class _$ResponseFavoriteProductDtoSerializer implements StructuredSerializer<Res
     Iterable<Object?> serialize(Serializers serializers, ResponseFavoriteProductDto object,
         {FullType specifiedType = FullType.unspecified}) {
         final result = <Object?>[];
-        if (object.createdAt != null) {
-            result
-                ..add(r'createdAt')
-                ..add(serializers.serialize(object.createdAt,
-                    specifiedType: const FullType(DateTime)));
-        }
-        if (object.updatedAt != null) {
-            result
-                ..add(r'updatedAt')
-                ..add(serializers.serialize(object.updatedAt,
-                    specifiedType: const FullType(DateTime)));
-        }
         result
             ..add(r'productId')
             ..add(serializers.serialize(object.productId,
@@ -73,14 +53,6 @@ class _$ResponseFavoriteProductDtoSerializer implements StructuredSerializer<Res
             iterator.moveNext();
             final Object? value = iterator.current;
             switch (key) {
-                case r'createdAt':
-                    result.createdAt = serializers.deserialize(value,
-                        specifiedType: const FullType(DateTime)) as DateTime;
-                    break;
-                case r'updatedAt':
-                    result.updatedAt = serializers.deserialize(value,
-                        specifiedType: const FullType(DateTime)) as DateTime;
-                    break;
                 case r'productId':
                     result.productId = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;

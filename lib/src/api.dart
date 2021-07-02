@@ -41,9 +41,16 @@ class FdDartClient {
         OAuthInterceptor(),
         BasicAuthInterceptor(),
         ApiKeyAuthInterceptor(),
+        HttpBearerInterceptor(),
       ]);
     } else {
       this.dio.interceptors.addAll(interceptors);
+    }
+  }
+
+  void setHttpBearerToken(String name, String token) {
+    if (this.dio.interceptors.any((i) => i is HttpBearerInterceptor)) {
+      (this.dio.interceptors.firstWhere((i) => i is HttpBearerInterceptor) as HttpBearerInterceptor).tokens[name] = token;
     }
   }
 

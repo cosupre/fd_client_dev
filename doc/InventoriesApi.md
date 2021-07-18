@@ -154,7 +154,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **inventoriesControllerFindAll**
-> ResponsePaginationInventoryProductDto inventoriesControllerFindAll(groupId, page, limit)
+> ResponsePaginationInventoryProductDto inventoriesControllerFindAll(groupId, page, limit, search, sort, filter)
 
 Get the products from the group's inventory
 
@@ -169,9 +169,12 @@ var api_instance = new InventoriesApi();
 var groupId = groupId_example; // String | 
 var page = page_example; // String | The page to query
 var limit = limit_example; // String | The number of items to query
+var search = search_example; // String | The name of the product you search
+var sort = sort_example; // String | How the inventory is sorted (idASC, idDESC, creationASC, creationDESC, nameASC, nameDESC)
+var filter = filter_example; // String | How to filter the inventory (ownedProducts)
 
 try { 
-    var result = api_instance.inventoriesControllerFindAll(groupId, page, limit);
+    var result = api_instance.inventoriesControllerFindAll(groupId, page, limit, search, sort, filter);
     print(result);
 } catch (e) {
     print('Exception when calling InventoriesApi->inventoriesControllerFindAll: $e\n');
@@ -185,6 +188,9 @@ Name | Type | Description  | Notes
  **groupId** | **String**|  | 
  **page** | **String**| The page to query | [optional] 
  **limit** | **String**| The number of items to query | [optional] 
+ **search** | **String**| The name of the product you search | [optional] 
+ **sort** | **String**| How the inventory is sorted (idASC, idDESC, creationASC, creationDESC, nameASC, nameDESC) | [optional] 
+ **filter** | **String**| How to filter the inventory (ownedProducts) | [optional] 
 
 ### Return type
 

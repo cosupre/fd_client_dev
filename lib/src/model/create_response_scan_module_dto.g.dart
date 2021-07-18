@@ -12,6 +12,8 @@ class _$CreateResponseScanModuleDto extends CreateResponseScanModuleDto {
   @override
   final String groupId;
   @override
+  final String name;
+  @override
   final String token;
 
   factory _$CreateResponseScanModuleDto(
@@ -19,12 +21,17 @@ class _$CreateResponseScanModuleDto extends CreateResponseScanModuleDto {
       (new CreateResponseScanModuleDtoBuilder()..update(updates)).build();
 
   _$CreateResponseScanModuleDto._(
-      {required this.id, required this.groupId, required this.token})
+      {required this.id,
+      required this.groupId,
+      required this.name,
+      required this.token})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         id, 'CreateResponseScanModuleDto', 'id');
     BuiltValueNullFieldError.checkNotNull(
         groupId, 'CreateResponseScanModuleDto', 'groupId');
+    BuiltValueNullFieldError.checkNotNull(
+        name, 'CreateResponseScanModuleDto', 'name');
     BuiltValueNullFieldError.checkNotNull(
         token, 'CreateResponseScanModuleDto', 'token');
   }
@@ -44,12 +51,15 @@ class _$CreateResponseScanModuleDto extends CreateResponseScanModuleDto {
     return other is CreateResponseScanModuleDto &&
         id == other.id &&
         groupId == other.groupId &&
+        name == other.name &&
         token == other.token;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, id.hashCode), groupId.hashCode), token.hashCode));
+    return $jf($jc(
+        $jc($jc($jc(0, id.hashCode), groupId.hashCode), name.hashCode),
+        token.hashCode));
   }
 
   @override
@@ -57,6 +67,7 @@ class _$CreateResponseScanModuleDto extends CreateResponseScanModuleDto {
     return (newBuiltValueToStringHelper('CreateResponseScanModuleDto')
           ..add('id', id)
           ..add('groupId', groupId)
+          ..add('name', name)
           ..add('token', token))
         .toString();
   }
@@ -76,6 +87,10 @@ class CreateResponseScanModuleDtoBuilder
   String? get groupId => _$this._groupId;
   set groupId(String? groupId) => _$this._groupId = groupId;
 
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
   String? _token;
   String? get token => _$this._token;
   set token(String? token) => _$this._token = token;
@@ -89,6 +104,7 @@ class CreateResponseScanModuleDtoBuilder
     if ($v != null) {
       _id = $v.id;
       _groupId = $v.groupId;
+      _name = $v.name;
       _token = $v.token;
       _$v = null;
     }
@@ -114,6 +130,8 @@ class CreateResponseScanModuleDtoBuilder
                 id, 'CreateResponseScanModuleDto', 'id'),
             groupId: BuiltValueNullFieldError.checkNotNull(
                 groupId, 'CreateResponseScanModuleDto', 'groupId'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, 'CreateResponseScanModuleDto', 'name'),
             token: BuiltValueNullFieldError.checkNotNull(
                 token, 'CreateResponseScanModuleDto', 'token'));
     replace(_$result);

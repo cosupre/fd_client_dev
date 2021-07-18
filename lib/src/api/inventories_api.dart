@@ -44,7 +44,7 @@ class InventoriesApi {
         'secure': <Map<String, String>>[
           {
             'type': 'http',
-            'name': 'bearer',
+            'name': 'jwt',
           },
         ],
         ...?extra,
@@ -139,7 +139,7 @@ class InventoriesApi {
         'secure': <Map<String, String>>[
           {
             'type': 'http',
-            'name': 'bearer',
+            'name': 'jwt',
           },
         ],
         ...?extra,
@@ -234,7 +234,7 @@ class InventoriesApi {
         'secure': <Map<String, String>>[
           {
             'type': 'http',
-            'name': 'bearer',
+            'name': 'jwt',
           },
         ],
         ...?extra,
@@ -267,6 +267,9 @@ class InventoriesApi {
     required String groupId,
     String? page,
     String? limit,
+    String? search,
+    String? sort,
+    String? filter,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -284,7 +287,7 @@ class InventoriesApi {
         'secure': <Map<String, String>>[
           {
             'type': 'http',
-            'name': 'bearer',
+            'name': 'jwt',
           },
         ],
         ...?extra,
@@ -298,6 +301,9 @@ class InventoriesApi {
     final _queryParameters = <String, dynamic>{
       if (page != null) r'page': page,
       if (limit != null) r'limit': limit,
+      if (search != null) r'search': search,
+      if (sort != null) r'sort': sort,
+      if (filter != null) r'filter': filter,
     };
 
     final _response = await _dio.request<Object>(
@@ -363,7 +369,7 @@ class InventoriesApi {
         'secure': <Map<String, String>>[
           {
             'type': 'http',
-            'name': 'bearer',
+            'name': 'jwt',
           },
         ],
         ...?extra,

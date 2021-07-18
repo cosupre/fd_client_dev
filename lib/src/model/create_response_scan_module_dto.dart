@@ -14,9 +14,13 @@ abstract class CreateResponseScanModuleDto implements Built<CreateResponseScanMo
     @BuiltValueField(wireName: r'id')
     String get id;
 
-    /// The module linked group id
+    /// The scan module linked group id
     @BuiltValueField(wireName: r'groupId')
     String get groupId;
+
+    /// The scan module name
+    @BuiltValueField(wireName: r'name')
+    String get name;
 
     /// The module auth token
     @BuiltValueField(wireName: r'token')
@@ -52,6 +56,10 @@ class _$CreateResponseScanModuleDtoSerializer implements StructuredSerializer<Cr
             ..add(serializers.serialize(object.groupId,
                 specifiedType: const FullType(String)));
         result
+            ..add(r'name')
+            ..add(serializers.serialize(object.name,
+                specifiedType: const FullType(String)));
+        result
             ..add(r'token')
             ..add(serializers.serialize(object.token,
                 specifiedType: const FullType(String)));
@@ -75,6 +83,10 @@ class _$CreateResponseScanModuleDtoSerializer implements StructuredSerializer<Cr
                     break;
                 case r'groupId':
                     result.groupId = serializers.deserialize(value,
+                        specifiedType: const FullType(String)) as String;
+                    break;
+                case r'name':
+                    result.name = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
                     break;
                 case r'token':

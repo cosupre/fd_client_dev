@@ -44,7 +44,7 @@ class InventoriesApi {
         'secure': <Map<String, String>>[
           {
             'type': 'http',
-            'name': 'jwt',
+            'name': 'bearer',
           },
         ],
         ...?extra,
@@ -139,7 +139,7 @@ class InventoriesApi {
         'secure': <Map<String, String>>[
           {
             'type': 'http',
-            'name': 'jwt',
+            'name': 'bearer',
           },
         ],
         ...?extra,
@@ -234,7 +234,7 @@ class InventoriesApi {
         'secure': <Map<String, String>>[
           {
             'type': 'http',
-            'name': 'jwt',
+            'name': 'bearer',
           },
         ],
         ...?extra,
@@ -287,7 +287,7 @@ class InventoriesApi {
         'secure': <Map<String, String>>[
           {
             'type': 'http',
-            'name': 'jwt',
+            'name': 'bearer',
           },
         ],
         ...?extra,
@@ -369,7 +369,7 @@ class InventoriesApi {
         'secure': <Map<String, String>>[
           {
             'type': 'http',
-            'name': 'jwt',
+            'name': 'bearer',
           },
         ],
         ...?extra,

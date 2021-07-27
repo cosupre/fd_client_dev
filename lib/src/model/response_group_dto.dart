@@ -37,6 +37,10 @@ abstract class ResponseGroupDto implements Built<ResponseGroupDto, ResponseGroup
     @BuiltValueField(wireName: r'pictureUrl')
     String get pictureUrl;
 
+    /// Is the group is currently in shopping mode
+    @BuiltValueField(wireName: r'isShoppingMode')
+    bool get isShoppingMode;
+
     /// If true all users can update and delete any products from the inventory. If false, only the owner of the group or the product and admins can update/delete the product
     @BuiltValueField(wireName: r'userCanUpdateAllInventoryProducts')
     bool get userCanUpdateAllInventoryProducts;
@@ -103,6 +107,10 @@ class _$ResponseGroupDtoSerializer implements StructuredSerializer<ResponseGroup
             ..add(serializers.serialize(object.pictureUrl,
                 specifiedType: const FullType(String)));
         result
+            ..add(r'isShoppingMode')
+            ..add(serializers.serialize(object.isShoppingMode,
+                specifiedType: const FullType(bool)));
+        result
             ..add(r'userCanUpdateAllInventoryProducts')
             ..add(serializers.serialize(object.userCanUpdateAllInventoryProducts,
                 specifiedType: const FullType(bool)));
@@ -155,6 +163,10 @@ class _$ResponseGroupDtoSerializer implements StructuredSerializer<ResponseGroup
                 case r'pictureUrl':
                     result.pictureUrl = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
+                    break;
+                case r'isShoppingMode':
+                    result.isShoppingMode = serializers.deserialize(value,
+                        specifiedType: const FullType(bool)) as bool;
                     break;
                 case r'userCanUpdateAllInventoryProducts':
                     result.userCanUpdateAllInventoryProducts = serializers.deserialize(value,

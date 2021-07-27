@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**shoppingItemsControllerDelete**](ShoppingListApi.md#shoppingitemscontrollerdelete) | **delete** /groups/{groupId}/shopping-list/{id} | Delete an item from the shopping list
 [**shoppingItemsControllerFindAll**](ShoppingListApi.md#shoppingitemscontrollerfindall) | **get** /groups/{groupId}/shopping-list | Get the items from the group&#39;s shopping list
 [**shoppingItemsControllerFindOne**](ShoppingListApi.md#shoppingitemscontrollerfindone) | **get** /groups/{groupId}/shopping-list/{id} | Get a specific item from the group&#39;s shopping list
+[**shoppingItemsControllerStartShopping**](ShoppingListApi.md#shoppingitemscontrollerstartshopping) | **patch** /groups/{groupId}/shopping-list/start-shopping | Start the shopping mode for this group
 [**shoppingItemsControllerUpdate**](ShoppingListApi.md#shoppingitemscontrollerupdate) | **patch** /groups/{groupId}/shopping-list/{id} | Update an item of the shopping list
 
 
@@ -155,7 +156,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **shoppingItemsControllerFindAll**
-> BuiltList<ResponseShoppingItemDto> shoppingItemsControllerFindAll(groupId)
+> BuiltList<ResponseShoppingItemDto> shoppingItemsControllerFindAll(groupId, search, sort, filter)
 
 Get the items from the group's shopping list
 
@@ -168,9 +169,12 @@ import 'package:fd_dart_client/api.dart';
 
 var api_instance = new ShoppingListApi();
 var groupId = groupId_example; // String | 
+var search = search_example; // String | The name of the shopping item you search
+var sort = sort_example; // String | How the shopping list is sorted (idASC, idDESC, creationASC, creationDESC, nameASC, nameDESC)
+var filter = filter_example; // String | How to filter the shopping list (ownedProducts)
 
 try { 
-    var result = api_instance.shoppingItemsControllerFindAll(groupId);
+    var result = api_instance.shoppingItemsControllerFindAll(groupId, search, sort, filter);
     print(result);
 } catch (e) {
     print('Exception when calling ShoppingListApi->shoppingItemsControllerFindAll: $e\n');
@@ -182,6 +186,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **String**|  | 
+ **search** | **String**| The name of the shopping item you search | [optional] 
+ **sort** | **String**| How the shopping list is sorted (idASC, idDESC, creationASC, creationDESC, nameASC, nameDESC) | [optional] 
+ **filter** | **String**| How to filter the shopping list (ownedProducts) | [optional] 
 
 ### Return type
 
@@ -241,6 +248,49 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **shoppingItemsControllerStartShopping**
+> shoppingItemsControllerStartShopping(groupId)
+
+Start the shopping mode for this group
+
+### Example 
+```dart
+import 'package:fd_dart_client/api.dart';
+// TODO Configure HTTP basic authorization: jwt
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
+
+var api_instance = new ShoppingListApi();
+var groupId = groupId_example; // String | 
+
+try { 
+    api_instance.shoppingItemsControllerStartShopping(groupId);
+} catch (e) {
+    print('Exception when calling ShoppingListApi->shoppingItemsControllerStartShopping: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupId** | **String**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

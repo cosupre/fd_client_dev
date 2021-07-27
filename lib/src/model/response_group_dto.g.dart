@@ -20,6 +20,8 @@ class _$ResponseGroupDto extends ResponseGroupDto {
   @override
   final String pictureUrl;
   @override
+  final bool isShoppingMode;
+  @override
   final bool userCanUpdateAllInventoryProducts;
   @override
   final bool userCanUpdateAllShoppingItems;
@@ -39,6 +41,7 @@ class _$ResponseGroupDto extends ResponseGroupDto {
       required this.name,
       required this.sharingCode,
       required this.pictureUrl,
+      required this.isShoppingMode,
       required this.userCanUpdateAllInventoryProducts,
       required this.userCanUpdateAllShoppingItems,
       required this.members,
@@ -50,6 +53,8 @@ class _$ResponseGroupDto extends ResponseGroupDto {
         sharingCode, 'ResponseGroupDto', 'sharingCode');
     BuiltValueNullFieldError.checkNotNull(
         pictureUrl, 'ResponseGroupDto', 'pictureUrl');
+    BuiltValueNullFieldError.checkNotNull(
+        isShoppingMode, 'ResponseGroupDto', 'isShoppingMode');
     BuiltValueNullFieldError.checkNotNull(userCanUpdateAllInventoryProducts,
         'ResponseGroupDto', 'userCanUpdateAllInventoryProducts');
     BuiltValueNullFieldError.checkNotNull(userCanUpdateAllShoppingItems,
@@ -78,6 +83,7 @@ class _$ResponseGroupDto extends ResponseGroupDto {
         name == other.name &&
         sharingCode == other.sharingCode &&
         pictureUrl == other.pictureUrl &&
+        isShoppingMode == other.isShoppingMode &&
         userCanUpdateAllInventoryProducts ==
             other.userCanUpdateAllInventoryProducts &&
         userCanUpdateAllShoppingItems == other.userCanUpdateAllShoppingItems &&
@@ -95,12 +101,14 @@ class _$ResponseGroupDto extends ResponseGroupDto {
                         $jc(
                             $jc(
                                 $jc(
-                                    $jc($jc(0, createdAt.hashCode),
-                                        updatedAt.hashCode),
-                                    id.hashCode),
-                                name.hashCode),
-                            sharingCode.hashCode),
-                        pictureUrl.hashCode),
+                                    $jc(
+                                        $jc($jc(0, createdAt.hashCode),
+                                            updatedAt.hashCode),
+                                        id.hashCode),
+                                    name.hashCode),
+                                sharingCode.hashCode),
+                            pictureUrl.hashCode),
+                        isShoppingMode.hashCode),
                     userCanUpdateAllInventoryProducts.hashCode),
                 userCanUpdateAllShoppingItems.hashCode),
             members.hashCode),
@@ -116,6 +124,7 @@ class _$ResponseGroupDto extends ResponseGroupDto {
           ..add('name', name)
           ..add('sharingCode', sharingCode)
           ..add('pictureUrl', pictureUrl)
+          ..add('isShoppingMode', isShoppingMode)
           ..add('userCanUpdateAllInventoryProducts',
               userCanUpdateAllInventoryProducts)
           ..add('userCanUpdateAllShoppingItems', userCanUpdateAllShoppingItems)
@@ -152,6 +161,11 @@ class ResponseGroupDtoBuilder
   String? _pictureUrl;
   String? get pictureUrl => _$this._pictureUrl;
   set pictureUrl(String? pictureUrl) => _$this._pictureUrl = pictureUrl;
+
+  bool? _isShoppingMode;
+  bool? get isShoppingMode => _$this._isShoppingMode;
+  set isShoppingMode(bool? isShoppingMode) =>
+      _$this._isShoppingMode = isShoppingMode;
 
   bool? _userCanUpdateAllInventoryProducts;
   bool? get userCanUpdateAllInventoryProducts =>
@@ -192,6 +206,7 @@ class ResponseGroupDtoBuilder
       _name = $v.name;
       _sharingCode = $v.sharingCode;
       _pictureUrl = $v.pictureUrl;
+      _isShoppingMode = $v.isShoppingMode;
       _userCanUpdateAllInventoryProducts = $v.userCanUpdateAllInventoryProducts;
       _userCanUpdateAllShoppingItems = $v.userCanUpdateAllShoppingItems;
       _members = $v.members.toBuilder();
@@ -228,6 +243,8 @@ class ResponseGroupDtoBuilder
                   sharingCode, 'ResponseGroupDto', 'sharingCode'),
               pictureUrl: BuiltValueNullFieldError.checkNotNull(
                   pictureUrl, 'ResponseGroupDto', 'pictureUrl'),
+              isShoppingMode: BuiltValueNullFieldError.checkNotNull(
+                  isShoppingMode, 'ResponseGroupDto', 'isShoppingMode'),
               userCanUpdateAllInventoryProducts:
                   BuiltValueNullFieldError.checkNotNull(
                       userCanUpdateAllInventoryProducts,

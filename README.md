@@ -103,6 +103,7 @@ Class | Method | HTTP request | Description
 *ShoppingListApi* | [**shoppingItemsControllerDelete**](doc/ShoppingListApi.md#shoppingitemscontrollerdelete) | **delete** /groups/{groupId}/shopping-list/{id} | Delete an item from the shopping list
 *ShoppingListApi* | [**shoppingItemsControllerFindAll**](doc/ShoppingListApi.md#shoppingitemscontrollerfindall) | **get** /groups/{groupId}/shopping-list | Get the items from the group&#39;s shopping list
 *ShoppingListApi* | [**shoppingItemsControllerFindOne**](doc/ShoppingListApi.md#shoppingitemscontrollerfindone) | **get** /groups/{groupId}/shopping-list/{id} | Get a specific item from the group&#39;s shopping list
+*ShoppingListApi* | [**shoppingItemsControllerStartShopping**](doc/ShoppingListApi.md#shoppingitemscontrollerstartshopping) | **patch** /groups/{groupId}/shopping-list/start-shopping | Start the shopping mode for this group
 *ShoppingListApi* | [**shoppingItemsControllerUpdate**](doc/ShoppingListApi.md#shoppingitemscontrollerupdate) | **patch** /groups/{groupId}/shopping-list/{id} | Update an item of the shopping list
 *UsersApi* | [**usersControllerAddFavorite**](doc/UsersApi.md#userscontrolleraddfavorite) | **post** /users/favorite-products/{productId} | Add a product as favorite
 *UsersApi* | [**usersControllerAddTag**](doc/UsersApi.md#userscontrolleraddtag) | **post** /users/tags | Add a tag to the user

@@ -265,6 +265,9 @@ class ShoppingListApi {
   /// 
   Future<Response<BuiltList<ResponseShoppingItemDto>>> shoppingItemsControllerFindAll({ 
     required String groupId,
+    String? search,
+    String? sort,
+    String? filter,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -294,6 +297,9 @@ class ShoppingListApi {
     );
 
     final _queryParameters = <String, dynamic>{
+      if (search != null) r'search': search,
+      if (sort != null) r'sort': sort,
+      if (filter != null) r'filter': filter,
     };
 
     final _response = await _dio.request<Object>(
@@ -409,6 +415,54 @@ class ShoppingListApi {
       statusMessage: _response.statusMessage,
       extra: _response.extra,
     );
+  }
+
+  /// Start the shopping mode for this group
+  ///
+  /// 
+  Future<Response<void>> shoppingItemsControllerStartShopping({ 
+    required String groupId,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/groups/{groupId}/shopping-list/start-shopping'.replaceAll('{' r'groupId' '}', groupId.toString());
+    final _options = Options(
+      method: r'PATCH',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'name': 'bearer',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: [
+        'application/json',
+      ].first,
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    return _response;
   }
 
   /// Update an item of the shopping list

@@ -10,7 +10,9 @@ import 'package:dio/dio.dart';
 import 'package:fd_dart_client/src/model/response_group_dto.dart';
 import 'package:fd_dart_client/src/model/create_group_dto.dart';
 import 'package:fd_dart_client/src/model/update_group_dto.dart';
+import 'package:fd_dart_client/src/model/response_group_product_recommendation_dto.dart';
 import 'package:fd_dart_client/src/model/update_group_member_dto.dart';
+import 'package:fd_dart_client/src/model/response_group_product_expiration_dto.dart';
 import 'package:built_collection/built_collection.dart';
 
 class GroupsApi {
@@ -480,6 +482,164 @@ class GroupsApi {
     }
 
     return Response<ResponseGroupDto>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Get the products that are near expiration
+  ///
+  ///
+  Future<Response<BuiltList<ResponseGroupProductExpirationDto>>> groupsControllerGetProductNearExpiration({
+    required String id,
+    required String days,
+    required num maxResults,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/groups/{id}/products-near-expiration'.replaceAll('{' r'id' '}', id.toString());
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'name': 'bearer',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: [
+        'application/json',
+      ].first,
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+      r'days': days,
+      r'maxResults': maxResults,
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    BuiltList<ResponseGroupProductExpirationDto> _responseData;
+
+    try {
+      const _responseType = FullType(BuiltList, [FullType(ResponseGroupProductExpirationDto)]);
+      _responseData = _serializers.deserialize(
+        _response.data!,
+        specifiedType: _responseType,
+      ) as BuiltList<ResponseGroupProductExpirationDto>;
+
+    } catch (error) {
+      throw DioError(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioErrorType.other,
+        error: error,
+      );
+    }
+
+    return Response<BuiltList<ResponseGroupProductExpirationDto>>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Get a set of products matching the string given
+  ///
+  ///
+  Future<Response<BuiltList<ResponseGroupProductRecommendationDto>>> groupsControllerGetProductRecommendations({
+    required String id,
+    required String search,
+    required num maxResults,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/groups/{id}/product-recommendations'.replaceAll('{' r'id' '}', id.toString());
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'name': 'bearer',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: [
+        'application/json',
+      ].first,
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+      r'search': search,
+      r'maxResults': maxResults,
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    BuiltList<ResponseGroupProductRecommendationDto> _responseData;
+
+    try {
+      const _responseType = FullType(BuiltList, [FullType(ResponseGroupProductRecommendationDto)]);
+      _responseData = _serializers.deserialize(
+        _response.data!,
+        specifiedType: _responseType,
+      ) as BuiltList<ResponseGroupProductRecommendationDto>;
+
+    } catch (error) {
+      throw DioError(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioErrorType.other,
+        error: error,
+      );
+    }
+
+    return Response<BuiltList<ResponseGroupProductRecommendationDto>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

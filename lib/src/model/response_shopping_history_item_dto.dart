@@ -7,26 +7,14 @@ import 'package:fd_dart_client/src/model/response_inventory_product_detail_dto.d
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'response_shopping_item_dto.g.dart';
+part 'response_shopping_history_item_dto.g.dart';
 
 
 
-abstract class ResponseShoppingItemDto implements Built<ResponseShoppingItemDto, ResponseShoppingItemDtoBuilder> {
-    /// The creation timestamp of the entity
-    @BuiltValueField(wireName: r'createdAt')
-    DateTime? get createdAt;
-
-    /// The update timestamp of the entity
-    @BuiltValueField(wireName: r'updatedAt')
-    DateTime? get updatedAt;
-
-    /// The shopping item id
+abstract class ResponseShoppingHistoryItemDto implements Built<ResponseShoppingHistoryItemDto, ResponseShoppingHistoryItemDtoBuilder> {
+    /// The shopping item history id
     @BuiltValueField(wireName: r'id')
     String get id;
-
-    /// The id of the group
-    @BuiltValueField(wireName: r'groupId')
-    String get groupId;
 
     /// The product
     @BuiltValueField(wireName: r'product')
@@ -40,46 +28,34 @@ abstract class ResponseShoppingItemDto implements Built<ResponseShoppingItemDto,
     @BuiltValueField(wireName: r'count')
     String get count;
 
-    ResponseShoppingItemDto._();
+    /// The name of the product
+    @BuiltValueField(wireName: r'name')
+    String get name;
 
-    static void _initializeBuilder(ResponseShoppingItemDtoBuilder b) => b;
+    ResponseShoppingHistoryItemDto._();
 
-    factory ResponseShoppingItemDto([void updates(ResponseShoppingItemDtoBuilder b)]) = _$ResponseShoppingItemDto;
+    static void _initializeBuilder(ResponseShoppingHistoryItemDtoBuilder b) => b;
+
+    factory ResponseShoppingHistoryItemDto([void updates(ResponseShoppingHistoryItemDtoBuilder b)]) = _$ResponseShoppingHistoryItemDto;
 
     @BuiltValueSerializer(custom: true)
-    static Serializer<ResponseShoppingItemDto> get serializer => _$ResponseShoppingItemDtoSerializer();
+    static Serializer<ResponseShoppingHistoryItemDto> get serializer => _$ResponseShoppingHistoryItemDtoSerializer();
 }
 
-class _$ResponseShoppingItemDtoSerializer implements StructuredSerializer<ResponseShoppingItemDto> {
+class _$ResponseShoppingHistoryItemDtoSerializer implements StructuredSerializer<ResponseShoppingHistoryItemDto> {
     @override
-    final Iterable<Type> types = const [ResponseShoppingItemDto, _$ResponseShoppingItemDto];
+    final Iterable<Type> types = const [ResponseShoppingHistoryItemDto, _$ResponseShoppingHistoryItemDto];
 
     @override
-    final String wireName = r'ResponseShoppingItemDto';
+    final String wireName = r'ResponseShoppingHistoryItemDto';
 
     @override
-    Iterable<Object?> serialize(Serializers serializers, ResponseShoppingItemDto object,
+    Iterable<Object?> serialize(Serializers serializers, ResponseShoppingHistoryItemDto object,
         {FullType specifiedType = FullType.unspecified}) {
         final result = <Object?>[];
-        if (object.createdAt != null) {
-            result
-                ..add(r'createdAt')
-                ..add(serializers.serialize(object.createdAt,
-                    specifiedType: const FullType(DateTime)));
-        }
-        if (object.updatedAt != null) {
-            result
-                ..add(r'updatedAt')
-                ..add(serializers.serialize(object.updatedAt,
-                    specifiedType: const FullType(DateTime)));
-        }
         result
             ..add(r'id')
             ..add(serializers.serialize(object.id,
-                specifiedType: const FullType(String)));
-        result
-            ..add(r'groupId')
-            ..add(serializers.serialize(object.groupId,
                 specifiedType: const FullType(String)));
         result
             ..add(r'product')
@@ -93,13 +69,17 @@ class _$ResponseShoppingItemDtoSerializer implements StructuredSerializer<Respon
             ..add(r'count')
             ..add(serializers.serialize(object.count,
                 specifiedType: const FullType(String)));
+        result
+            ..add(r'name')
+            ..add(serializers.serialize(object.name,
+                specifiedType: const FullType(String)));
         return result;
     }
 
     @override
-    ResponseShoppingItemDto deserialize(Serializers serializers, Iterable<Object?> serialized,
+    ResponseShoppingHistoryItemDto deserialize(Serializers serializers, Iterable<Object?> serialized,
         {FullType specifiedType = FullType.unspecified}) {
-        final result = ResponseShoppingItemDtoBuilder();
+        final result = ResponseShoppingHistoryItemDtoBuilder();
 
         final iterator = serialized.iterator;
         while (iterator.moveNext()) {
@@ -107,20 +87,8 @@ class _$ResponseShoppingItemDtoSerializer implements StructuredSerializer<Respon
             iterator.moveNext();
             final Object? value = iterator.current;
             switch (key) {
-                case r'createdAt':
-                    result.createdAt = serializers.deserialize(value,
-                        specifiedType: const FullType(DateTime)) as DateTime;
-                    break;
-                case r'updatedAt':
-                    result.updatedAt = serializers.deserialize(value,
-                        specifiedType: const FullType(DateTime)) as DateTime;
-                    break;
                 case r'id':
                     result.id = serializers.deserialize(value,
-                        specifiedType: const FullType(String)) as String;
-                    break;
-                case r'groupId':
-                    result.groupId = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
                     break;
                 case r'product':
@@ -133,6 +101,10 @@ class _$ResponseShoppingItemDtoSerializer implements StructuredSerializer<Respon
                     break;
                 case r'count':
                     result.count = serializers.deserialize(value,
+                        specifiedType: const FullType(String)) as String;
+                    break;
+                case r'name':
+                    result.name = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
                     break;
             }

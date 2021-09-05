@@ -21,6 +21,77 @@ class ScanModuleApi {
 
   const ScanModuleApi(this._dio, this._serializers);
 
+  /// Add a product to the scanner linked inventory
+  ///
+  /// 
+  Future<Response<ResponseScanModuleDto>> scanModulesControllerAddProduct({ 
+    required String token,
+    required String barcode,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/groups/for-scanner/{token}/inventory/{barcode}'.replaceAll('{' r'token' '}', token.toString()).replaceAll('{' r'barcode' '}', barcode.toString());
+    final _options = Options(
+      method: r'POST',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[],
+        ...?extra,
+      },
+      contentType: [
+        'application/json',
+      ].first,
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    ResponseScanModuleDto _responseData;
+
+    try {
+      const _responseType = FullType(ResponseScanModuleDto);
+      _responseData = _serializers.deserialize(
+        _response.data!,
+        specifiedType: _responseType,
+      ) as ResponseScanModuleDto;
+
+    } catch (error) {
+      throw DioError(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioErrorType.other,
+        error: error,
+      );
+    }
+
+    return Response<ResponseScanModuleDto>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
   /// Register a scanner to the group associated with this sharingCode
   ///
   /// 
@@ -309,6 +380,77 @@ class ScanModuleApi {
     );
 
     return _response;
+  }
+
+  /// Remove a product from the scanner linked inventory
+  ///
+  /// 
+  Future<Response<ResponseScanModuleDto>> scanModulesControllerRemoveProduct({ 
+    required String token,
+    required String barcode,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/groups/for-scanner/{token}/inventory/{barcode}'.replaceAll('{' r'token' '}', token.toString()).replaceAll('{' r'barcode' '}', barcode.toString());
+    final _options = Options(
+      method: r'DELETE',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[],
+        ...?extra,
+      },
+      contentType: [
+        'application/json',
+      ].first,
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    ResponseScanModuleDto _responseData;
+
+    try {
+      const _responseType = FullType(ResponseScanModuleDto);
+      _responseData = _serializers.deserialize(
+        _response.data!,
+        specifiedType: _responseType,
+      ) as ResponseScanModuleDto;
+
+    } catch (error) {
+      throw DioError(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioErrorType.other,
+        error: error,
+      );
+    }
+
+    return Response<ResponseScanModuleDto>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
   }
 
   /// Update a scanner

@@ -9,12 +9,57 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**scanModulesControllerAddProduct**](ScanModuleApi.md#scanmodulescontrolleraddproduct) | **post** /groups/for-scanner/{token}/inventory/{barcode} | Add a product to the scanner linked inventory
 [**scanModulesControllerCreateBySharingCode**](ScanModuleApi.md#scanmodulescontrollercreatebysharingcode) | **post** /groups/by-code/{sharing_code}/scanners | Register a scanner to the group associated with this sharingCode
 [**scanModulesControllerFindAll**](ScanModuleApi.md#scanmodulescontrollerfindall) | **get** /groups/{groupId}/scanners | Get the scanners of the group
 [**scanModulesControllerFindOne**](ScanModuleApi.md#scanmodulescontrollerfindone) | **get** /groups/{groupId}/scanners/{id} | Get the scanner details
 [**scanModulesControllerRemove**](ScanModuleApi.md#scanmodulescontrollerremove) | **delete** /groups/{groupId}/scanners/{id} | Unregister a scanner
+[**scanModulesControllerRemoveProduct**](ScanModuleApi.md#scanmodulescontrollerremoveproduct) | **delete** /groups/for-scanner/{token}/inventory/{barcode} | Remove a product from the scanner linked inventory
 [**scanModulesControllerUpdate**](ScanModuleApi.md#scanmodulescontrollerupdate) | **patch** /groups/{groupId}/scanners/{id} | Update a scanner
 
+
+# **scanModulesControllerAddProduct**
+> ResponseScanModuleDto scanModulesControllerAddProduct(token, barcode)
+
+Add a product to the scanner linked inventory
+
+### Example 
+```dart
+import 'package:fd_dart_client/api.dart';
+
+var api_instance = new ScanModuleApi();
+var token = token_example; // String | 
+var barcode = barcode_example; // String | 
+
+try { 
+    var result = api_instance.scanModulesControllerAddProduct(token, barcode);
+    print(result);
+} catch (e) {
+    print('Exception when calling ScanModuleApi->scanModulesControllerAddProduct: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **token** | **String**|  | 
+ **barcode** | **String**|  | 
+
+### Return type
+
+[**ResponseScanModuleDto**](ResponseScanModuleDto.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **scanModulesControllerCreateBySharingCode**
 > CreateResponseScanModuleDto scanModulesControllerCreateBySharingCode(sharingCode, createScanModuleDto)
@@ -191,6 +236,49 @@ void (empty response body)
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **scanModulesControllerRemoveProduct**
+> ResponseScanModuleDto scanModulesControllerRemoveProduct(token, barcode)
+
+Remove a product from the scanner linked inventory
+
+### Example 
+```dart
+import 'package:fd_dart_client/api.dart';
+
+var api_instance = new ScanModuleApi();
+var token = token_example; // String | 
+var barcode = barcode_example; // String | 
+
+try { 
+    var result = api_instance.scanModulesControllerRemoveProduct(token, barcode);
+    print(result);
+} catch (e) {
+    print('Exception when calling ScanModuleApi->scanModulesControllerRemoveProduct: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **token** | **String**|  | 
+ **barcode** | **String**|  | 
+
+### Return type
+
+[**ResponseScanModuleDto**](ResponseScanModuleDto.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

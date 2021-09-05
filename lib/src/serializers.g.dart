@@ -14,6 +14,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(CreateInventoryProductDto.serializer)
       ..add(CreateResponseScanModuleDto.serializer)
       ..add(CreateScanModuleDto.serializer)
+      ..add(CreateShoppingHistoryDto.serializer)
       ..add(CreateShoppingItemDto.serializer)
       ..add(CreateUserDto.serializer)
       ..add(CreateUserProductTagDto.serializer)
@@ -23,12 +24,16 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(ResponseFavoriteProductDto.serializer)
       ..add(ResponseGroupDto.serializer)
       ..add(ResponseGroupMemberDto.serializer)
+      ..add(ResponseGroupProductExpirationDto.serializer)
+      ..add(ResponseGroupProductRecommendationDto.serializer)
       ..add(ResponseInventoryProductDetailDto.serializer)
       ..add(ResponseInventoryProductDto.serializer)
       ..add(ResponsePaginationInventoryProductDto.serializer)
       ..add(ResponsePictureDto.serializer)
       ..add(ResponseProductDto.serializer)
       ..add(ResponseScanModuleDto.serializer)
+      ..add(ResponseShoppingHistoryItemDto.serializer)
+      ..add(ResponseShoppingHistoryListDto.serializer)
       ..add(ResponseShoppingItemDto.serializer)
       ..add(ResponseUserDto.serializer)
       ..add(ResponseUserProductTagDto.serializer)
@@ -54,6 +59,16 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(
               BuiltList, const [const FullType(ResponseInventoryProductDto)]),
           () => new ListBuilder<ResponseInventoryProductDto>())
+      ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType(ResponseShoppingHistoryItemDto)]),
+          () => new ListBuilder<ResponseShoppingHistoryItemDto>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())

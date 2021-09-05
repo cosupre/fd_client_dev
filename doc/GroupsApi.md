@@ -15,6 +15,8 @@ Method | HTTP request | Description
 [**groupsControllerCreate**](GroupsApi.md#groupscontrollercreate) | **post** /groups | Create a group and register the logged in user as owner
 [**groupsControllerFindAll**](GroupsApi.md#groupscontrollerfindall) | **get** /groups | Get the groups of the user
 [**groupsControllerFindOne**](GroupsApi.md#groupscontrollerfindone) | **get** /groups/{id} | Get the group specified by id
+[**groupsControllerGetProductNearExpiration**](GroupsApi.md#groupscontrollergetproductnearexpiration) | **get** /groups/{id}/products-near-expiration | Get the products that are near expiration
+[**groupsControllerGetProductRecommendations**](GroupsApi.md#groupscontrollergetproductrecommendations) | **get** /groups/{id}/product-recommendations | Get a set of products matching the string given
 [**groupsControllerJoin**](GroupsApi.md#groupscontrollerjoin) | **get** /groups/join/{sharing_code} | Join a group with its sharing code
 [**groupsControllerRemove**](GroupsApi.md#groupscontrollerremove) | **delete** /groups/{id} | Delete the group specified by id
 [**groupsControllerRemoveGroupMember**](GroupsApi.md#groupscontrollerremovegroupmember) | **delete** /groups/{groupId}/members/{userId} | Remove a member from a group. Owner can&#39;t be removed and only superior level user can remove another user.
@@ -275,6 +277,102 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ResponseGroupDto**](ResponseGroupDto.md)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **groupsControllerGetProductNearExpiration**
+> BuiltList<ResponseGroupProductExpirationDto> groupsControllerGetProductNearExpiration(id, days, maxResults)
+
+Get the products that are near expiration
+
+### Example 
+```dart
+import 'package:fd_dart_client/api.dart';
+// TODO Configure HTTP basic authorization: jwt
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
+
+var api_instance = new GroupsApi();
+var id = id_example; // String | 
+var days = days_example; // String | Number of days until expiration date
+var maxResults = 8.14; // num | The max number of results desired
+
+try { 
+    var result = api_instance.groupsControllerGetProductNearExpiration(id, days, maxResults);
+    print(result);
+} catch (e) {
+    print('Exception when calling GroupsApi->groupsControllerGetProductNearExpiration: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  | 
+ **days** | **String**| Number of days until expiration date | 
+ **maxResults** | **num**| The max number of results desired | 
+
+### Return type
+
+[**BuiltList<ResponseGroupProductExpirationDto>**](ResponseGroupProductExpirationDto.md)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **groupsControllerGetProductRecommendations**
+> BuiltList<ResponseGroupProductRecommendationDto> groupsControllerGetProductRecommendations(id, search, maxResults)
+
+Get a set of products matching the string given
+
+### Example 
+```dart
+import 'package:fd_dart_client/api.dart';
+// TODO Configure HTTP basic authorization: jwt
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
+
+var api_instance = new GroupsApi();
+var id = id_example; // String | 
+var search = search_example; // String | The string tou want the results to contain
+var maxResults = 8.14; // num | The max number of results desired
+
+try { 
+    var result = api_instance.groupsControllerGetProductRecommendations(id, search, maxResults);
+    print(result);
+} catch (e) {
+    print('Exception when calling GroupsApi->groupsControllerGetProductRecommendations: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  | 
+ **search** | **String**| The string tou want the results to contain | 
+ **maxResults** | **num**| The max number of results desired | 
+
+### Return type
+
+[**BuiltList<ResponseGroupProductRecommendationDto>**](ResponseGroupProductRecommendationDto.md)
 
 ### Authorization
 

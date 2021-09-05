@@ -16,6 +16,7 @@ import 'package:fd_dart_client/src/api/pictures_api.dart';
 import 'package:fd_dart_client/src/api/product_tags_api.dart';
 import 'package:fd_dart_client/src/api/products_api.dart';
 import 'package:fd_dart_client/src/api/scan_module_api.dart';
+import 'package:fd_dart_client/src/api/shopping_history_api.dart';
 import 'package:fd_dart_client/src/api/shopping_list_api.dart';
 import 'package:fd_dart_client/src/api/users_api.dart';
 
@@ -113,6 +114,12 @@ class FdDartClient {
   /// by doing that all interceptors will not be executed
   ScanModuleApi getScanModuleApi() {
     return ScanModuleApi(dio, serializers);
+  }
+
+  /// Get ShoppingHistoryApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  ShoppingHistoryApi getShoppingHistoryApi() {
+    return ShoppingHistoryApi(dio, serializers);
   }
 
   /// Get ShoppingListApi instance, base route and serializer can be overridden by a given but be careful,

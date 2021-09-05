@@ -72,6 +72,8 @@ Class | Method | HTTP request | Description
 *GroupsApi* | [**groupsControllerCreate**](doc/GroupsApi.md#groupscontrollercreate) | **post** /groups | Create a group and register the logged in user as owner
 *GroupsApi* | [**groupsControllerFindAll**](doc/GroupsApi.md#groupscontrollerfindall) | **get** /groups | Get the groups of the user
 *GroupsApi* | [**groupsControllerFindOne**](doc/GroupsApi.md#groupscontrollerfindone) | **get** /groups/{id} | Get the group specified by id
+*GroupsApi* | [**groupsControllerGetProductNearExpiration**](doc/GroupsApi.md#groupscontrollergetproductnearexpiration) | **get** /groups/{id}/products-near-expiration | Get the products that are near expiration
+*GroupsApi* | [**groupsControllerGetProductRecommendations**](doc/GroupsApi.md#groupscontrollergetproductrecommendations) | **get** /groups/{id}/product-recommendations | Get a set of products matching the string given
 *GroupsApi* | [**groupsControllerJoin**](doc/GroupsApi.md#groupscontrollerjoin) | **get** /groups/join/{sharing_code} | Join a group with its sharing code
 *GroupsApi* | [**groupsControllerRemove**](doc/GroupsApi.md#groupscontrollerremove) | **delete** /groups/{id} | Delete the group specified by id
 *GroupsApi* | [**groupsControllerRemoveGroupMember**](doc/GroupsApi.md#groupscontrollerremovegroupmember) | **delete** /groups/{groupId}/members/{userId} | Remove a member from a group. Owner can&#39;t be removed and only superior level user can remove another user.
@@ -93,11 +95,16 @@ Class | Method | HTTP request | Description
 *ProductsApi* | [**productsControllerGetByBarcode**](doc/ProductsApi.md#productscontrollergetbybarcode) | **get** /products/barcode/{barcode} | Get a product using its barcode
 *ProductsApi* | [**productsControllerGetById**](doc/ProductsApi.md#productscontrollergetbyid) | **get** /products/{id} | Get a product using its id
 *ProductsApi* | [**productsControllerRemoveTagProduct**](doc/ProductsApi.md#productscontrollerremovetagproduct) | **patch** /products/{productId}/remove-tag/{tagId} | Remove the tag of a product
+*ScanModuleApi* | [**scanModulesControllerAddProduct**](doc/ScanModuleApi.md#scanmodulescontrolleraddproduct) | **post** /groups/for-scanner/{token}/inventory/{barcode} | Add a product to the scanner linked inventory
 *ScanModuleApi* | [**scanModulesControllerCreateBySharingCode**](doc/ScanModuleApi.md#scanmodulescontrollercreatebysharingcode) | **post** /groups/by-code/{sharing_code}/scanners | Register a scanner to the group associated with this sharingCode
 *ScanModuleApi* | [**scanModulesControllerFindAll**](doc/ScanModuleApi.md#scanmodulescontrollerfindall) | **get** /groups/{groupId}/scanners | Get the scanners of the group
 *ScanModuleApi* | [**scanModulesControllerFindOne**](doc/ScanModuleApi.md#scanmodulescontrollerfindone) | **get** /groups/{groupId}/scanners/{id} | Get the scanner details
 *ScanModuleApi* | [**scanModulesControllerRemove**](doc/ScanModuleApi.md#scanmodulescontrollerremove) | **delete** /groups/{groupId}/scanners/{id} | Unregister a scanner
+*ScanModuleApi* | [**scanModulesControllerRemoveProduct**](doc/ScanModuleApi.md#scanmodulescontrollerremoveproduct) | **delete** /groups/for-scanner/{token}/inventory/{barcode} | Remove a product from the scanner linked inventory
 *ScanModuleApi* | [**scanModulesControllerUpdate**](doc/ScanModuleApi.md#scanmodulescontrollerupdate) | **patch** /groups/{groupId}/scanners/{id} | Update a scanner
+*ShoppingHistoryApi* | [**shoppingHistoryControllerCreate**](doc/ShoppingHistoryApi.md#shoppinghistorycontrollercreate) | **post** /groups/{groupId}/shopping-list-history | Move a bunch of shopping list items to a new history list
+*ShoppingHistoryApi* | [**shoppingHistoryControllerFindAll**](doc/ShoppingHistoryApi.md#shoppinghistorycontrollerfindall) | **get** /groups/{groupId}/shopping-list-history | Get all the shopping list histories
+*ShoppingHistoryApi* | [**shoppingHistoryControllerFindOne**](doc/ShoppingHistoryApi.md#shoppinghistorycontrollerfindone) | **get** /groups/{groupId}/shopping-list-history/{id} | Get a specific shopping history list
 *ShoppingListApi* | [**shoppingItemsControllerCreate**](doc/ShoppingListApi.md#shoppingitemscontrollercreate) | **post** /groups/{groupId}/shopping-list | Add a product to the group&#39;s shopping list
 *ShoppingListApi* | [**shoppingItemsControllerCreateCustom**](doc/ShoppingListApi.md#shoppingitemscontrollercreatecustom) | **post** /groups/{groupId}/shopping-list/custom-product | Add a custom product to the group&#39;s shopping list
 *ShoppingListApi* | [**shoppingItemsControllerDelete**](doc/ShoppingListApi.md#shoppingitemscontrollerdelete) | **delete** /groups/{groupId}/shopping-list/{id} | Delete an item from the shopping list
@@ -128,6 +135,7 @@ Class | Method | HTTP request | Description
  - [CreateInventoryProductDto](doc/CreateInventoryProductDto.md)
  - [CreateResponseScanModuleDto](doc/CreateResponseScanModuleDto.md)
  - [CreateScanModuleDto](doc/CreateScanModuleDto.md)
+ - [CreateShoppingHistoryDto](doc/CreateShoppingHistoryDto.md)
  - [CreateShoppingItemDto](doc/CreateShoppingItemDto.md)
  - [CreateUserDto](doc/CreateUserDto.md)
  - [CreateUserProductTagDto](doc/CreateUserProductTagDto.md)
@@ -137,12 +145,16 @@ Class | Method | HTTP request | Description
  - [ResponseFavoriteProductDto](doc/ResponseFavoriteProductDto.md)
  - [ResponseGroupDto](doc/ResponseGroupDto.md)
  - [ResponseGroupMemberDto](doc/ResponseGroupMemberDto.md)
+ - [ResponseGroupProductExpirationDto](doc/ResponseGroupProductExpirationDto.md)
+ - [ResponseGroupProductRecommendationDto](doc/ResponseGroupProductRecommendationDto.md)
  - [ResponseInventoryProductDetailDto](doc/ResponseInventoryProductDetailDto.md)
  - [ResponseInventoryProductDto](doc/ResponseInventoryProductDto.md)
  - [ResponsePaginationInventoryProductDto](doc/ResponsePaginationInventoryProductDto.md)
  - [ResponsePictureDto](doc/ResponsePictureDto.md)
  - [ResponseProductDto](doc/ResponseProductDto.md)
  - [ResponseScanModuleDto](doc/ResponseScanModuleDto.md)
+ - [ResponseShoppingHistoryItemDto](doc/ResponseShoppingHistoryItemDto.md)
+ - [ResponseShoppingHistoryListDto](doc/ResponseShoppingHistoryListDto.md)
  - [ResponseShoppingItemDto](doc/ResponseShoppingItemDto.md)
  - [ResponseUserDto](doc/ResponseUserDto.md)
  - [ResponseUserProductTagDto](doc/ResponseUserProductTagDto.md)

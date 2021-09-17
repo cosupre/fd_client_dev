@@ -110,9 +110,3 @@ lib/src/model/update_user_product_tag_dto.dart
 lib/src/model/update_user_tag_dto.dart
 lib/src/serializers.dart
 pubspec.yaml
-test/create_shopping_history_dto_test.dart
-test/response_group_product_expiration_dto_test.dart
-test/response_group_product_recommendation_dto_test.dart
-test/response_shopping_history_item_dto_test.dart
-test/response_shopping_history_list_dto_test.dart
-test/shopping_history_api_test.dart

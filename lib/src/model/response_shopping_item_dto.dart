@@ -40,6 +40,10 @@ abstract class ResponseShoppingItemDto implements Built<ResponseShoppingItemDto,
     @BuiltValueField(wireName: r'count')
     String get count;
 
+    /// If the item is already bought
+    @BuiltValueField(wireName: r'bought')
+    bool get bought;
+
     ResponseShoppingItemDto._();
 
     static void _initializeBuilder(ResponseShoppingItemDtoBuilder b) => b;
@@ -93,6 +97,10 @@ class _$ResponseShoppingItemDtoSerializer implements StructuredSerializer<Respon
             ..add(r'count')
             ..add(serializers.serialize(object.count,
                 specifiedType: const FullType(String)));
+        result
+            ..add(r'bought')
+            ..add(serializers.serialize(object.bought,
+                specifiedType: const FullType(bool)));
         return result;
     }
 
@@ -134,6 +142,10 @@ class _$ResponseShoppingItemDtoSerializer implements StructuredSerializer<Respon
                 case r'count':
                     result.count = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
+                    break;
+                case r'bought':
+                    result.bought = serializers.deserialize(value,
+                        specifiedType: const FullType(bool)) as bool;
                     break;
             }
         }

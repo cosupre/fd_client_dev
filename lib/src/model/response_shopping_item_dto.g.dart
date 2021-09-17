@@ -21,6 +21,8 @@ class _$ResponseShoppingItemDto extends ResponseShoppingItemDto {
   final BuiltList<String> ownerIds;
   @override
   final String count;
+  @override
+  final bool bought;
 
   factory _$ResponseShoppingItemDto(
           [void Function(ResponseShoppingItemDtoBuilder)? updates]) =>
@@ -33,7 +35,8 @@ class _$ResponseShoppingItemDto extends ResponseShoppingItemDto {
       required this.groupId,
       required this.product,
       required this.ownerIds,
-      required this.count})
+      required this.count,
+      required this.bought})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(id, 'ResponseShoppingItemDto', 'id');
     BuiltValueNullFieldError.checkNotNull(
@@ -44,6 +47,8 @@ class _$ResponseShoppingItemDto extends ResponseShoppingItemDto {
         ownerIds, 'ResponseShoppingItemDto', 'ownerIds');
     BuiltValueNullFieldError.checkNotNull(
         count, 'ResponseShoppingItemDto', 'count');
+    BuiltValueNullFieldError.checkNotNull(
+        bought, 'ResponseShoppingItemDto', 'bought');
   }
 
   @override
@@ -65,7 +70,8 @@ class _$ResponseShoppingItemDto extends ResponseShoppingItemDto {
         groupId == other.groupId &&
         product == other.product &&
         ownerIds == other.ownerIds &&
-        count == other.count;
+        count == other.count &&
+        bought == other.bought;
   }
 
   @override
@@ -74,12 +80,14 @@ class _$ResponseShoppingItemDto extends ResponseShoppingItemDto {
         $jc(
             $jc(
                 $jc(
-                    $jc($jc($jc(0, createdAt.hashCode), updatedAt.hashCode),
-                        id.hashCode),
-                    groupId.hashCode),
-                product.hashCode),
-            ownerIds.hashCode),
-        count.hashCode));
+                    $jc(
+                        $jc($jc($jc(0, createdAt.hashCode), updatedAt.hashCode),
+                            id.hashCode),
+                        groupId.hashCode),
+                    product.hashCode),
+                ownerIds.hashCode),
+            count.hashCode),
+        bought.hashCode));
   }
 
   @override
@@ -91,7 +99,8 @@ class _$ResponseShoppingItemDto extends ResponseShoppingItemDto {
           ..add('groupId', groupId)
           ..add('product', product)
           ..add('ownerIds', ownerIds)
-          ..add('count', count))
+          ..add('count', count)
+          ..add('bought', bought))
         .toString();
   }
 }
@@ -132,6 +141,10 @@ class ResponseShoppingItemDtoBuilder
   String? get count => _$this._count;
   set count(String? count) => _$this._count = count;
 
+  bool? _bought;
+  bool? get bought => _$this._bought;
+  set bought(bool? bought) => _$this._bought = bought;
+
   ResponseShoppingItemDtoBuilder() {
     ResponseShoppingItemDto._initializeBuilder(this);
   }
@@ -146,6 +159,7 @@ class ResponseShoppingItemDtoBuilder
       _product = $v.product.toBuilder();
       _ownerIds = $v.ownerIds.toBuilder();
       _count = $v.count;
+      _bought = $v.bought;
       _$v = null;
     }
     return this;
@@ -177,7 +191,9 @@ class ResponseShoppingItemDtoBuilder
               product: product.build(),
               ownerIds: ownerIds.build(),
               count: BuiltValueNullFieldError.checkNotNull(
-                  count, 'ResponseShoppingItemDto', 'count'));
+                  count, 'ResponseShoppingItemDto', 'count'),
+              bought: BuiltValueNullFieldError.checkNotNull(
+                  bought, 'ResponseShoppingItemDto', 'bought'));
     } catch (_) {
       late String _$failedField;
       try {

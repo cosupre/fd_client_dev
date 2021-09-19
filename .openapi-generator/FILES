@@ -46,6 +46,7 @@ doc/UpdateGroupDto.md
 doc/UpdateGroupMemberDto.md
 doc/UpdateInventoryProductDto.md
 doc/UpdateScanModuleDto.md
+doc/UpdateShoppingHistoryListDto.md
 doc/UpdateShoppingItemDto.md
 doc/UpdateUserDto.md
 doc/UpdateUserProductTagDto.md
@@ -104,9 +105,11 @@ lib/src/model/update_group_dto.dart
 lib/src/model/update_group_member_dto.dart
 lib/src/model/update_inventory_product_dto.dart
 lib/src/model/update_scan_module_dto.dart
+lib/src/model/update_shopping_history_list_dto.dart
 lib/src/model/update_shopping_item_dto.dart
 lib/src/model/update_user_dto.dart
 lib/src/model/update_user_product_tag_dto.dart
 lib/src/model/update_user_tag_dto.dart
 lib/src/serializers.dart
 pubspec.yaml
+test/update_shopping_history_list_dto_test.dart

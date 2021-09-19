@@ -44,6 +44,7 @@ import 'package:fd_dart_client/src/model/update_group_dto.dart';
 import 'package:fd_dart_client/src/model/update_group_member_dto.dart';
 import 'package:fd_dart_client/src/model/update_inventory_product_dto.dart';
 import 'package:fd_dart_client/src/model/update_scan_module_dto.dart';
+import 'package:fd_dart_client/src/model/update_shopping_history_list_dto.dart';
 import 'package:fd_dart_client/src/model/update_shopping_item_dto.dart';
 import 'package:fd_dart_client/src/model/update_user_dto.dart';
 import 'package:fd_dart_client/src/model/update_user_product_tag_dto.dart';
@@ -88,6 +89,7 @@ part 'serializers.g.dart';
   UpdateGroupMemberDto,
   UpdateInventoryProductDto,
   UpdateScanModuleDto,
+  UpdateShoppingHistoryListDto,
   UpdateShoppingItemDto,
   UpdateUserDto,
   UpdateUserProductTagDto,

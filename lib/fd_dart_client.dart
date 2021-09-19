@@ -55,6 +55,7 @@ export 'package:fd_dart_client/src/model/update_group_dto.dart';
 export 'package:fd_dart_client/src/model/update_group_member_dto.dart';
 export 'package:fd_dart_client/src/model/update_inventory_product_dto.dart';
 export 'package:fd_dart_client/src/model/update_scan_module_dto.dart';
+export 'package:fd_dart_client/src/model/update_shopping_history_list_dto.dart';
 export 'package:fd_dart_client/src/model/update_shopping_item_dto.dart';
 export 'package:fd_dart_client/src/model/update_user_dto.dart';
 export 'package:fd_dart_client/src/model/update_user_product_tag_dto.dart';

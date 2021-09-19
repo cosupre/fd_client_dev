@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**shoppingItemsControllerFindAll**](ShoppingListApi.md#shoppingitemscontrollerfindall) | **get** /groups/{groupId}/shopping-list | Get the items from the group&#39;s shopping list
 [**shoppingItemsControllerFindOne**](ShoppingListApi.md#shoppingitemscontrollerfindone) | **get** /groups/{groupId}/shopping-list/{id} | Get a specific item from the group&#39;s shopping list
 [**shoppingItemsControllerStartShopping**](ShoppingListApi.md#shoppingitemscontrollerstartshopping) | **patch** /groups/{groupId}/shopping-list/start-shopping | Start the shopping mode for this group
+[**shoppingItemsControllerStopShopping**](ShoppingListApi.md#shoppingitemscontrollerstopshopping) | **patch** /groups/{groupId}/shopping-list/stop-shopping | Stop the shopping mode for this group
 [**shoppingItemsControllerUpdate**](ShoppingListApi.md#shoppingitemscontrollerupdate) | **patch** /groups/{groupId}/shopping-list/{id} | Update an item of the shopping list
 
 
@@ -270,6 +271,49 @@ try {
     api_instance.shoppingItemsControllerStartShopping(groupId);
 } catch (e) {
     print('Exception when calling ShoppingListApi->shoppingItemsControllerStartShopping: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupId** | **String**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **shoppingItemsControllerStopShopping**
+> shoppingItemsControllerStopShopping(groupId)
+
+Stop the shopping mode for this group
+
+### Example 
+```dart
+import 'package:fd_dart_client/api.dart';
+// TODO Configure HTTP basic authorization: jwt
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
+
+var api_instance = new ShoppingListApi();
+var groupId = groupId_example; // String | 
+
+try { 
+    api_instance.shoppingItemsControllerStopShopping(groupId);
+} catch (e) {
+    print('Exception when calling ShoppingListApi->shoppingItemsControllerStopShopping: $e\n');
 }
 ```
 

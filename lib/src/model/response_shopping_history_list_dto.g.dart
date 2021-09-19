@@ -15,6 +15,8 @@ class _$ResponseShoppingHistoryListDto extends ResponseShoppingHistoryListDto {
   final String groupId;
   @override
   final DateTime purchaseDate;
+  @override
+  final String name;
 
   factory _$ResponseShoppingHistoryListDto(
           [void Function(ResponseShoppingHistoryListDtoBuilder)? updates]) =>
@@ -24,7 +26,8 @@ class _$ResponseShoppingHistoryListDto extends ResponseShoppingHistoryListDto {
       {required this.id,
       required this.items,
       required this.groupId,
-      required this.purchaseDate})
+      required this.purchaseDate,
+      required this.name})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         id, 'ResponseShoppingHistoryListDto', 'id');
@@ -34,6 +37,8 @@ class _$ResponseShoppingHistoryListDto extends ResponseShoppingHistoryListDto {
         groupId, 'ResponseShoppingHistoryListDto', 'groupId');
     BuiltValueNullFieldError.checkNotNull(
         purchaseDate, 'ResponseShoppingHistoryListDto', 'purchaseDate');
+    BuiltValueNullFieldError.checkNotNull(
+        name, 'ResponseShoppingHistoryListDto', 'name');
   }
 
   @override
@@ -52,14 +57,16 @@ class _$ResponseShoppingHistoryListDto extends ResponseShoppingHistoryListDto {
         id == other.id &&
         items == other.items &&
         groupId == other.groupId &&
-        purchaseDate == other.purchaseDate;
+        purchaseDate == other.purchaseDate &&
+        name == other.name;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, id.hashCode), items.hashCode), groupId.hashCode),
-        purchaseDate.hashCode));
+        $jc($jc($jc($jc(0, id.hashCode), items.hashCode), groupId.hashCode),
+            purchaseDate.hashCode),
+        name.hashCode));
   }
 
   @override
@@ -68,7 +75,8 @@ class _$ResponseShoppingHistoryListDto extends ResponseShoppingHistoryListDto {
           ..add('id', id)
           ..add('items', items)
           ..add('groupId', groupId)
-          ..add('purchaseDate', purchaseDate))
+          ..add('purchaseDate', purchaseDate)
+          ..add('name', name))
         .toString();
   }
 }
@@ -98,6 +106,10 @@ class ResponseShoppingHistoryListDtoBuilder
   set purchaseDate(DateTime? purchaseDate) =>
       _$this._purchaseDate = purchaseDate;
 
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
   ResponseShoppingHistoryListDtoBuilder() {
     ResponseShoppingHistoryListDto._initializeBuilder(this);
   }
@@ -109,6 +121,7 @@ class ResponseShoppingHistoryListDtoBuilder
       _items = $v.items.toBuilder();
       _groupId = $v.groupId;
       _purchaseDate = $v.purchaseDate;
+      _name = $v.name;
       _$v = null;
     }
     return this;
@@ -137,7 +150,9 @@ class ResponseShoppingHistoryListDtoBuilder
               groupId: BuiltValueNullFieldError.checkNotNull(
                   groupId, 'ResponseShoppingHistoryListDto', 'groupId'),
               purchaseDate: BuiltValueNullFieldError.checkNotNull(purchaseDate,
-                  'ResponseShoppingHistoryListDto', 'purchaseDate'));
+                  'ResponseShoppingHistoryListDto', 'purchaseDate'),
+              name: BuiltValueNullFieldError.checkNotNull(
+                  name, 'ResponseShoppingHistoryListDto', 'name'));
     } catch (_) {
       late String _$failedField;
       try {

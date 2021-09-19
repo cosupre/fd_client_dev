@@ -19,6 +19,10 @@ abstract class CreateShoppingHistoryDto implements Built<CreateShoppingHistoryDt
     @BuiltValueField(wireName: r'purchaseDate')
     DateTime? get purchaseDate;
 
+    /// The list name
+    @BuiltValueField(wireName: r'name')
+    String get name;
+
     CreateShoppingHistoryDto._();
 
     static void _initializeBuilder(CreateShoppingHistoryDtoBuilder b) => b;
@@ -52,6 +56,10 @@ class _$CreateShoppingHistoryDtoSerializer implements StructuredSerializer<Creat
                 ..add(serializers.serialize(object.purchaseDate,
                     specifiedType: const FullType(DateTime)));
         }
+        result
+            ..add(r'name')
+            ..add(serializers.serialize(object.name,
+                specifiedType: const FullType(String)));
         return result;
     }
 
@@ -73,6 +81,10 @@ class _$CreateShoppingHistoryDtoSerializer implements StructuredSerializer<Creat
                 case r'purchaseDate':
                     result.purchaseDate = serializers.deserialize(value,
                         specifiedType: const FullType(DateTime)) as DateTime;
+                    break;
+                case r'name':
+                    result.name = serializers.deserialize(value,
+                        specifiedType: const FullType(String)) as String;
                     break;
             }
         }

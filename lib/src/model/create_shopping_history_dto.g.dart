@@ -11,13 +11,19 @@ class _$CreateShoppingHistoryDto extends CreateShoppingHistoryDto {
   final BuiltList<String>? shoppingItemsIds;
   @override
   final DateTime? purchaseDate;
+  @override
+  final String name;
 
   factory _$CreateShoppingHistoryDto(
           [void Function(CreateShoppingHistoryDtoBuilder)? updates]) =>
       (new CreateShoppingHistoryDtoBuilder()..update(updates)).build();
 
-  _$CreateShoppingHistoryDto._({this.shoppingItemsIds, this.purchaseDate})
-      : super._();
+  _$CreateShoppingHistoryDto._(
+      {this.shoppingItemsIds, this.purchaseDate, required this.name})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        name, 'CreateShoppingHistoryDto', 'name');
+  }
 
   @override
   CreateShoppingHistoryDto rebuild(
@@ -33,19 +39,23 @@ class _$CreateShoppingHistoryDto extends CreateShoppingHistoryDto {
     if (identical(other, this)) return true;
     return other is CreateShoppingHistoryDto &&
         shoppingItemsIds == other.shoppingItemsIds &&
-        purchaseDate == other.purchaseDate;
+        purchaseDate == other.purchaseDate &&
+        name == other.name;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, shoppingItemsIds.hashCode), purchaseDate.hashCode));
+    return $jf($jc(
+        $jc($jc(0, shoppingItemsIds.hashCode), purchaseDate.hashCode),
+        name.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('CreateShoppingHistoryDto')
           ..add('shoppingItemsIds', shoppingItemsIds)
-          ..add('purchaseDate', purchaseDate))
+          ..add('purchaseDate', purchaseDate)
+          ..add('name', name))
         .toString();
   }
 }
@@ -66,6 +76,10 @@ class CreateShoppingHistoryDtoBuilder
   set purchaseDate(DateTime? purchaseDate) =>
       _$this._purchaseDate = purchaseDate;
 
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
   CreateShoppingHistoryDtoBuilder() {
     CreateShoppingHistoryDto._initializeBuilder(this);
   }
@@ -75,6 +89,7 @@ class CreateShoppingHistoryDtoBuilder
     if ($v != null) {
       _shoppingItemsIds = $v.shoppingItemsIds?.toBuilder();
       _purchaseDate = $v.purchaseDate;
+      _name = $v.name;
       _$v = null;
     }
     return this;
@@ -98,7 +113,9 @@ class CreateShoppingHistoryDtoBuilder
       _$result = _$v ??
           new _$CreateShoppingHistoryDto._(
               shoppingItemsIds: _shoppingItemsIds?.build(),
-              purchaseDate: purchaseDate);
+              purchaseDate: purchaseDate,
+              name: BuiltValueNullFieldError.checkNotNull(
+                  name, 'CreateShoppingHistoryDto', 'name'));
     } catch (_) {
       late String _$failedField;
       try {

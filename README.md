@@ -103,14 +103,17 @@ Class | Method | HTTP request | Description
 *ScanModuleApi* | [**scanModulesControllerRemoveProduct**](doc/ScanModuleApi.md#scanmodulescontrollerremoveproduct) | **delete** /groups/for-scanner/{token}/inventory/{barcode} | Remove a product from the scanner linked inventory
 *ScanModuleApi* | [**scanModulesControllerUpdate**](doc/ScanModuleApi.md#scanmodulescontrollerupdate) | **patch** /groups/{groupId}/scanners/{id} | Update a scanner
 *ShoppingHistoryApi* | [**shoppingHistoryControllerCreate**](doc/ShoppingHistoryApi.md#shoppinghistorycontrollercreate) | **post** /groups/{groupId}/shopping-list-history | Move a bunch of shopping list items to a new history list
+*ShoppingHistoryApi* | [**shoppingHistoryControllerDelete**](doc/ShoppingHistoryApi.md#shoppinghistorycontrollerdelete) | **delete** /groups/{groupId}/shopping-list-history/{id} | Delete a specific shopping history list
 *ShoppingHistoryApi* | [**shoppingHistoryControllerFindAll**](doc/ShoppingHistoryApi.md#shoppinghistorycontrollerfindall) | **get** /groups/{groupId}/shopping-list-history | Get all the shopping list histories
 *ShoppingHistoryApi* | [**shoppingHistoryControllerFindOne**](doc/ShoppingHistoryApi.md#shoppinghistorycontrollerfindone) | **get** /groups/{groupId}/shopping-list-history/{id} | Get a specific shopping history list
+*ShoppingHistoryApi* | [**shoppingHistoryControllerUpdate**](doc/ShoppingHistoryApi.md#shoppinghistorycontrollerupdate) | **patch** /groups/{groupId}/shopping-list-history/{id} | Update a specific shopping history list
 *ShoppingListApi* | [**shoppingItemsControllerCreate**](doc/ShoppingListApi.md#shoppingitemscontrollercreate) | **post** /groups/{groupId}/shopping-list | Add a product to the group&#39;s shopping list
 *ShoppingListApi* | [**shoppingItemsControllerCreateCustom**](doc/ShoppingListApi.md#shoppingitemscontrollercreatecustom) | **post** /groups/{groupId}/shopping-list/custom-product | Add a custom product to the group&#39;s shopping list
 *ShoppingListApi* | [**shoppingItemsControllerDelete**](doc/ShoppingListApi.md#shoppingitemscontrollerdelete) | **delete** /groups/{groupId}/shopping-list/{id} | Delete an item from the shopping list
 *ShoppingListApi* | [**shoppingItemsControllerFindAll**](doc/ShoppingListApi.md#shoppingitemscontrollerfindall) | **get** /groups/{groupId}/shopping-list | Get the items from the group&#39;s shopping list
 *ShoppingListApi* | [**shoppingItemsControllerFindOne**](doc/ShoppingListApi.md#shoppingitemscontrollerfindone) | **get** /groups/{groupId}/shopping-list/{id} | Get a specific item from the group&#39;s shopping list
 *ShoppingListApi* | [**shoppingItemsControllerStartShopping**](doc/ShoppingListApi.md#shoppingitemscontrollerstartshopping) | **patch** /groups/{groupId}/shopping-list/start-shopping | Start the shopping mode for this group
+*ShoppingListApi* | [**shoppingItemsControllerStopShopping**](doc/ShoppingListApi.md#shoppingitemscontrollerstopshopping) | **patch** /groups/{groupId}/shopping-list/stop-shopping | Stop the shopping mode for this group
 *ShoppingListApi* | [**shoppingItemsControllerUpdate**](doc/ShoppingListApi.md#shoppingitemscontrollerupdate) | **patch** /groups/{groupId}/shopping-list/{id} | Update an item of the shopping list
 *UsersApi* | [**usersControllerAddFavorite**](doc/UsersApi.md#userscontrolleraddfavorite) | **post** /users/favorite-products/{productId} | Add a product as favorite
 *UsersApi* | [**usersControllerAddTag**](doc/UsersApi.md#userscontrolleraddtag) | **post** /users/tags | Add a tag to the user
@@ -164,6 +167,7 @@ Class | Method | HTTP request | Description
  - [UpdateGroupMemberDto](doc/UpdateGroupMemberDto.md)
  - [UpdateInventoryProductDto](doc/UpdateInventoryProductDto.md)
  - [UpdateScanModuleDto](doc/UpdateScanModuleDto.md)
+ - [UpdateShoppingHistoryListDto](doc/UpdateShoppingHistoryListDto.md)
  - [UpdateShoppingItemDto](doc/UpdateShoppingItemDto.md)
  - [UpdateUserDto](doc/UpdateUserDto.md)
  - [UpdateUserProductTagDto](doc/UpdateUserProductTagDto.md)

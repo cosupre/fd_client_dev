@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **items** | [**BuiltList<ResponseShoppingHistoryItemDto>**](ResponseShoppingHistoryItemDto.md) | The history list items | 
 **groupId** | **String** | The group id where the list is coming from | 
 **purchaseDate** | [**DateTime**](DateTime.md) | The purchase date of the shopping list | 
+**name** | **String** | The list name | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -3,15 +3,15 @@
 //
 
 import 'package:built_collection/built_collection.dart';
-import 'package:fd_dart_client/src/model/response_inventory_product_detail_dto.dart';
+import 'package:fd_dart_client/src/model/response_debt_member_dto.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'response_shopping_item_dto.g.dart';
+part 'response_debt_dto.g.dart';
 
 
 
-abstract class ResponseShoppingItemDto implements Built<ResponseShoppingItemDto, ResponseShoppingItemDtoBuilder> {
+abstract class ResponseDebtDto implements Built<ResponseDebtDto, ResponseDebtDtoBuilder> {
     /// The creation timestamp of the entity
     @BuiltValueField(wireName: r'createdAt')
     DateTime? get createdAt;
@@ -20,7 +20,7 @@ abstract class ResponseShoppingItemDto implements Built<ResponseShoppingItemDto,
     @BuiltValueField(wireName: r'updatedAt')
     DateTime? get updatedAt;
 
-    /// The shopping item id
+    /// The debt id
     @BuiltValueField(wireName: r'id')
     String get id;
 
@@ -28,41 +28,45 @@ abstract class ResponseShoppingItemDto implements Built<ResponseShoppingItemDto,
     @BuiltValueField(wireName: r'groupId')
     String get groupId;
 
-    /// The product
-    @BuiltValueField(wireName: r'product')
-    ResponseInventoryProductDetailDto get product;
+    /// The id of the creditor group member
+    @BuiltValueField(wireName: r'creditorId')
+    String get creditorId;
 
-    /// The id of the users owning this product
-    @BuiltValueField(wireName: r'ownerIds')
-    BuiltList<String> get ownerIds;
+    /// The debt name
+    @BuiltValueField(wireName: r'name')
+    String get name;
 
-    /// The number of products
-    @BuiltValueField(wireName: r'count')
-    String get count;
+    /// The debt amount
+    @BuiltValueField(wireName: r'price')
+    String get price;
 
-    /// If the item is already bought
-    @BuiltValueField(wireName: r'bought')
-    bool get bought;
+    /// The date of the purchase linked with the debt
+    @BuiltValueField(wireName: r'date')
+    DateTime get date;
 
-    ResponseShoppingItemDto._();
+    /// The debt members who have to pay a part
+    @BuiltValueField(wireName: r'members')
+    BuiltList<ResponseDebtMemberDto> get members;
 
-    static void _initializeBuilder(ResponseShoppingItemDtoBuilder b) => b;
+    ResponseDebtDto._();
 
-    factory ResponseShoppingItemDto([void updates(ResponseShoppingItemDtoBuilder b)]) = _$ResponseShoppingItemDto;
+    static void _initializeBuilder(ResponseDebtDtoBuilder b) => b;
+
+    factory ResponseDebtDto([void updates(ResponseDebtDtoBuilder b)]) = _$ResponseDebtDto;
 
     @BuiltValueSerializer(custom: true)
-    static Serializer<ResponseShoppingItemDto> get serializer => _$ResponseShoppingItemDtoSerializer();
+    static Serializer<ResponseDebtDto> get serializer => _$ResponseDebtDtoSerializer();
 }
 
-class _$ResponseShoppingItemDtoSerializer implements StructuredSerializer<ResponseShoppingItemDto> {
+class _$ResponseDebtDtoSerializer implements StructuredSerializer<ResponseDebtDto> {
     @override
-    final Iterable<Type> types = const [ResponseShoppingItemDto, _$ResponseShoppingItemDto];
+    final Iterable<Type> types = const [ResponseDebtDto, _$ResponseDebtDto];
 
     @override
-    final String wireName = r'ResponseShoppingItemDto';
+    final String wireName = r'ResponseDebtDto';
 
     @override
-    Iterable<Object?> serialize(Serializers serializers, ResponseShoppingItemDto object,
+    Iterable<Object?> serialize(Serializers serializers, ResponseDebtDto object,
         {FullType specifiedType = FullType.unspecified}) {
         final result = <Object?>[];
         if (object.createdAt != null) {
@@ -86,28 +90,32 @@ class _$ResponseShoppingItemDtoSerializer implements StructuredSerializer<Respon
             ..add(serializers.serialize(object.groupId,
                 specifiedType: const FullType(String)));
         result
-            ..add(r'product')
-            ..add(serializers.serialize(object.product,
-                specifiedType: const FullType(ResponseInventoryProductDetailDto)));
-        result
-            ..add(r'ownerIds')
-            ..add(serializers.serialize(object.ownerIds,
-                specifiedType: const FullType(BuiltList, [FullType(String)])));
-        result
-            ..add(r'count')
-            ..add(serializers.serialize(object.count,
+            ..add(r'creditorId')
+            ..add(serializers.serialize(object.creditorId,
                 specifiedType: const FullType(String)));
         result
-            ..add(r'bought')
-            ..add(serializers.serialize(object.bought,
-                specifiedType: const FullType(bool)));
+            ..add(r'name')
+            ..add(serializers.serialize(object.name,
+                specifiedType: const FullType(String)));
+        result
+            ..add(r'price')
+            ..add(serializers.serialize(object.price,
+                specifiedType: const FullType(String)));
+        result
+            ..add(r'date')
+            ..add(serializers.serialize(object.date,
+                specifiedType: const FullType(DateTime)));
+        result
+            ..add(r'members')
+            ..add(serializers.serialize(object.members,
+                specifiedType: const FullType(BuiltList, [FullType(ResponseDebtMemberDto)])));
         return result;
     }
 
     @override
-    ResponseShoppingItemDto deserialize(Serializers serializers, Iterable<Object?> serialized,
+    ResponseDebtDto deserialize(Serializers serializers, Iterable<Object?> serialized,
         {FullType specifiedType = FullType.unspecified}) {
-        final result = ResponseShoppingItemDtoBuilder();
+        final result = ResponseDebtDtoBuilder();
 
         final iterator = serialized.iterator;
         while (iterator.moveNext()) {
@@ -131,21 +139,25 @@ class _$ResponseShoppingItemDtoSerializer implements StructuredSerializer<Respon
                     result.groupId = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
                     break;
-                case r'product':
-                    result.product.replace(serializers.deserialize(value,
-                        specifiedType: const FullType(ResponseInventoryProductDetailDto)) as ResponseInventoryProductDetailDto);
-                    break;
-                case r'ownerIds':
-                    result.ownerIds.replace(serializers.deserialize(value,
-                        specifiedType: const FullType(BuiltList, [FullType(String)])) as BuiltList<String>);
-                    break;
-                case r'count':
-                    result.count = serializers.deserialize(value,
+                case r'creditorId':
+                    result.creditorId = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
                     break;
-                case r'bought':
-                    result.bought = serializers.deserialize(value,
-                        specifiedType: const FullType(bool)) as bool;
+                case r'name':
+                    result.name = serializers.deserialize(value,
+                        specifiedType: const FullType(String)) as String;
+                    break;
+                case r'price':
+                    result.price = serializers.deserialize(value,
+                        specifiedType: const FullType(String)) as String;
+                    break;
+                case r'date':
+                    result.date = serializers.deserialize(value,
+                        specifiedType: const FullType(DateTime)) as DateTime;
+                    break;
+                case r'members':
+                    result.members.replace(serializers.deserialize(value,
+                        specifiedType: const FullType(BuiltList, [FullType(ResponseDebtMemberDto)])) as BuiltList<ResponseDebtMemberDto>);
                     break;
             }
         }

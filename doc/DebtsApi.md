@@ -1,4 +1,4 @@
-# fd_dart_client.api.ShoppingListApi
+# fd_dart_client.api.DebtsApi
 
 ## Load the API package
 ```dart
@@ -9,20 +9,20 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**shoppingItemsControllerCreate**](ShoppingListApi.md#shoppingitemscontrollercreate) | **post** /groups/{groupId}/shopping-list | Add a product to the group&#39;s shopping list
-[**shoppingItemsControllerCreateCustom**](ShoppingListApi.md#shoppingitemscontrollercreatecustom) | **post** /groups/{groupId}/shopping-list/custom-product | Add a custom product to the group&#39;s shopping list
-[**shoppingItemsControllerDelete**](ShoppingListApi.md#shoppingitemscontrollerdelete) | **delete** /groups/{groupId}/shopping-list/{id} | Delete an item from the shopping list
-[**shoppingItemsControllerFindAll**](ShoppingListApi.md#shoppingitemscontrollerfindall) | **get** /groups/{groupId}/shopping-list | Get the items from the group&#39;s shopping list
-[**shoppingItemsControllerFindOne**](ShoppingListApi.md#shoppingitemscontrollerfindone) | **get** /groups/{groupId}/shopping-list/{id} | Get a specific item from the group&#39;s shopping list
-[**shoppingItemsControllerStartShopping**](ShoppingListApi.md#shoppingitemscontrollerstartshopping) | **patch** /groups/{groupId}/shopping-list/start-shopping | Start the shopping mode for this group
-[**shoppingItemsControllerStopShopping**](ShoppingListApi.md#shoppingitemscontrollerstopshopping) | **patch** /groups/{groupId}/shopping-list/stop-shopping | Stop the shopping mode for this group
-[**shoppingItemsControllerUpdate**](ShoppingListApi.md#shoppingitemscontrollerupdate) | **patch** /groups/{groupId}/shopping-list/{id} | Update an item of the shopping list
+[**debtsControllerAddDebtMember**](DebtsApi.md#debtscontrolleradddebtmember) | **post** /groups/{groupId}/debts/{debtId}/members | Add a member to an entry
+[**debtsControllerCreate**](DebtsApi.md#debtscontrollercreate) | **post** /groups/{groupId}/debts | Add a debt entry
+[**debtsControllerDeleteDebtMember**](DebtsApi.md#debtscontrollerdeletedebtmember) | **delete** /groups/{groupId}/debts/{debtId}/members/{memberId} | Remove a debt member
+[**debtsControllerFindAll**](DebtsApi.md#debtscontrollerfindall) | **get** /groups/{groupId}/debts | Get all group debts
+[**debtsControllerFindOne**](DebtsApi.md#debtscontrollerfindone) | **get** /groups/{groupId}/debts/{id} | Get a debt entry
+[**debtsControllerRemove**](DebtsApi.md#debtscontrollerremove) | **delete** /groups/{groupId}/debts/{id} | Delete a debt entry
+[**debtsControllerUpdate**](DebtsApi.md#debtscontrollerupdate) | **patch** /groups/{groupId}/debts/{id} | Update a debt entry
+[**debtsControllerUpdateDebtMember**](DebtsApi.md#debtscontrollerupdatedebtmember) | **patch** /groups/{groupId}/debts/{debtId}/members/{memberId} | Update a debt member
 
 
-# **shoppingItemsControllerCreate**
-> ResponseShoppingItemDto shoppingItemsControllerCreate(groupId, createShoppingItemDto)
+# **debtsControllerAddDebtMember**
+> ResponseDebtDto debtsControllerAddDebtMember(groupId, debtId, createDebtMemberDto)
 
-Add a product to the group's shopping list
+Add a member to an entry
 
 ### Example 
 ```dart
@@ -31,15 +31,16 @@ import 'package:fd_dart_client/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
 
-var api_instance = new ShoppingListApi();
+var api_instance = new DebtsApi();
 var groupId = groupId_example; // String | 
-var createShoppingItemDto = new CreateShoppingItemDto(); // CreateShoppingItemDto | 
+var debtId = debtId_example; // String | 
+var createDebtMemberDto = new CreateDebtMemberDto(); // CreateDebtMemberDto | 
 
 try { 
-    var result = api_instance.shoppingItemsControllerCreate(groupId, createShoppingItemDto);
+    var result = api_instance.debtsControllerAddDebtMember(groupId, debtId, createDebtMemberDto);
     print(result);
 } catch (e) {
-    print('Exception when calling ShoppingListApi->shoppingItemsControllerCreate: $e\n');
+    print('Exception when calling DebtsApi->debtsControllerAddDebtMember: $e\n');
 }
 ```
 
@@ -48,11 +49,12 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **String**|  | 
- **createShoppingItemDto** | [**CreateShoppingItemDto**](CreateShoppingItemDto.md)|  | 
+ **debtId** | **String**|  | 
+ **createDebtMemberDto** | [**CreateDebtMemberDto**](CreateDebtMemberDto.md)|  | 
 
 ### Return type
 
-[**ResponseShoppingItemDto**](ResponseShoppingItemDto.md)
+[**ResponseDebtDto**](ResponseDebtDto.md)
 
 ### Authorization
 
@@ -65,10 +67,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **shoppingItemsControllerCreateCustom**
-> ResponseShoppingItemDto shoppingItemsControllerCreateCustom(groupId, createCustomShoppingItemDto)
+# **debtsControllerCreate**
+> ResponseDebtDto debtsControllerCreate(groupId, createDebtDto)
 
-Add a custom product to the group's shopping list
+Add a debt entry
 
 ### Example 
 ```dart
@@ -77,15 +79,15 @@ import 'package:fd_dart_client/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
 
-var api_instance = new ShoppingListApi();
+var api_instance = new DebtsApi();
 var groupId = groupId_example; // String | 
-var createCustomShoppingItemDto = new CreateCustomShoppingItemDto(); // CreateCustomShoppingItemDto | 
+var createDebtDto = new CreateDebtDto(); // CreateDebtDto | 
 
 try { 
-    var result = api_instance.shoppingItemsControllerCreateCustom(groupId, createCustomShoppingItemDto);
+    var result = api_instance.debtsControllerCreate(groupId, createDebtDto);
     print(result);
 } catch (e) {
-    print('Exception when calling ShoppingListApi->shoppingItemsControllerCreateCustom: $e\n');
+    print('Exception when calling DebtsApi->debtsControllerCreate: $e\n');
 }
 ```
 
@@ -94,11 +96,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **String**|  | 
- **createCustomShoppingItemDto** | [**CreateCustomShoppingItemDto**](CreateCustomShoppingItemDto.md)|  | 
+ **createDebtDto** | [**CreateDebtDto**](CreateDebtDto.md)|  | 
 
 ### Return type
 
-[**ResponseShoppingItemDto**](ResponseShoppingItemDto.md)
+[**ResponseDebtDto**](ResponseDebtDto.md)
 
 ### Authorization
 
@@ -111,10 +113,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **shoppingItemsControllerDelete**
-> shoppingItemsControllerDelete(groupId, id)
+# **debtsControllerDeleteDebtMember**
+> debtsControllerDeleteDebtMember(groupId, debtId, memberId)
 
-Delete an item from the shopping list
+Remove a debt member
 
 ### Example 
 ```dart
@@ -123,14 +125,15 @@ import 'package:fd_dart_client/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
 
-var api_instance = new ShoppingListApi();
+var api_instance = new DebtsApi();
 var groupId = groupId_example; // String | 
-var id = id_example; // String | 
+var debtId = debtId_example; // String | 
+var memberId = memberId_example; // String | 
 
 try { 
-    api_instance.shoppingItemsControllerDelete(groupId, id);
+    api_instance.debtsControllerDeleteDebtMember(groupId, debtId, memberId);
 } catch (e) {
-    print('Exception when calling ShoppingListApi->shoppingItemsControllerDelete: $e\n');
+    print('Exception when calling DebtsApi->debtsControllerDeleteDebtMember: $e\n');
 }
 ```
 
@@ -139,7 +142,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **String**|  | 
- **id** | **String**|  | 
+ **debtId** | **String**|  | 
+ **memberId** | **String**|  | 
 
 ### Return type
 
@@ -156,10 +160,10 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **shoppingItemsControllerFindAll**
-> BuiltList<ResponseShoppingItemDto> shoppingItemsControllerFindAll(groupId, search, sort, filter)
+# **debtsControllerFindAll**
+> BuiltList<ResponseDebtDto> debtsControllerFindAll(groupId)
 
-Get the items from the group's shopping list
+Get all group debts
 
 ### Example 
 ```dart
@@ -168,17 +172,14 @@ import 'package:fd_dart_client/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
 
-var api_instance = new ShoppingListApi();
+var api_instance = new DebtsApi();
 var groupId = groupId_example; // String | 
-var search = search_example; // String | The name of the shopping item you search
-var sort = sort_example; // String | How the shopping list is sorted (idASC, idDESC, creationASC, creationDESC, nameASC, nameDESC)
-var filter = filter_example; // String | How to filter the shopping list (ownedProducts)
 
 try { 
-    var result = api_instance.shoppingItemsControllerFindAll(groupId, search, sort, filter);
+    var result = api_instance.debtsControllerFindAll(groupId);
     print(result);
 } catch (e) {
-    print('Exception when calling ShoppingListApi->shoppingItemsControllerFindAll: $e\n');
+    print('Exception when calling DebtsApi->debtsControllerFindAll: $e\n');
 }
 ```
 
@@ -187,13 +188,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **String**|  | 
- **search** | **String**| The name of the shopping item you search | [optional] 
- **sort** | **String**| How the shopping list is sorted (idASC, idDESC, creationASC, creationDESC, nameASC, nameDESC) | [optional] 
- **filter** | **String**| How to filter the shopping list (ownedProducts) | [optional] 
 
 ### Return type
 
-[**BuiltList<ResponseShoppingItemDto>**](ResponseShoppingItemDto.md)
+[**BuiltList<ResponseDebtDto>**](ResponseDebtDto.md)
 
 ### Authorization
 
@@ -206,10 +204,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **shoppingItemsControllerFindOne**
-> ResponseShoppingItemDto shoppingItemsControllerFindOne(groupId, id)
+# **debtsControllerFindOne**
+> ResponseDebtDto debtsControllerFindOne(groupId, id)
 
-Get a specific item from the group's shopping list
+Get a debt entry
 
 ### Example 
 ```dart
@@ -218,15 +216,15 @@ import 'package:fd_dart_client/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
 
-var api_instance = new ShoppingListApi();
+var api_instance = new DebtsApi();
 var groupId = groupId_example; // String | 
 var id = id_example; // String | 
 
 try { 
-    var result = api_instance.shoppingItemsControllerFindOne(groupId, id);
+    var result = api_instance.debtsControllerFindOne(groupId, id);
     print(result);
 } catch (e) {
-    print('Exception when calling ShoppingListApi->shoppingItemsControllerFindOne: $e\n');
+    print('Exception when calling DebtsApi->debtsControllerFindOne: $e\n');
 }
 ```
 
@@ -239,7 +237,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseShoppingItemDto**](ResponseShoppingItemDto.md)
+[**ResponseDebtDto**](ResponseDebtDto.md)
 
 ### Authorization
 
@@ -252,53 +250,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **shoppingItemsControllerStartShopping**
-> shoppingItemsControllerStartShopping(groupId)
+# **debtsControllerRemove**
+> debtsControllerRemove(groupId, id)
 
-Start the shopping mode for this group
-
-### Example 
-```dart
-import 'package:fd_dart_client/api.dart';
-// TODO Configure HTTP basic authorization: jwt
-//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
-
-var api_instance = new ShoppingListApi();
-var groupId = groupId_example; // String | 
-
-try { 
-    api_instance.shoppingItemsControllerStartShopping(groupId);
-} catch (e) {
-    print('Exception when calling ShoppingListApi->shoppingItemsControllerStartShopping: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **groupId** | **String**|  | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[jwt](../README.md#jwt)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **shoppingItemsControllerStopShopping**
-> shoppingItemsControllerStopShopping(groupId)
-
-Stop the shopping mode for this group
+Delete a debt entry
 
 ### Example 
 ```dart
@@ -307,59 +262,14 @@ import 'package:fd_dart_client/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
 
-var api_instance = new ShoppingListApi();
-var groupId = groupId_example; // String | 
-
-try { 
-    api_instance.shoppingItemsControllerStopShopping(groupId);
-} catch (e) {
-    print('Exception when calling ShoppingListApi->shoppingItemsControllerStopShopping: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **groupId** | **String**|  | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[jwt](../README.md#jwt)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **shoppingItemsControllerUpdate**
-> ResponseShoppingItemDto shoppingItemsControllerUpdate(groupId, id, updateShoppingItemDto)
-
-Update an item of the shopping list
-
-### Example 
-```dart
-import 'package:fd_dart_client/api.dart';
-// TODO Configure HTTP basic authorization: jwt
-//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
-
-var api_instance = new ShoppingListApi();
+var api_instance = new DebtsApi();
 var groupId = groupId_example; // String | 
 var id = id_example; // String | 
-var updateShoppingItemDto = new UpdateShoppingItemDto(); // UpdateShoppingItemDto | 
 
 try { 
-    var result = api_instance.shoppingItemsControllerUpdate(groupId, id, updateShoppingItemDto);
-    print(result);
+    api_instance.debtsControllerRemove(groupId, id);
 } catch (e) {
-    print('Exception when calling ShoppingListApi->shoppingItemsControllerUpdate: $e\n');
+    print('Exception when calling DebtsApi->debtsControllerRemove: $e\n');
 }
 ```
 
@@ -369,11 +279,108 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **String**|  | 
  **id** | **String**|  | 
- **updateShoppingItemDto** | [**UpdateShoppingItemDto**](UpdateShoppingItemDto.md)|  | 
 
 ### Return type
 
-[**ResponseShoppingItemDto**](ResponseShoppingItemDto.md)
+void (empty response body)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **debtsControllerUpdate**
+> ResponseDebtDto debtsControllerUpdate(groupId, id, updateDebtDto)
+
+Update a debt entry
+
+### Example 
+```dart
+import 'package:fd_dart_client/api.dart';
+// TODO Configure HTTP basic authorization: jwt
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
+
+var api_instance = new DebtsApi();
+var groupId = groupId_example; // String | 
+var id = id_example; // String | 
+var updateDebtDto = new UpdateDebtDto(); // UpdateDebtDto | 
+
+try { 
+    var result = api_instance.debtsControllerUpdate(groupId, id, updateDebtDto);
+    print(result);
+} catch (e) {
+    print('Exception when calling DebtsApi->debtsControllerUpdate: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupId** | **String**|  | 
+ **id** | **String**|  | 
+ **updateDebtDto** | [**UpdateDebtDto**](UpdateDebtDto.md)|  | 
+
+### Return type
+
+[**ResponseDebtDto**](ResponseDebtDto.md)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **debtsControllerUpdateDebtMember**
+> ResponseDebtDto debtsControllerUpdateDebtMember(groupId, debtId, memberId, updateDebtMemberDto)
+
+Update a debt member
+
+### Example 
+```dart
+import 'package:fd_dart_client/api.dart';
+// TODO Configure HTTP basic authorization: jwt
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('jwt').password = 'YOUR_PASSWORD';
+
+var api_instance = new DebtsApi();
+var groupId = groupId_example; // String | 
+var debtId = debtId_example; // String | 
+var memberId = memberId_example; // String | 
+var updateDebtMemberDto = new UpdateDebtMemberDto(); // UpdateDebtMemberDto | 
+
+try { 
+    var result = api_instance.debtsControllerUpdateDebtMember(groupId, debtId, memberId, updateDebtMemberDto);
+    print(result);
+} catch (e) {
+    print('Exception when calling DebtsApi->debtsControllerUpdateDebtMember: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupId** | **String**|  | 
+ **debtId** | **String**|  | 
+ **memberId** | **String**|  | 
+ **updateDebtMemberDto** | [**UpdateDebtMemberDto**](UpdateDebtMemberDto.md)|  | 
+
+### Return type
+
+[**ResponseDebtDto**](ResponseDebtDto.md)
 
 ### Authorization
 

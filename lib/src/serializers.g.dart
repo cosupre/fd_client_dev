@@ -9,18 +9,24 @@ part of 'serializers.dart';
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add(CreateCustomInventoryProductDto.serializer)
       ..add(CreateCustomProductDto.serializer)
+      ..add(CreateCustomShoppingHistoryItemDto.serializer)
       ..add(CreateCustomShoppingItemDto.serializer)
+      ..add(CreateDebtDto.serializer)
+      ..add(CreateDebtMemberDto.serializer)
       ..add(CreateGroupDto.serializer)
       ..add(CreateInventoryProductDto.serializer)
       ..add(CreateResponseScanModuleDto.serializer)
       ..add(CreateScanModuleDto.serializer)
       ..add(CreateShoppingHistoryDto.serializer)
+      ..add(CreateShoppingHistoryItemDto.serializer)
       ..add(CreateShoppingItemDto.serializer)
       ..add(CreateUserDto.serializer)
       ..add(CreateUserProductTagDto.serializer)
       ..add(CreateUserTagDto.serializer)
       ..add(ResponseBannedGroupMemberDto.serializer)
       ..add(ResponseCustomProductDto.serializer)
+      ..add(ResponseDebtDto.serializer)
+      ..add(ResponseDebtMemberDto.serializer)
       ..add(ResponseFavoriteProductDto.serializer)
       ..add(ResponseGroupDto.serializer)
       ..add(ResponseGroupMemberDto.serializer)
@@ -28,7 +34,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(ResponseGroupProductRecommendationDto.serializer)
       ..add(ResponseInventoryProductDetailDto.serializer)
       ..add(ResponseInventoryProductDto.serializer)
+      ..add(ResponseMostPurchasedProductDto.serializer)
       ..add(ResponsePaginationInventoryProductDto.serializer)
+      ..add(ResponsePaginationMostPurchasedProductDto.serializer)
       ..add(ResponsePictureDto.serializer)
       ..add(ResponseProductDto.serializer)
       ..add(ResponseScanModuleDto.serializer)
@@ -39,14 +47,21 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(ResponseUserProductTagDto.serializer)
       ..add(ResponseUserTagDto.serializer)
       ..add(UpdateCustomProductDto.serializer)
+      ..add(UpdateDebtDto.serializer)
+      ..add(UpdateDebtMemberDto.serializer)
       ..add(UpdateGroupDto.serializer)
       ..add(UpdateGroupMemberDto.serializer)
       ..add(UpdateInventoryProductDto.serializer)
       ..add(UpdateScanModuleDto.serializer)
+      ..add(UpdateShoppingHistoryListDto.serializer)
       ..add(UpdateShoppingItemDto.serializer)
       ..add(UpdateUserDto.serializer)
       ..add(UpdateUserProductTagDto.serializer)
       ..add(UpdateUserTagDto.serializer)
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(ResponseDebtMemberDto)]),
+          () => new ListBuilder<ResponseDebtMemberDto>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(ResponseGroupMemberDto)]),
@@ -59,6 +74,10 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(
               BuiltList, const [const FullType(ResponseInventoryProductDto)]),
           () => new ListBuilder<ResponseInventoryProductDto>())
+      ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType(ResponseMostPurchasedProductDto)]),
+          () => new ListBuilder<ResponseMostPurchasedProductDto>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ResponseShoppingHistoryItemDto)]),

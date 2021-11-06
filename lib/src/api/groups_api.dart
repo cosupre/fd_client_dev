@@ -495,8 +495,8 @@ class GroupsApi {
 
   /// Get the products that are near expiration
   ///
-  ///
-  Future<Response<BuiltList<ResponseGroupProductExpirationDto>>> groupsControllerGetProductNearExpiration({
+  /// 
+  Future<Response<BuiltList<ResponseGroupProductExpirationDto>>> groupsControllerGetProductNearExpiration({ 
     required String id,
     required String days,
     required num maxResults,
@@ -574,8 +574,8 @@ class GroupsApi {
 
   /// Get a set of products matching the string given
   ///
-  ///
-  Future<Response<BuiltList<ResponseGroupProductRecommendationDto>>> groupsControllerGetProductRecommendations({
+  /// 
+  Future<Response<BuiltList<ResponseGroupProductRecommendationDto>>> groupsControllerGetProductRecommendations({ 
     required String id,
     required String search,
     required num maxResults,

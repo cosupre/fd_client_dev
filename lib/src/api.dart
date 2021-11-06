@@ -10,8 +10,10 @@ import 'package:fd_dart_client/src/auth/api_key_auth.dart';
 import 'package:fd_dart_client/src/auth/basic_auth.dart';
 import 'package:fd_dart_client/src/auth/oauth.dart';
 import 'package:fd_dart_client/src/api/custom_products_api.dart';
+import 'package:fd_dart_client/src/api/debts_api.dart';
 import 'package:fd_dart_client/src/api/groups_api.dart';
 import 'package:fd_dart_client/src/api/inventories_api.dart';
+import 'package:fd_dart_client/src/api/most_purchased_products_api.dart';
 import 'package:fd_dart_client/src/api/pictures_api.dart';
 import 'package:fd_dart_client/src/api/product_tags_api.dart';
 import 'package:fd_dart_client/src/api/products_api.dart';
@@ -80,6 +82,12 @@ class FdDartClient {
     return CustomProductsApi(dio, serializers);
   }
 
+  /// Get DebtsApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  DebtsApi getDebtsApi() {
+    return DebtsApi(dio, serializers);
+  }
+
   /// Get GroupsApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   GroupsApi getGroupsApi() {
@@ -90,6 +98,12 @@ class FdDartClient {
   /// by doing that all interceptors will not be executed
   InventoriesApi getInventoriesApi() {
     return InventoriesApi(dio, serializers);
+  }
+
+  /// Get MostPurchasedProductsApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  MostPurchasedProductsApi getMostPurchasedProductsApi() {
+    return MostPurchasedProductsApi(dio, serializers);
   }
 
   /// Get PicturesApi instance, base route and serializer can be overridden by a given but be careful,

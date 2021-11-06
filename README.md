@@ -66,6 +66,14 @@ Class | Method | HTTP request | Description
 *CustomProductsApi* | [**customProductsControllerFindOne**](doc/CustomProductsApi.md#customproductscontrollerfindone) | **get** /groups/{groupId}/custom-products/{id} | Get the custom product with the given id
 *CustomProductsApi* | [**customProductsControllerRemove**](doc/CustomProductsApi.md#customproductscontrollerremove) | **delete** /groups/{groupId}/custom-products/{id} | Delete a custom product
 *CustomProductsApi* | [**customProductsControllerUpdate**](doc/CustomProductsApi.md#customproductscontrollerupdate) | **patch** /groups/{groupId}/custom-products/{id} | Update a custom product
+*DebtsApi* | [**debtsControllerAddDebtMember**](doc/DebtsApi.md#debtscontrolleradddebtmember) | **post** /groups/{groupId}/debts/{debtId}/members | Add a member to an entry
+*DebtsApi* | [**debtsControllerCreate**](doc/DebtsApi.md#debtscontrollercreate) | **post** /groups/{groupId}/debts | Add a debt entry
+*DebtsApi* | [**debtsControllerDeleteDebtMember**](doc/DebtsApi.md#debtscontrollerdeletedebtmember) | **delete** /groups/{groupId}/debts/{debtId}/members/{memberId} | Remove a debt member
+*DebtsApi* | [**debtsControllerFindAll**](doc/DebtsApi.md#debtscontrollerfindall) | **get** /groups/{groupId}/debts | Get all group debts
+*DebtsApi* | [**debtsControllerFindOne**](doc/DebtsApi.md#debtscontrollerfindone) | **get** /groups/{groupId}/debts/{id} | Get a debt entry
+*DebtsApi* | [**debtsControllerRemove**](doc/DebtsApi.md#debtscontrollerremove) | **delete** /groups/{groupId}/debts/{id} | Delete a debt entry
+*DebtsApi* | [**debtsControllerUpdate**](doc/DebtsApi.md#debtscontrollerupdate) | **patch** /groups/{groupId}/debts/{id} | Update a debt entry
+*DebtsApi* | [**debtsControllerUpdateDebtMember**](doc/DebtsApi.md#debtscontrollerupdatedebtmember) | **patch** /groups/{groupId}/debts/{debtId}/members/{memberId} | Update a debt member
 *GroupsApi* | [**groupsControllerBanGroupOwner**](doc/GroupsApi.md#groupscontrollerbangroupowner) | **patch** /groups/{groupId}/ban/{userId} | Ban a member. Owner can&#39;t be banned. You can&#39;t ban yourself or a member with equal or superior role
 *GroupsApi* | [**groupsControllerChangeGroupOwner**](doc/GroupsApi.md#groupscontrollerchangegroupowner) | **patch** /groups/{groupId}/change-owner/{userId} | Change the owner of the group. Only owner can give his rights to another member
 *GroupsApi* | [**groupsControllerChangeGroupSharingCode**](doc/GroupsApi.md#groupscontrollerchangegroupsharingcode) | **patch** /groups/{id}/change-code | Change the sharing code of the group.
@@ -85,6 +93,7 @@ Class | Method | HTTP request | Description
 *InventoriesApi* | [**inventoriesControllerDelete**](doc/InventoriesApi.md#inventoriescontrollerdelete) | **delete** /groups/{groupId}/inventory/{id} | Delete a product from the inventory
 *InventoriesApi* | [**inventoriesControllerFindAll**](doc/InventoriesApi.md#inventoriescontrollerfindall) | **get** /groups/{groupId}/inventory | Get the products from the group&#39;s inventory
 *InventoriesApi* | [**inventoriesControllerUpdate**](doc/InventoriesApi.md#inventoriescontrollerupdate) | **patch** /groups/{groupId}/inventory/{id} | Update a product of the inventory
+*MostPurchasedProductsApi* | [**mostPurchasedProductControllerFindAll**](doc/MostPurchasedProductsApi.md#mostpurchasedproductcontrollerfindall) | **get** /groups/{groupId}/most-purchased | Get the most purchased products
 *PicturesApi* | [**picturesControllerGetAll**](doc/PicturesApi.md#picturescontrollergetall) | **get** /pictures | Get all the default pictures
 *ProductTagsApi* | [**userProductTagsControllerCreate**](doc/ProductTagsApi.md#userproducttagscontrollercreate) | **post** /user-product-tags | Add a tag
 *ProductTagsApi* | [**userProductTagsControllerFindAll**](doc/ProductTagsApi.md#userproducttagscontrollerfindall) | **get** /user-product-tags | Get all product tags of the user
@@ -102,15 +111,20 @@ Class | Method | HTTP request | Description
 *ScanModuleApi* | [**scanModulesControllerRemove**](doc/ScanModuleApi.md#scanmodulescontrollerremove) | **delete** /groups/{groupId}/scanners/{id} | Unregister a scanner
 *ScanModuleApi* | [**scanModulesControllerRemoveProduct**](doc/ScanModuleApi.md#scanmodulescontrollerremoveproduct) | **delete** /groups/for-scanner/{token}/inventory/{barcode} | Remove a product from the scanner linked inventory
 *ScanModuleApi* | [**scanModulesControllerUpdate**](doc/ScanModuleApi.md#scanmodulescontrollerupdate) | **patch** /groups/{groupId}/scanners/{id} | Update a scanner
-*ShoppingHistoryApi* | [**shoppingHistoryControllerCreate**](doc/ShoppingHistoryApi.md#shoppinghistorycontrollercreate) | **post** /groups/{groupId}/shopping-list-history | Move a bunch of shopping list items to a new history list
+*ShoppingHistoryApi* | [**shoppingHistoryControllerAddCustomItemToHistoryList**](doc/ShoppingHistoryApi.md#shoppinghistorycontrolleraddcustomitemtohistorylist) | **post** /groups/{groupId}/shopping-list-history/{id}/item/custom | Add a custom product to an existing shopping list
+*ShoppingHistoryApi* | [**shoppingHistoryControllerAddItemToHistoryList**](doc/ShoppingHistoryApi.md#shoppinghistorycontrolleradditemtohistorylist) | **post** /groups/{groupId}/shopping-list-history/{id}/item | Add a product to an existing shopping list
+*ShoppingHistoryApi* | [**shoppingHistoryControllerCreate**](doc/ShoppingHistoryApi.md#shoppinghistorycontrollercreate) | **post** /groups/{groupId}/shopping-list-history | Create a shopping history list, and move an optional bunch of shopping list items to its items
+*ShoppingHistoryApi* | [**shoppingHistoryControllerDelete**](doc/ShoppingHistoryApi.md#shoppinghistorycontrollerdelete) | **delete** /groups/{groupId}/shopping-list-history/{id} | Delete a specific shopping history list
 *ShoppingHistoryApi* | [**shoppingHistoryControllerFindAll**](doc/ShoppingHistoryApi.md#shoppinghistorycontrollerfindall) | **get** /groups/{groupId}/shopping-list-history | Get all the shopping list histories
 *ShoppingHistoryApi* | [**shoppingHistoryControllerFindOne**](doc/ShoppingHistoryApi.md#shoppinghistorycontrollerfindone) | **get** /groups/{groupId}/shopping-list-history/{id} | Get a specific shopping history list
+*ShoppingHistoryApi* | [**shoppingHistoryControllerUpdate**](doc/ShoppingHistoryApi.md#shoppinghistorycontrollerupdate) | **patch** /groups/{groupId}/shopping-list-history/{id} | Update a specific shopping history list
 *ShoppingListApi* | [**shoppingItemsControllerCreate**](doc/ShoppingListApi.md#shoppingitemscontrollercreate) | **post** /groups/{groupId}/shopping-list | Add a product to the group&#39;s shopping list
 *ShoppingListApi* | [**shoppingItemsControllerCreateCustom**](doc/ShoppingListApi.md#shoppingitemscontrollercreatecustom) | **post** /groups/{groupId}/shopping-list/custom-product | Add a custom product to the group&#39;s shopping list
 *ShoppingListApi* | [**shoppingItemsControllerDelete**](doc/ShoppingListApi.md#shoppingitemscontrollerdelete) | **delete** /groups/{groupId}/shopping-list/{id} | Delete an item from the shopping list
 *ShoppingListApi* | [**shoppingItemsControllerFindAll**](doc/ShoppingListApi.md#shoppingitemscontrollerfindall) | **get** /groups/{groupId}/shopping-list | Get the items from the group&#39;s shopping list
 *ShoppingListApi* | [**shoppingItemsControllerFindOne**](doc/ShoppingListApi.md#shoppingitemscontrollerfindone) | **get** /groups/{groupId}/shopping-list/{id} | Get a specific item from the group&#39;s shopping list
 *ShoppingListApi* | [**shoppingItemsControllerStartShopping**](doc/ShoppingListApi.md#shoppingitemscontrollerstartshopping) | **patch** /groups/{groupId}/shopping-list/start-shopping | Start the shopping mode for this group
+*ShoppingListApi* | [**shoppingItemsControllerStopShopping**](doc/ShoppingListApi.md#shoppingitemscontrollerstopshopping) | **patch** /groups/{groupId}/shopping-list/stop-shopping | Stop the shopping mode for this group
 *ShoppingListApi* | [**shoppingItemsControllerUpdate**](doc/ShoppingListApi.md#shoppingitemscontrollerupdate) | **patch** /groups/{groupId}/shopping-list/{id} | Update an item of the shopping list
 *UsersApi* | [**usersControllerAddFavorite**](doc/UsersApi.md#userscontrolleraddfavorite) | **post** /users/favorite-products/{productId} | Add a product as favorite
 *UsersApi* | [**usersControllerAddTag**](doc/UsersApi.md#userscontrolleraddtag) | **post** /users/tags | Add a tag to the user
@@ -130,18 +144,24 @@ Class | Method | HTTP request | Description
 
  - [CreateCustomInventoryProductDto](doc/CreateCustomInventoryProductDto.md)
  - [CreateCustomProductDto](doc/CreateCustomProductDto.md)
+ - [CreateCustomShoppingHistoryItemDto](doc/CreateCustomShoppingHistoryItemDto.md)
  - [CreateCustomShoppingItemDto](doc/CreateCustomShoppingItemDto.md)
+ - [CreateDebtDto](doc/CreateDebtDto.md)
+ - [CreateDebtMemberDto](doc/CreateDebtMemberDto.md)
  - [CreateGroupDto](doc/CreateGroupDto.md)
  - [CreateInventoryProductDto](doc/CreateInventoryProductDto.md)
  - [CreateResponseScanModuleDto](doc/CreateResponseScanModuleDto.md)
  - [CreateScanModuleDto](doc/CreateScanModuleDto.md)
  - [CreateShoppingHistoryDto](doc/CreateShoppingHistoryDto.md)
+ - [CreateShoppingHistoryItemDto](doc/CreateShoppingHistoryItemDto.md)
  - [CreateShoppingItemDto](doc/CreateShoppingItemDto.md)
  - [CreateUserDto](doc/CreateUserDto.md)
  - [CreateUserProductTagDto](doc/CreateUserProductTagDto.md)
  - [CreateUserTagDto](doc/CreateUserTagDto.md)
  - [ResponseBannedGroupMemberDto](doc/ResponseBannedGroupMemberDto.md)
  - [ResponseCustomProductDto](doc/ResponseCustomProductDto.md)
+ - [ResponseDebtDto](doc/ResponseDebtDto.md)
+ - [ResponseDebtMemberDto](doc/ResponseDebtMemberDto.md)
  - [ResponseFavoriteProductDto](doc/ResponseFavoriteProductDto.md)
  - [ResponseGroupDto](doc/ResponseGroupDto.md)
  - [ResponseGroupMemberDto](doc/ResponseGroupMemberDto.md)
@@ -149,7 +169,9 @@ Class | Method | HTTP request | Description
  - [ResponseGroupProductRecommendationDto](doc/ResponseGroupProductRecommendationDto.md)
  - [ResponseInventoryProductDetailDto](doc/ResponseInventoryProductDetailDto.md)
  - [ResponseInventoryProductDto](doc/ResponseInventoryProductDto.md)
+ - [ResponseMostPurchasedProductDto](doc/ResponseMostPurchasedProductDto.md)
  - [ResponsePaginationInventoryProductDto](doc/ResponsePaginationInventoryProductDto.md)
+ - [ResponsePaginationMostPurchasedProductDto](doc/ResponsePaginationMostPurchasedProductDto.md)
  - [ResponsePictureDto](doc/ResponsePictureDto.md)
  - [ResponseProductDto](doc/ResponseProductDto.md)
  - [ResponseScanModuleDto](doc/ResponseScanModuleDto.md)
@@ -160,10 +182,13 @@ Class | Method | HTTP request | Description
  - [ResponseUserProductTagDto](doc/ResponseUserProductTagDto.md)
  - [ResponseUserTagDto](doc/ResponseUserTagDto.md)
  - [UpdateCustomProductDto](doc/UpdateCustomProductDto.md)
+ - [UpdateDebtDto](doc/UpdateDebtDto.md)
+ - [UpdateDebtMemberDto](doc/UpdateDebtMemberDto.md)
  - [UpdateGroupDto](doc/UpdateGroupDto.md)
  - [UpdateGroupMemberDto](doc/UpdateGroupMemberDto.md)
  - [UpdateInventoryProductDto](doc/UpdateInventoryProductDto.md)
  - [UpdateScanModuleDto](doc/UpdateScanModuleDto.md)
+ - [UpdateShoppingHistoryListDto](doc/UpdateShoppingHistoryListDto.md)
  - [UpdateShoppingItemDto](doc/UpdateShoppingItemDto.md)
  - [UpdateUserDto](doc/UpdateUserDto.md)
  - [UpdateUserProductTagDto](doc/UpdateUserProductTagDto.md)

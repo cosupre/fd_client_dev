@@ -9,18 +9,24 @@ import 'package:built_value/iso_8601_date_time_serializer.dart';
 
 import 'package:fd_dart_client/src/model/create_custom_inventory_product_dto.dart';
 import 'package:fd_dart_client/src/model/create_custom_product_dto.dart';
+import 'package:fd_dart_client/src/model/create_custom_shopping_history_item_dto.dart';
 import 'package:fd_dart_client/src/model/create_custom_shopping_item_dto.dart';
+import 'package:fd_dart_client/src/model/create_debt_dto.dart';
+import 'package:fd_dart_client/src/model/create_debt_member_dto.dart';
 import 'package:fd_dart_client/src/model/create_group_dto.dart';
 import 'package:fd_dart_client/src/model/create_inventory_product_dto.dart';
 import 'package:fd_dart_client/src/model/create_response_scan_module_dto.dart';
 import 'package:fd_dart_client/src/model/create_scan_module_dto.dart';
 import 'package:fd_dart_client/src/model/create_shopping_history_dto.dart';
+import 'package:fd_dart_client/src/model/create_shopping_history_item_dto.dart';
 import 'package:fd_dart_client/src/model/create_shopping_item_dto.dart';
 import 'package:fd_dart_client/src/model/create_user_dto.dart';
 import 'package:fd_dart_client/src/model/create_user_product_tag_dto.dart';
 import 'package:fd_dart_client/src/model/create_user_tag_dto.dart';
 import 'package:fd_dart_client/src/model/response_banned_group_member_dto.dart';
 import 'package:fd_dart_client/src/model/response_custom_product_dto.dart';
+import 'package:fd_dart_client/src/model/response_debt_dto.dart';
+import 'package:fd_dart_client/src/model/response_debt_member_dto.dart';
 import 'package:fd_dart_client/src/model/response_favorite_product_dto.dart';
 import 'package:fd_dart_client/src/model/response_group_dto.dart';
 import 'package:fd_dart_client/src/model/response_group_member_dto.dart';
@@ -28,7 +34,9 @@ import 'package:fd_dart_client/src/model/response_group_product_expiration_dto.d
 import 'package:fd_dart_client/src/model/response_group_product_recommendation_dto.dart';
 import 'package:fd_dart_client/src/model/response_inventory_product_detail_dto.dart';
 import 'package:fd_dart_client/src/model/response_inventory_product_dto.dart';
+import 'package:fd_dart_client/src/model/response_most_purchased_product_dto.dart';
 import 'package:fd_dart_client/src/model/response_pagination_inventory_product_dto.dart';
+import 'package:fd_dart_client/src/model/response_pagination_most_purchased_product_dto.dart';
 import 'package:fd_dart_client/src/model/response_picture_dto.dart';
 import 'package:fd_dart_client/src/model/response_product_dto.dart';
 import 'package:fd_dart_client/src/model/response_scan_module_dto.dart';
@@ -39,10 +47,13 @@ import 'package:fd_dart_client/src/model/response_user_dto.dart';
 import 'package:fd_dart_client/src/model/response_user_product_tag_dto.dart';
 import 'package:fd_dart_client/src/model/response_user_tag_dto.dart';
 import 'package:fd_dart_client/src/model/update_custom_product_dto.dart';
+import 'package:fd_dart_client/src/model/update_debt_dto.dart';
+import 'package:fd_dart_client/src/model/update_debt_member_dto.dart';
 import 'package:fd_dart_client/src/model/update_group_dto.dart';
 import 'package:fd_dart_client/src/model/update_group_member_dto.dart';
 import 'package:fd_dart_client/src/model/update_inventory_product_dto.dart';
 import 'package:fd_dart_client/src/model/update_scan_module_dto.dart';
+import 'package:fd_dart_client/src/model/update_shopping_history_list_dto.dart';
 import 'package:fd_dart_client/src/model/update_shopping_item_dto.dart';
 import 'package:fd_dart_client/src/model/update_user_dto.dart';
 import 'package:fd_dart_client/src/model/update_user_product_tag_dto.dart';
@@ -53,18 +64,24 @@ part 'serializers.g.dart';
 @SerializersFor([
   CreateCustomInventoryProductDto,
   CreateCustomProductDto,
+  CreateCustomShoppingHistoryItemDto,
   CreateCustomShoppingItemDto,
+  CreateDebtDto,
+  CreateDebtMemberDto,
   CreateGroupDto,
   CreateInventoryProductDto,
   CreateResponseScanModuleDto,
   CreateScanModuleDto,
   CreateShoppingHistoryDto,
+  CreateShoppingHistoryItemDto,
   CreateShoppingItemDto,
   CreateUserDto,
   CreateUserProductTagDto,
   CreateUserTagDto,
   ResponseBannedGroupMemberDto,
   ResponseCustomProductDto,
+  ResponseDebtDto,
+  ResponseDebtMemberDto,
   ResponseFavoriteProductDto,
   ResponseGroupDto,
   ResponseGroupMemberDto,
@@ -72,7 +89,9 @@ part 'serializers.g.dart';
   ResponseGroupProductRecommendationDto,
   ResponseInventoryProductDetailDto,
   ResponseInventoryProductDto,
+  ResponseMostPurchasedProductDto,
   ResponsePaginationInventoryProductDto,
+  ResponsePaginationMostPurchasedProductDto,
   ResponsePictureDto,
   ResponseProductDto,
   ResponseScanModuleDto,
@@ -83,10 +102,13 @@ part 'serializers.g.dart';
   ResponseUserProductTagDto,
   ResponseUserTagDto,
   UpdateCustomProductDto,
+  UpdateDebtDto,
+  UpdateDebtMemberDto,
   UpdateGroupDto,
   UpdateGroupMemberDto,
   UpdateInventoryProductDto,
   UpdateScanModuleDto,
+  UpdateShoppingHistoryListDto,
   UpdateShoppingItemDto,
   UpdateUserDto,
   UpdateUserProductTagDto,
@@ -96,6 +118,10 @@ Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
         const FullType(BuiltList, [FullType(ResponseCustomProductDto)]),
         () => ListBuilder<ResponseCustomProductDto>(),
+      )
+      ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(ResponseDebtDto)]),
+        () => ListBuilder<ResponseDebtDto>(),
       )
       ..addBuilderFactory(
         const FullType(BuiltList, [FullType(ResponseGroupProductRecommendationDto)]),

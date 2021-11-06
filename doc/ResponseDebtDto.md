@@ -1,4 +1,4 @@
-# fd_dart_client.model.ResponseShoppingItemDto
+# fd_dart_client.model.ResponseDebtDto
 
 ## Load the model package
 ```dart
@@ -10,12 +10,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **createdAt** | [**DateTime**](DateTime.md) | The creation timestamp of the entity | [optional] 
 **updatedAt** | [**DateTime**](DateTime.md) | The update timestamp of the entity | [optional] 
-**id** | **String** | The shopping item id | 
+**id** | **String** | The debt id | 
 **groupId** | **String** | The id of the group | 
-**product** | [**ResponseInventoryProductDetailDto**](ResponseInventoryProductDetailDto.md) | The product | 
-**ownerIds** | **BuiltList<String>** | The id of the users owning this product | 
-**count** | **String** | The number of products | 
-**bought** | **bool** | If the item is already bought | 
+**creditorId** | **String** | The id of the creditor group member | 
+**name** | **String** | The debt name | 
+**price** | **String** | The debt amount | 
+**date** | [**DateTime**](DateTime.md) | The date of the purchase linked with the debt | 
+**members** | [**BuiltList<ResponseDebtMemberDto>**](ResponseDebtMemberDto.md) | The debt members who have to pay a part | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

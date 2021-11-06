@@ -7,26 +7,28 @@ import 'dart:async';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
-import 'package:fd_dart_client/src/model/update_shopping_item_dto.dart';
-import 'package:fd_dart_client/src/model/create_shopping_item_dto.dart';
-import 'package:fd_dart_client/src/model/response_shopping_item_dto.dart';
-import 'package:fd_dart_client/src/model/create_custom_shopping_item_dto.dart';
+import 'package:fd_dart_client/src/model/update_debt_member_dto.dart';
+import 'package:fd_dart_client/src/model/create_debt_dto.dart';
+import 'package:fd_dart_client/src/model/update_debt_dto.dart';
+import 'package:fd_dart_client/src/model/create_debt_member_dto.dart';
+import 'package:fd_dart_client/src/model/response_debt_dto.dart';
 import 'package:built_collection/built_collection.dart';
 
-class ShoppingListApi {
+class DebtsApi {
 
   final Dio _dio;
 
   final Serializers _serializers;
 
-  const ShoppingListApi(this._dio, this._serializers);
+  const DebtsApi(this._dio, this._serializers);
 
-  /// Add a product to the group's shopping list
+  /// Add a member to an entry
   ///
   /// 
-  Future<Response<ResponseShoppingItemDto>> shoppingItemsControllerCreate({ 
+  Future<Response<ResponseDebtDto>> debtsControllerAddDebtMember({ 
     required String groupId,
-    required CreateShoppingItemDto createShoppingItemDto,
+    required String debtId,
+    required CreateDebtMemberDto createDebtMemberDto,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -34,7 +36,7 @@ class ShoppingListApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/groups/{groupId}/shopping-list'.replaceAll('{' r'groupId' '}', groupId.toString());
+    final _path = r'/groups/{groupId}/debts/{debtId}/members'.replaceAll('{' r'groupId' '}', groupId.toString()).replaceAll('{' r'debtId' '}', debtId.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -44,7 +46,7 @@ class ShoppingListApi {
         'secure': <Map<String, String>>[
           {
             'type': 'http',
-            'name': 'bearer',
+            'name': 'jwt',
           },
         ],
         ...?extra,
@@ -61,8 +63,8 @@ class ShoppingListApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(CreateShoppingItemDto);
-      _bodyData = _serializers.serialize(createShoppingItemDto, specifiedType: _type);
+      const _type = FullType(CreateDebtMemberDto);
+      _bodyData = _serializers.serialize(createDebtMemberDto, specifiedType: _type);
 
     } catch(error) {
       throw DioError(
@@ -86,14 +88,14 @@ class ShoppingListApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ResponseShoppingItemDto _responseData;
+    ResponseDebtDto _responseData;
 
     try {
-      const _responseType = FullType(ResponseShoppingItemDto);
+      const _responseType = FullType(ResponseDebtDto);
       _responseData = _serializers.deserialize(
         _response.data!,
         specifiedType: _responseType,
-      ) as ResponseShoppingItemDto;
+      ) as ResponseDebtDto;
 
     } catch (error) {
       throw DioError(
@@ -104,7 +106,7 @@ class ShoppingListApi {
       );
     }
 
-    return Response<ResponseShoppingItemDto>(
+    return Response<ResponseDebtDto>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -116,12 +118,12 @@ class ShoppingListApi {
     );
   }
 
-  /// Add a custom product to the group's shopping list
+  /// Add a debt entry
   ///
   /// 
-  Future<Response<ResponseShoppingItemDto>> shoppingItemsControllerCreateCustom({ 
+  Future<Response<ResponseDebtDto>> debtsControllerCreate({ 
     required String groupId,
-    required CreateCustomShoppingItemDto createCustomShoppingItemDto,
+    required CreateDebtDto createDebtDto,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -129,7 +131,7 @@ class ShoppingListApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/groups/{groupId}/shopping-list/custom-product'.replaceAll('{' r'groupId' '}', groupId.toString());
+    final _path = r'/groups/{groupId}/debts'.replaceAll('{' r'groupId' '}', groupId.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -139,7 +141,7 @@ class ShoppingListApi {
         'secure': <Map<String, String>>[
           {
             'type': 'http',
-            'name': 'bearer',
+            'name': 'jwt',
           },
         ],
         ...?extra,
@@ -156,8 +158,8 @@ class ShoppingListApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(CreateCustomShoppingItemDto);
-      _bodyData = _serializers.serialize(createCustomShoppingItemDto, specifiedType: _type);
+      const _type = FullType(CreateDebtDto);
+      _bodyData = _serializers.serialize(createDebtDto, specifiedType: _type);
 
     } catch(error) {
       throw DioError(
@@ -181,14 +183,14 @@ class ShoppingListApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ResponseShoppingItemDto _responseData;
+    ResponseDebtDto _responseData;
 
     try {
-      const _responseType = FullType(ResponseShoppingItemDto);
+      const _responseType = FullType(ResponseDebtDto);
       _responseData = _serializers.deserialize(
         _response.data!,
         specifiedType: _responseType,
-      ) as ResponseShoppingItemDto;
+      ) as ResponseDebtDto;
 
     } catch (error) {
       throw DioError(
@@ -199,7 +201,7 @@ class ShoppingListApi {
       );
     }
 
-    return Response<ResponseShoppingItemDto>(
+    return Response<ResponseDebtDto>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -211,12 +213,13 @@ class ShoppingListApi {
     );
   }
 
-  /// Delete an item from the shopping list
+  /// Remove a debt member
   ///
   /// 
-  Future<Response<void>> shoppingItemsControllerDelete({ 
+  Future<Response<void>> debtsControllerDeleteDebtMember({ 
     required String groupId,
-    required String id,
+    required String debtId,
+    required String memberId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -224,7 +227,7 @@ class ShoppingListApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/groups/{groupId}/shopping-list/{id}'.replaceAll('{' r'groupId' '}', groupId.toString()).replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/groups/{groupId}/debts/{debtId}/members/{memberId}'.replaceAll('{' r'groupId' '}', groupId.toString()).replaceAll('{' r'debtId' '}', debtId.toString()).replaceAll('{' r'memberId' '}', memberId.toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -234,7 +237,7 @@ class ShoppingListApi {
         'secure': <Map<String, String>>[
           {
             'type': 'http',
-            'name': 'bearer',
+            'name': 'jwt',
           },
         ],
         ...?extra,
@@ -260,14 +263,11 @@ class ShoppingListApi {
     return _response;
   }
 
-  /// Get the items from the group's shopping list
+  /// Get all group debts
   ///
   /// 
-  Future<Response<BuiltList<ResponseShoppingItemDto>>> shoppingItemsControllerFindAll({ 
+  Future<Response<BuiltList<ResponseDebtDto>>> debtsControllerFindAll({ 
     required String groupId,
-    String? search,
-    String? sort,
-    String? filter,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -275,7 +275,7 @@ class ShoppingListApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/groups/{groupId}/shopping-list'.replaceAll('{' r'groupId' '}', groupId.toString());
+    final _path = r'/groups/{groupId}/debts'.replaceAll('{' r'groupId' '}', groupId.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -285,7 +285,7 @@ class ShoppingListApi {
         'secure': <Map<String, String>>[
           {
             'type': 'http',
-            'name': 'bearer',
+            'name': 'jwt',
           },
         ],
         ...?extra,
@@ -297,9 +297,6 @@ class ShoppingListApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (search != null) r'search': search,
-      if (sort != null) r'sort': sort,
-      if (filter != null) r'filter': filter,
     };
 
     final _response = await _dio.request<Object>(
@@ -311,14 +308,14 @@ class ShoppingListApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<ResponseShoppingItemDto> _responseData;
+    BuiltList<ResponseDebtDto> _responseData;
 
     try {
-      const _responseType = FullType(BuiltList, [FullType(ResponseShoppingItemDto)]);
+      const _responseType = FullType(BuiltList, [FullType(ResponseDebtDto)]);
       _responseData = _serializers.deserialize(
         _response.data!,
         specifiedType: _responseType,
-      ) as BuiltList<ResponseShoppingItemDto>;
+      ) as BuiltList<ResponseDebtDto>;
 
     } catch (error) {
       throw DioError(
@@ -329,7 +326,7 @@ class ShoppingListApi {
       );
     }
 
-    return Response<BuiltList<ResponseShoppingItemDto>>(
+    return Response<BuiltList<ResponseDebtDto>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -341,10 +338,10 @@ class ShoppingListApi {
     );
   }
 
-  /// Get a specific item from the group's shopping list
+  /// Get a debt entry
   ///
   /// 
-  Future<Response<ResponseShoppingItemDto>> shoppingItemsControllerFindOne({ 
+  Future<Response<ResponseDebtDto>> debtsControllerFindOne({ 
     required String groupId,
     required String id,
     CancelToken? cancelToken,
@@ -354,7 +351,7 @@ class ShoppingListApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/groups/{groupId}/shopping-list/{id}'.replaceAll('{' r'groupId' '}', groupId.toString()).replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/groups/{groupId}/debts/{id}'.replaceAll('{' r'groupId' '}', groupId.toString()).replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -364,7 +361,7 @@ class ShoppingListApi {
         'secure': <Map<String, String>>[
           {
             'type': 'http',
-            'name': 'bearer',
+            'name': 'jwt',
           },
         ],
         ...?extra,
@@ -387,14 +384,14 @@ class ShoppingListApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ResponseShoppingItemDto _responseData;
+    ResponseDebtDto _responseData;
 
     try {
-      const _responseType = FullType(ResponseShoppingItemDto);
+      const _responseType = FullType(ResponseDebtDto);
       _responseData = _serializers.deserialize(
         _response.data!,
         specifiedType: _responseType,
-      ) as ResponseShoppingItemDto;
+      ) as ResponseDebtDto;
 
     } catch (error) {
       throw DioError(
@@ -405,7 +402,7 @@ class ShoppingListApi {
       );
     }
 
-    return Response<ResponseShoppingItemDto>(
+    return Response<ResponseDebtDto>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -417,109 +414,12 @@ class ShoppingListApi {
     );
   }
 
-  /// Start the shopping mode for this group
+  /// Delete a debt entry
   ///
   /// 
-  Future<Response<void>> shoppingItemsControllerStartShopping({ 
-    required String groupId,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/groups/{groupId}/shopping-list/start-shopping'.replaceAll('{' r'groupId' '}', groupId.toString());
-    final _options = Options(
-      method: r'PATCH',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'name': 'bearer',
-          },
-        ],
-        ...?extra,
-      },
-      contentType: [
-        'application/json',
-      ].first,
-      validateStatus: validateStatus,
-    );
-
-    final _queryParameters = <String, dynamic>{
-    };
-
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      queryParameters: _queryParameters,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    return _response;
-  }
-
-  /// Stop the shopping mode for this group
-  ///
-  /// 
-  Future<Response<void>> shoppingItemsControllerStopShopping({ 
-    required String groupId,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/groups/{groupId}/shopping-list/stop-shopping'.replaceAll('{' r'groupId' '}', groupId.toString());
-    final _options = Options(
-      method: r'PATCH',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'name': 'bearer',
-          },
-        ],
-        ...?extra,
-      },
-      contentType: [
-        'application/json',
-      ].first,
-      validateStatus: validateStatus,
-    );
-
-    final _queryParameters = <String, dynamic>{
-    };
-
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      queryParameters: _queryParameters,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    return _response;
-  }
-
-  /// Update an item of the shopping list
-  ///
-  /// 
-  Future<Response<ResponseShoppingItemDto>> shoppingItemsControllerUpdate({ 
+  Future<Response<void>> debtsControllerRemove({ 
     required String groupId,
     required String id,
-    required UpdateShoppingItemDto updateShoppingItemDto,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -527,7 +427,57 @@ class ShoppingListApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/groups/{groupId}/shopping-list/{id}'.replaceAll('{' r'groupId' '}', groupId.toString()).replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/groups/{groupId}/debts/{id}'.replaceAll('{' r'groupId' '}', groupId.toString()).replaceAll('{' r'id' '}', id.toString());
+    final _options = Options(
+      method: r'DELETE',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'name': 'jwt',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: [
+        'application/json',
+      ].first,
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    return _response;
+  }
+
+  /// Update a debt entry
+  ///
+  /// 
+  Future<Response<ResponseDebtDto>> debtsControllerUpdate({ 
+    required String groupId,
+    required String id,
+    required UpdateDebtDto updateDebtDto,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/groups/{groupId}/debts/{id}'.replaceAll('{' r'groupId' '}', groupId.toString()).replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -537,7 +487,7 @@ class ShoppingListApi {
         'secure': <Map<String, String>>[
           {
             'type': 'http',
-            'name': 'bearer',
+            'name': 'jwt',
           },
         ],
         ...?extra,
@@ -554,8 +504,8 @@ class ShoppingListApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(UpdateShoppingItemDto);
-      _bodyData = _serializers.serialize(updateShoppingItemDto, specifiedType: _type);
+      const _type = FullType(UpdateDebtDto);
+      _bodyData = _serializers.serialize(updateDebtDto, specifiedType: _type);
 
     } catch(error) {
       throw DioError(
@@ -579,14 +529,14 @@ class ShoppingListApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ResponseShoppingItemDto _responseData;
+    ResponseDebtDto _responseData;
 
     try {
-      const _responseType = FullType(ResponseShoppingItemDto);
+      const _responseType = FullType(ResponseDebtDto);
       _responseData = _serializers.deserialize(
         _response.data!,
         specifiedType: _responseType,
-      ) as ResponseShoppingItemDto;
+      ) as ResponseDebtDto;
 
     } catch (error) {
       throw DioError(
@@ -597,7 +547,104 @@ class ShoppingListApi {
       );
     }
 
-    return Response<ResponseShoppingItemDto>(
+    return Response<ResponseDebtDto>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Update a debt member
+  ///
+  /// 
+  Future<Response<ResponseDebtDto>> debtsControllerUpdateDebtMember({ 
+    required String groupId,
+    required String debtId,
+    required String memberId,
+    required UpdateDebtMemberDto updateDebtMemberDto,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/groups/{groupId}/debts/{debtId}/members/{memberId}'.replaceAll('{' r'groupId' '}', groupId.toString()).replaceAll('{' r'debtId' '}', debtId.toString()).replaceAll('{' r'memberId' '}', memberId.toString());
+    final _options = Options(
+      method: r'PATCH',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'name': 'jwt',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: [
+        'application/json',
+      ].first,
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+    };
+
+    dynamic _bodyData;
+
+    try {
+      const _type = FullType(UpdateDebtMemberDto);
+      _bodyData = _serializers.serialize(updateDebtMemberDto, specifiedType: _type);
+
+    } catch(error) {
+      throw DioError(
+         requestOptions: _options.compose(
+          _dio.options,
+          _path,
+          queryParameters: _queryParameters,
+        ),
+        type: DioErrorType.other,
+        error: error,
+      );
+    }
+
+    final _response = await _dio.request<Object>(
+      _path,
+      data: _bodyData,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    ResponseDebtDto _responseData;
+
+    try {
+      const _responseType = FullType(ResponseDebtDto);
+      _responseData = _serializers.deserialize(
+        _response.data!,
+        specifiedType: _responseType,
+      ) as ResponseDebtDto;
+
+    } catch (error) {
+      throw DioError(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioErrorType.other,
+        error: error,
+      );
+    }
+
+    return Response<ResponseDebtDto>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

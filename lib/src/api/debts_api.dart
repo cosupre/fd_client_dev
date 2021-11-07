@@ -46,7 +46,7 @@ class DebtsApi {
         'secure': <Map<String, String>>[
           {
             'type': 'http',
-            'name': 'jwt',
+            'name': 'bearer',
           },
         ],
         ...?extra,
@@ -141,7 +141,7 @@ class DebtsApi {
         'secure': <Map<String, String>>[
           {
             'type': 'http',
-            'name': 'jwt',
+            'name': 'bearer',
           },
         ],
         ...?extra,
@@ -237,7 +237,7 @@ class DebtsApi {
         'secure': <Map<String, String>>[
           {
             'type': 'http',
-            'name': 'jwt',
+            'name': 'bearer',
           },
         ],
         ...?extra,
@@ -285,7 +285,7 @@ class DebtsApi {
         'secure': <Map<String, String>>[
           {
             'type': 'http',
-            'name': 'jwt',
+            'name': 'bearer',
           },
         ],
         ...?extra,
@@ -361,7 +361,7 @@ class DebtsApi {
         'secure': <Map<String, String>>[
           {
             'type': 'http',
-            'name': 'jwt',
+            'name': 'bearer',
           },
         ],
         ...?extra,
@@ -437,7 +437,7 @@ class DebtsApi {
         'secure': <Map<String, String>>[
           {
             'type': 'http',
-            'name': 'jwt',
+            'name': 'bearer',
           },
         ],
         ...?extra,
@@ -487,7 +487,7 @@ class DebtsApi {
         'secure': <Map<String, String>>[
           {
             'type': 'http',
-            'name': 'jwt',
+            'name': 'bearer',
           },
         ],
         ...?extra,
@@ -584,7 +584,7 @@ class DebtsApi {
         'secure': <Map<String, String>>[
           {
             'type': 'http',
-            'name': 'jwt',
+            'name': 'bearer',
           },
         ],
         ...?extra,

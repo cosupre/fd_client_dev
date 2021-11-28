@@ -8,23 +8,19 @@ part of 'update_debt_dto.dart';
 
 class _$UpdateDebtDto extends UpdateDebtDto {
   @override
+  final String? creditorId;
+  @override
   final String? name;
   @override
   final String? price;
   @override
   final DateTime? date;
-  @override
-  final String creditorId;
 
   factory _$UpdateDebtDto([void Function(UpdateDebtDtoBuilder)? updates]) =>
       (new UpdateDebtDtoBuilder()..update(updates)).build();
 
-  _$UpdateDebtDto._(
-      {this.name, this.price, this.date, required this.creditorId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        creditorId, 'UpdateDebtDto', 'creditorId');
-  }
+  _$UpdateDebtDto._({this.creditorId, this.name, this.price, this.date})
+      : super._();
 
   @override
   UpdateDebtDto rebuild(void Function(UpdateDebtDtoBuilder) updates) =>
@@ -37,26 +33,26 @@ class _$UpdateDebtDto extends UpdateDebtDto {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is UpdateDebtDto &&
+        creditorId == other.creditorId &&
         name == other.name &&
         price == other.price &&
-        date == other.date &&
-        creditorId == other.creditorId;
+        date == other.date;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, name.hashCode), price.hashCode), date.hashCode),
-        creditorId.hashCode));
+        $jc($jc($jc(0, creditorId.hashCode), name.hashCode), price.hashCode),
+        date.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('UpdateDebtDto')
+          ..add('creditorId', creditorId)
           ..add('name', name)
           ..add('price', price)
-          ..add('date', date)
-          ..add('creditorId', creditorId))
+          ..add('date', date))
         .toString();
   }
 }
@@ -64,6 +60,10 @@ class _$UpdateDebtDto extends UpdateDebtDto {
 class UpdateDebtDtoBuilder
     implements Builder<UpdateDebtDto, UpdateDebtDtoBuilder> {
   _$UpdateDebtDto? _$v;
+
+  String? _creditorId;
+  String? get creditorId => _$this._creditorId;
+  set creditorId(String? creditorId) => _$this._creditorId = creditorId;
 
   String? _name;
   String? get name => _$this._name;
@@ -77,10 +77,6 @@ class UpdateDebtDtoBuilder
   DateTime? get date => _$this._date;
   set date(DateTime? date) => _$this._date = date;
 
-  String? _creditorId;
-  String? get creditorId => _$this._creditorId;
-  set creditorId(String? creditorId) => _$this._creditorId = creditorId;
-
   UpdateDebtDtoBuilder() {
     UpdateDebtDto._initializeBuilder(this);
   }
@@ -88,10 +84,10 @@ class UpdateDebtDtoBuilder
   UpdateDebtDtoBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _creditorId = $v.creditorId;
       _name = $v.name;
       _price = $v.price;
       _date = $v.date;
-      _creditorId = $v.creditorId;
       _$v = null;
     }
     return this;
@@ -112,11 +108,7 @@ class UpdateDebtDtoBuilder
   _$UpdateDebtDto build() {
     final _$result = _$v ??
         new _$UpdateDebtDto._(
-            name: name,
-            price: price,
-            date: date,
-            creditorId: BuiltValueNullFieldError.checkNotNull(
-                creditorId, 'UpdateDebtDto', 'creditorId'));
+            creditorId: creditorId, name: name, price: price, date: date);
     replace(_$result);
     return _$result;
   }

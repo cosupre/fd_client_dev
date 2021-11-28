@@ -10,6 +10,10 @@ part 'update_debt_dto.g.dart';
 
 
 abstract class UpdateDebtDto implements Built<UpdateDebtDto, UpdateDebtDtoBuilder> {
+    /// The id of the creditor group member
+    @BuiltValueField(wireName: r'creditorId')
+    String? get creditorId;
+
     /// The debt name
     @BuiltValueField(wireName: r'name')
     String? get name;
@@ -21,10 +25,6 @@ abstract class UpdateDebtDto implements Built<UpdateDebtDto, UpdateDebtDtoBuilde
     /// The date of the purchase linked with the debt
     @BuiltValueField(wireName: r'date')
     DateTime? get date;
-
-    /// The id of the creditor group member
-    @BuiltValueField(wireName: r'creditorId')
-    String get creditorId;
 
     UpdateDebtDto._();
 
@@ -47,6 +47,12 @@ class _$UpdateDebtDtoSerializer implements StructuredSerializer<UpdateDebtDto> {
     Iterable<Object?> serialize(Serializers serializers, UpdateDebtDto object,
         {FullType specifiedType = FullType.unspecified}) {
         final result = <Object?>[];
+        if (object.creditorId != null) {
+            result
+                ..add(r'creditorId')
+                ..add(serializers.serialize(object.creditorId,
+                    specifiedType: const FullType(String)));
+        }
         if (object.name != null) {
             result
                 ..add(r'name')
@@ -65,10 +71,6 @@ class _$UpdateDebtDtoSerializer implements StructuredSerializer<UpdateDebtDto> {
                 ..add(serializers.serialize(object.date,
                     specifiedType: const FullType(DateTime)));
         }
-        result
-            ..add(r'creditorId')
-            ..add(serializers.serialize(object.creditorId,
-                specifiedType: const FullType(String)));
         return result;
     }
 
@@ -83,6 +85,10 @@ class _$UpdateDebtDtoSerializer implements StructuredSerializer<UpdateDebtDto> {
             iterator.moveNext();
             final Object? value = iterator.current;
             switch (key) {
+                case r'creditorId':
+                    result.creditorId = serializers.deserialize(value,
+                        specifiedType: const FullType(String)) as String;
+                    break;
                 case r'name':
                     result.name = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
@@ -94,10 +100,6 @@ class _$UpdateDebtDtoSerializer implements StructuredSerializer<UpdateDebtDto> {
                 case r'date':
                     result.date = serializers.deserialize(value,
                         specifiedType: const FullType(DateTime)) as DateTime;
-                    break;
-                case r'creditorId':
-                    result.creditorId = serializers.deserialize(value,
-                        specifiedType: const FullType(String)) as String;
                     break;
             }
         }

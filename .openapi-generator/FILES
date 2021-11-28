@@ -136,16 +136,3 @@ lib/src/model/update_user_product_tag_dto.dart
 lib/src/model/update_user_tag_dto.dart
 lib/src/serializers.dart
 pubspec.yaml
-test/create_custom_shopping_history_item_dto_test.dart
-test/create_debt_dto_test.dart
-test/create_debt_member_dto_test.dart
-test/create_shopping_history_item_dto_test.dart
-test/debts_api_test.dart
-test/most_purchased_products_api_test.dart
-test/response_debt_dto_test.dart
-test/response_debt_member_dto_test.dart
-test/response_most_purchased_product_dto_test.dart
-test/response_pagination_most_purchased_product_dto_test.dart
-test/update_debt_dto_test.dart
-test/update_debt_member_dto_test.dart
-test/update_shopping_history_list_dto_test.dart

@@ -10,6 +10,10 @@ part 'create_debt_dto.g.dart';
 
 
 abstract class CreateDebtDto implements Built<CreateDebtDto, CreateDebtDtoBuilder> {
+    /// The id of the creditor group member
+    @BuiltValueField(wireName: r'creditorId')
+    String? get creditorId;
+
     /// The debt name
     @BuiltValueField(wireName: r'name')
     String get name;
@@ -20,7 +24,7 @@ abstract class CreateDebtDto implements Built<CreateDebtDto, CreateDebtDtoBuilde
 
     /// The date of the purchase linked with the debt
     @BuiltValueField(wireName: r'date')
-    DateTime get date;
+    DateTime? get date;
 
     CreateDebtDto._();
 
@@ -43,6 +47,12 @@ class _$CreateDebtDtoSerializer implements StructuredSerializer<CreateDebtDto> {
     Iterable<Object?> serialize(Serializers serializers, CreateDebtDto object,
         {FullType specifiedType = FullType.unspecified}) {
         final result = <Object?>[];
+        if (object.creditorId != null) {
+            result
+                ..add(r'creditorId')
+                ..add(serializers.serialize(object.creditorId,
+                    specifiedType: const FullType(String)));
+        }
         result
             ..add(r'name')
             ..add(serializers.serialize(object.name,
@@ -51,10 +61,12 @@ class _$CreateDebtDtoSerializer implements StructuredSerializer<CreateDebtDto> {
             ..add(r'price')
             ..add(serializers.serialize(object.price,
                 specifiedType: const FullType(String)));
-        result
-            ..add(r'date')
-            ..add(serializers.serialize(object.date,
-                specifiedType: const FullType(DateTime)));
+        if (object.date != null) {
+            result
+                ..add(r'date')
+                ..add(serializers.serialize(object.date,
+                    specifiedType: const FullType(DateTime)));
+        }
         return result;
     }
 
@@ -69,6 +81,10 @@ class _$CreateDebtDtoSerializer implements StructuredSerializer<CreateDebtDto> {
             iterator.moveNext();
             final Object? value = iterator.current;
             switch (key) {
+                case r'creditorId':
+                    result.creditorId = serializers.deserialize(value,
+                        specifiedType: const FullType(String)) as String;
+                    break;
                 case r'name':
                     result.name = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;

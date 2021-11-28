@@ -219,7 +219,7 @@ class DebtsApi {
   Future<Response<void>> debtsControllerDeleteDebtMember({ 
     required String groupId,
     required String debtId,
-    required String memberId,
+    required String userId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -227,7 +227,7 @@ class DebtsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/groups/{groupId}/debts/{debtId}/members/{memberId}'.replaceAll('{' r'groupId' '}', groupId.toString()).replaceAll('{' r'debtId' '}', debtId.toString()).replaceAll('{' r'memberId' '}', memberId.toString());
+    final _path = r'/groups/{groupId}/debts/{debtId}/members/{userId}'.replaceAll('{' r'groupId' '}', groupId.toString()).replaceAll('{' r'debtId' '}', debtId.toString()).replaceAll('{' r'userId' '}', userId.toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -565,7 +565,7 @@ class DebtsApi {
   Future<Response<ResponseDebtDto>> debtsControllerUpdateDebtMember({ 
     required String groupId,
     required String debtId,
-    required String memberId,
+    required String userId,
     required UpdateDebtMemberDto updateDebtMemberDto,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -574,7 +574,7 @@ class DebtsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/groups/{groupId}/debts/{debtId}/members/{memberId}'.replaceAll('{' r'groupId' '}', groupId.toString()).replaceAll('{' r'debtId' '}', debtId.toString()).replaceAll('{' r'memberId' '}', memberId.toString());
+    final _path = r'/groups/{groupId}/debts/{debtId}/members/{userId}'.replaceAll('{' r'groupId' '}', groupId.toString()).replaceAll('{' r'debtId' '}', debtId.toString()).replaceAll('{' r'userId' '}', userId.toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{

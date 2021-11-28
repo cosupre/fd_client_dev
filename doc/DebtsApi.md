@@ -11,12 +11,12 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**debtsControllerAddDebtMember**](DebtsApi.md#debtscontrolleradddebtmember) | **post** /groups/{groupId}/debts/{debtId}/members | Add a member to an entry
 [**debtsControllerCreate**](DebtsApi.md#debtscontrollercreate) | **post** /groups/{groupId}/debts | Add a debt entry
-[**debtsControllerDeleteDebtMember**](DebtsApi.md#debtscontrollerdeletedebtmember) | **delete** /groups/{groupId}/debts/{debtId}/members/{memberId} | Remove a debt member
+[**debtsControllerDeleteDebtMember**](DebtsApi.md#debtscontrollerdeletedebtmember) | **delete** /groups/{groupId}/debts/{debtId}/members/{userId} | Remove a debt member
 [**debtsControllerFindAll**](DebtsApi.md#debtscontrollerfindall) | **get** /groups/{groupId}/debts | Get all group debts
 [**debtsControllerFindOne**](DebtsApi.md#debtscontrollerfindone) | **get** /groups/{groupId}/debts/{id} | Get a debt entry
 [**debtsControllerRemove**](DebtsApi.md#debtscontrollerremove) | **delete** /groups/{groupId}/debts/{id} | Delete a debt entry
 [**debtsControllerUpdate**](DebtsApi.md#debtscontrollerupdate) | **patch** /groups/{groupId}/debts/{id} | Update a debt entry
-[**debtsControllerUpdateDebtMember**](DebtsApi.md#debtscontrollerupdatedebtmember) | **patch** /groups/{groupId}/debts/{debtId}/members/{memberId} | Update a debt member
+[**debtsControllerUpdateDebtMember**](DebtsApi.md#debtscontrollerupdatedebtmember) | **patch** /groups/{groupId}/debts/{debtId}/members/{userId} | Update a debt member
 
 
 # **debtsControllerAddDebtMember**
@@ -114,7 +114,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **debtsControllerDeleteDebtMember**
-> debtsControllerDeleteDebtMember(groupId, debtId, memberId)
+> debtsControllerDeleteDebtMember(groupId, debtId, userId)
 
 Remove a debt member
 
@@ -128,10 +128,10 @@ import 'package:fd_dart_client/api.dart';
 var api_instance = new DebtsApi();
 var groupId = groupId_example; // String | 
 var debtId = debtId_example; // String | 
-var memberId = memberId_example; // String | 
+var userId = userId_example; // String | 
 
 try { 
-    api_instance.debtsControllerDeleteDebtMember(groupId, debtId, memberId);
+    api_instance.debtsControllerDeleteDebtMember(groupId, debtId, userId);
 } catch (e) {
     print('Exception when calling DebtsApi->debtsControllerDeleteDebtMember: $e\n');
 }
@@ -143,7 +143,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **String**|  | 
  **debtId** | **String**|  | 
- **memberId** | **String**|  | 
+ **userId** | **String**|  | 
 
 ### Return type
 
@@ -344,7 +344,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **debtsControllerUpdateDebtMember**
-> ResponseDebtDto debtsControllerUpdateDebtMember(groupId, debtId, memberId, updateDebtMemberDto)
+> ResponseDebtDto debtsControllerUpdateDebtMember(groupId, debtId, userId, updateDebtMemberDto)
 
 Update a debt member
 
@@ -358,11 +358,11 @@ import 'package:fd_dart_client/api.dart';
 var api_instance = new DebtsApi();
 var groupId = groupId_example; // String | 
 var debtId = debtId_example; // String | 
-var memberId = memberId_example; // String | 
+var userId = userId_example; // String | 
 var updateDebtMemberDto = new UpdateDebtMemberDto(); // UpdateDebtMemberDto | 
 
 try { 
-    var result = api_instance.debtsControllerUpdateDebtMember(groupId, debtId, memberId, updateDebtMemberDto);
+    var result = api_instance.debtsControllerUpdateDebtMember(groupId, debtId, userId, updateDebtMemberDto);
     print(result);
 } catch (e) {
     print('Exception when calling DebtsApi->debtsControllerUpdateDebtMember: $e\n');
@@ -375,7 +375,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **String**|  | 
  **debtId** | **String**|  | 
- **memberId** | **String**|  | 
+ **userId** | **String**|  | 
  **updateDebtMemberDto** | [**UpdateDebtMemberDto**](UpdateDebtMemberDto.md)|  | 
 
 ### Return type

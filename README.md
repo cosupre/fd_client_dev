@@ -68,12 +68,12 @@ Class | Method | HTTP request | Description
 *CustomProductsApi* | [**customProductsControllerUpdate**](doc/CustomProductsApi.md#customproductscontrollerupdate) | **patch** /groups/{groupId}/custom-products/{id} | Update a custom product
 *DebtsApi* | [**debtsControllerAddDebtMember**](doc/DebtsApi.md#debtscontrolleradddebtmember) | **post** /groups/{groupId}/debts/{debtId}/members | Add a member to an entry
 *DebtsApi* | [**debtsControllerCreate**](doc/DebtsApi.md#debtscontrollercreate) | **post** /groups/{groupId}/debts | Add a debt entry
-*DebtsApi* | [**debtsControllerDeleteDebtMember**](doc/DebtsApi.md#debtscontrollerdeletedebtmember) | **delete** /groups/{groupId}/debts/{debtId}/members/{memberId} | Remove a debt member
+*DebtsApi* | [**debtsControllerDeleteDebtMember**](doc/DebtsApi.md#debtscontrollerdeletedebtmember) | **delete** /groups/{groupId}/debts/{debtId}/members/{userId} | Remove a debt member
 *DebtsApi* | [**debtsControllerFindAll**](doc/DebtsApi.md#debtscontrollerfindall) | **get** /groups/{groupId}/debts | Get all group debts
 *DebtsApi* | [**debtsControllerFindOne**](doc/DebtsApi.md#debtscontrollerfindone) | **get** /groups/{groupId}/debts/{id} | Get a debt entry
 *DebtsApi* | [**debtsControllerRemove**](doc/DebtsApi.md#debtscontrollerremove) | **delete** /groups/{groupId}/debts/{id} | Delete a debt entry
 *DebtsApi* | [**debtsControllerUpdate**](doc/DebtsApi.md#debtscontrollerupdate) | **patch** /groups/{groupId}/debts/{id} | Update a debt entry
-*DebtsApi* | [**debtsControllerUpdateDebtMember**](doc/DebtsApi.md#debtscontrollerupdatedebtmember) | **patch** /groups/{groupId}/debts/{debtId}/members/{memberId} | Update a debt member
+*DebtsApi* | [**debtsControllerUpdateDebtMember**](doc/DebtsApi.md#debtscontrollerupdatedebtmember) | **patch** /groups/{groupId}/debts/{debtId}/members/{userId} | Update a debt member
 *GroupsApi* | [**groupsControllerBanGroupOwner**](doc/GroupsApi.md#groupscontrollerbangroupowner) | **patch** /groups/{groupId}/ban/{userId} | Ban a member. Owner can&#39;t be banned. You can&#39;t ban yourself or a member with equal or superior role
 *GroupsApi* | [**groupsControllerChangeGroupOwner**](doc/GroupsApi.md#groupscontrollerchangegroupowner) | **patch** /groups/{groupId}/change-owner/{userId} | Change the owner of the group. Only owner can give his rights to another member
 *GroupsApi* | [**groupsControllerChangeGroupSharingCode**](doc/GroupsApi.md#groupscontrollerchangegroupsharingcode) | **patch** /groups/{id}/change-code | Change the sharing code of the group.

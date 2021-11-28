@@ -10,7 +10,7 @@ class _$ResponseDebtMemberDto extends ResponseDebtMemberDto {
   @override
   final String id;
   @override
-  final String groupMemberId;
+  final String userId;
   @override
   final String debtId;
   @override
@@ -22,13 +22,13 @@ class _$ResponseDebtMemberDto extends ResponseDebtMemberDto {
 
   _$ResponseDebtMemberDto._(
       {required this.id,
-      required this.groupMemberId,
+      required this.userId,
       required this.debtId,
       required this.debtPart})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(id, 'ResponseDebtMemberDto', 'id');
     BuiltValueNullFieldError.checkNotNull(
-        groupMemberId, 'ResponseDebtMemberDto', 'groupMemberId');
+        userId, 'ResponseDebtMemberDto', 'userId');
     BuiltValueNullFieldError.checkNotNull(
         debtId, 'ResponseDebtMemberDto', 'debtId');
     BuiltValueNullFieldError.checkNotNull(
@@ -49,7 +49,7 @@ class _$ResponseDebtMemberDto extends ResponseDebtMemberDto {
     if (identical(other, this)) return true;
     return other is ResponseDebtMemberDto &&
         id == other.id &&
-        groupMemberId == other.groupMemberId &&
+        userId == other.userId &&
         debtId == other.debtId &&
         debtPart == other.debtPart;
   }
@@ -57,7 +57,7 @@ class _$ResponseDebtMemberDto extends ResponseDebtMemberDto {
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, id.hashCode), groupMemberId.hashCode), debtId.hashCode),
+        $jc($jc($jc(0, id.hashCode), userId.hashCode), debtId.hashCode),
         debtPart.hashCode));
   }
 
@@ -65,7 +65,7 @@ class _$ResponseDebtMemberDto extends ResponseDebtMemberDto {
   String toString() {
     return (newBuiltValueToStringHelper('ResponseDebtMemberDto')
           ..add('id', id)
-          ..add('groupMemberId', groupMemberId)
+          ..add('userId', userId)
           ..add('debtId', debtId)
           ..add('debtPart', debtPart))
         .toString();
@@ -80,10 +80,9 @@ class ResponseDebtMemberDtoBuilder
   String? get id => _$this._id;
   set id(String? id) => _$this._id = id;
 
-  String? _groupMemberId;
-  String? get groupMemberId => _$this._groupMemberId;
-  set groupMemberId(String? groupMemberId) =>
-      _$this._groupMemberId = groupMemberId;
+  String? _userId;
+  String? get userId => _$this._userId;
+  set userId(String? userId) => _$this._userId = userId;
 
   String? _debtId;
   String? get debtId => _$this._debtId;
@@ -101,7 +100,7 @@ class ResponseDebtMemberDtoBuilder
     final $v = _$v;
     if ($v != null) {
       _id = $v.id;
-      _groupMemberId = $v.groupMemberId;
+      _userId = $v.userId;
       _debtId = $v.debtId;
       _debtPart = $v.debtPart;
       _$v = null;
@@ -126,8 +125,8 @@ class ResponseDebtMemberDtoBuilder
         new _$ResponseDebtMemberDto._(
             id: BuiltValueNullFieldError.checkNotNull(
                 id, 'ResponseDebtMemberDto', 'id'),
-            groupMemberId: BuiltValueNullFieldError.checkNotNull(
-                groupMemberId, 'ResponseDebtMemberDto', 'groupMemberId'),
+            userId: BuiltValueNullFieldError.checkNotNull(
+                userId, 'ResponseDebtMemberDto', 'userId'),
             debtId: BuiltValueNullFieldError.checkNotNull(
                 debtId, 'ResponseDebtMemberDto', 'debtId'),
             debtPart: BuiltValueNullFieldError.checkNotNull(

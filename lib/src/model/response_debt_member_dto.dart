@@ -15,10 +15,10 @@ abstract class ResponseDebtMemberDto implements Built<ResponseDebtMemberDto, Res
     String get id;
 
     /// The user's id linked to this member
-    @BuiltValueField(wireName: r'groupMemberId')
-    String get groupMemberId;
+    @BuiltValueField(wireName: r'userId')
+    String get userId;
 
-    /// The user's id linked to this member
+    /// The debt id linked to this member
     @BuiltValueField(wireName: r'debtId')
     String get debtId;
 
@@ -52,8 +52,8 @@ class _$ResponseDebtMemberDtoSerializer implements StructuredSerializer<Response
             ..add(serializers.serialize(object.id,
                 specifiedType: const FullType(String)));
         result
-            ..add(r'groupMemberId')
-            ..add(serializers.serialize(object.groupMemberId,
+            ..add(r'userId')
+            ..add(serializers.serialize(object.userId,
                 specifiedType: const FullType(String)));
         result
             ..add(r'debtId')
@@ -81,8 +81,8 @@ class _$ResponseDebtMemberDtoSerializer implements StructuredSerializer<Response
                     result.id = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
                     break;
-                case r'groupMemberId':
-                    result.groupMemberId = serializers.deserialize(value,
+                case r'userId':
+                    result.userId = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
                     break;
                 case r'debtId':
